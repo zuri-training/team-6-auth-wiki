@@ -37,8 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # tailwindcss dependencies
     'tailwind',
     'theme',
+    'django_browser_reload',
+
+    # external applications modules
+    'wiki',
+    'authentication',
+    'landing_page',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'auth_wiki.urls'
@@ -126,3 +135,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # tailwindcss theme
 TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+# if you are running windows kindly comment the code below RUN (which npm) to get the directory
+NPM_BIN_PATH = '/home/femmyte/.nvm/versions/node/v14.4.0/bin/npm'
+
+# if you are running windows kindly uncomment the code below
+# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"  # for windows

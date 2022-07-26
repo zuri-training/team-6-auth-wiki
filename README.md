@@ -6,12 +6,19 @@
 >
 > > then run `pip install -r requirements.txt` to install the required dependencies
 
-AFTER INSTALLING THE DEPENDENCIES
+## AFTER INSTALLING THE DEPENDENCIES
 
-> RUN `python manage.py tailwind start`
+> activate the environment
+> -change directory to the project directory
+> RUN `cd auth_wiki`
 >
+> - install npm package to build tailwind css
+>   RUN `python3 manage.py tailwind install`
+
 > - to load tailwindcss
->   RUN `python manage.py runserver`
+>   RUN `python manage.py tailwind start`
+>
 > - to run django server
+>   RUN `python manage.py runserver`
 
 _[READ ABOUT TAILWINDCSS HERE](https://django-tailwind.readthedocs.io/en/latest/installation.html#step-by-step-instructions)_

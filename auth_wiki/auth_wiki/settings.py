@@ -139,8 +139,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-# if you are running windows kindly comment the code below RUN (which npm) to get the directory
-NPM_BIN_PATH = '/home/femmyte/.nvm/versions/node/v14.4.0/bin/npm'
+# if you are running windows kindly comment the code below or RUN (which npm) to get the directory
+# NPM_BIN_PATH = '/home/femmyte/.nvm/versions/node/v14.4.0/bin/npm'
 
 # if you are running windows kindly uncomment the code below
 # NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"  # for windows

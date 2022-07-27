@@ -88,6 +88,59 @@
       </nav>
       {% block content %} {% endblock %}
     </div>
+    <footer class="footer w-full md:h-[425px] bg-[#505050] p-8">
+  <div class="md:grid grid-cols-8 gap-4 mx-auto text-center text-white text-xl">
+    <div class="col-start-2 col-span-2 my-8 md:my-5">
+      <h3 class="text-3xl  md:mb-0">Docs</h3>
+      <ul>
+        <li class="my-3">PHP</li>
+        <li class="my-3">JavaScript</li>
+        <li class="my-3">Python</li>
+      </ul>
+    </div>
+    <div class="col-span-2 my-8 md:my-5">
+      <h3 class="text-3xl">Community</h3>
+      <ul>
+        <li class="my-3">Community Resources</li>
+        <li class="my-3">codes of Conduct</li>
+      </ul>
+    </div>
+    <div class="col-span-2 col-end-8 my-5">
+      <h3 class="text-3xl">More</h3>
+      <ul>
+        <li class="my-3">About</li>
+        <li class="my-3">Blog</li>
+        <li class="my-3">Privacy</li>
+      </ul>
+    </div>
+  </div>
+  {% comment %} <div class="md:grid grid-cols-8 gap-1 mx-auto text-center text-white text-xl"> {% endcomment %}
+    <div class="md:flex w-80 md:justify-between md:items-center md:w-[800px] mx-auto ">
+    {% comment %} <div class="col-start-3 my-5"> {% endcomment %}
+      <div class="w-40 mx-auto mt-9 md:mt-0 md:ml-16">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-12 w-10 text-center"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
+        />
+      </svg>
+    </div>
+    <div class="mx-auto my-9 md:my-5">
+      <input type="text" class="md:w-[350px] mx-7 bg-transparent border-b-gray-400 border-b-2 border-t-0 border-l-0 border-r-0 focus:outline-none focus:ring focus:border-white text-2xl " placeholder='subscribe to email updates' />
+    </div>
+    <div class="mx-auto w-40  mt-10 md:mr-12 md:my-5 ">
+      <button class='w-[152px] h-[40px] bg-[#7A7A7A] text-white'>Submit</button>
+    </div>
+  </div>
+</footer>
     {% comment %} prism {% endcomment %}
     <script>
       function Menu(e) {

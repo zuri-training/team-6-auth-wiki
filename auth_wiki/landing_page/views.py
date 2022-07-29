@@ -7,3 +7,6 @@ from django.views import View
 # class Home(View):
 def home_view(request):
     return render(request, 'index.html')
+
+def dashboard(request):
+    return render(request, 'account/index.html')

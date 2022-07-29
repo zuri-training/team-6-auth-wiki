@@ -1,0 +1,14 @@
+{
+    "name": "team6/auth",
+    "description": "An authentication library.",
+    "type": "library",
+    "require": {
+        "catfan/medoo": "^2.1"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "license": "MIT"
+}

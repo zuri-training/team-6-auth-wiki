@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__.'/AuthInterface.php';
+
+namespace Team6\AuthWiki;
 
 /**
  * The Auth Class
  */
 class Auth implements AuthInterface
 {
-    // implement methods
 }

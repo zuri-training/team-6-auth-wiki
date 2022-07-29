@@ -1,5 +1,7 @@
 <?php
 
+namespace Team6\AuthWiki;
+
 /**
  * Auth Interface
  */

@@ -40,6 +40,52 @@
             list.classList.remove("top-[80px]"),
             list.classList.remove("opacity-100"));
       }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        //const buttons = document.querySelectorAll(".menu-btn");
+        const button = document.querySelector(".menu-btn");
+        const button2 = document.querySelector(".menu-btn2");
+        const button3 = document.querySelector(".menu-btn3");
+        const button4 = document.querySelector(".menu-btn4");
+        const dropdown1 = document.querySelector(".dropdown1");
+        const dropdown2 = document.querySelector(".dropdown2");
+        const dropdown3 = document.querySelector(".dropdown3");
+        const dropdown4 = document.querySelector(".dropdown4");
+
+        button.addEventListener("click", () => {
+          dropdown1.classList.toggle("hidden");
+          dropdown1.classList.toggle("flex");
+        });
+
+        button2.addEventListener("click", () => {
+          dropdown2.classList.toggle("hidden");
+          dropdown2.classList.toggle("flex");
+        });
+
+        button3.addEventListener("click", () => {
+          dropdown3.classList.toggle("hidden");
+          dropdown3.classList.toggle("flex");
+        });
+        button4.addEventListener("click", () => {
+          dropdown4.classList.toggle("hidden");
+          dropdown4.classList.toggle("flex");
+        });
+        /* for (let i = 0; i < buttons.length; i++) {
+          buttons[2].addEventListener("click", () => {
+            console.log(buttons[1]);
+            dropdown1.classList.toggle("hidden");
+            dropdown1.classList.toggle("flex");
+          });
+          /* button[1].addEventListener("click", () => {
+            dropdown.classList.toggle("hidden");
+            dropdown2.classList.toggle("flex");
+          });
+            button[2].addEventListener("click", () => {
+            dropdown3.classList.toggle("hidden");
+            dropdown3.classList.toggle("flex");
+          });*
+        }*/
+      });
     </script>
     <script src="{% static '/js/prism.js' %}">
 

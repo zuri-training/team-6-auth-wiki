@@ -249,15 +249,9 @@
           {
     /**
      * Check if user is logged in
-     *
-     * @return boolean
      */
     public static function isLoggedIn(): bool;
-
-    /**
-     * Attempt to login user
-     */
-    public static function login(string $username, string $password): int;
+static function login(string $username, string $password): int;
 
 require_once __DIR__.'/AuthInterface.php';
 

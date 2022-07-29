@@ -1,8 +1,331 @@
 {% extends 'base.html'%} {% block content %} {% load static %}
+<nav
+  class="py-3 md:px-8 bg-[#E9EFFF] max-h-[94px] w-full mb-1 md:flex md:items-center md:justify-between text-2xl"
+>
+  <div class="flex justify-between items-center">
+ 
+    <img
+      src="{% static 'img/logo/logo2.png' %}"
+      class="ml-3 h-[44.16px]"
+      alt="auth wiki logo"
+    />
+    <span class="text-3xl cursor-pointer mx-3 md:hidden block">
+      {% comment %} <ion-icon name="menu"></ion-icon> {% endcomment %}
+      <img
+        src="{% static 'img/menu.svg' %}"
+        name="name"
+        class="h-10"
+        onclick="Menu(this)"
+        alt="My image"
+      />
+    </span>
+  </div>
+  <div class="nav-menu md:justify-between">
+    <ul class="md:flex md:items-center md:static absolute md:mr-20">
+      <li class="md:mx-6 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-text_primary duration-500">Doc</a>
+      </li>
+      <li class="md:mx-6 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-text_primary duration-500"
+          >Wiki</a
+        >
+      </li>
+      <li class="md:mx-6 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-text_primary duration-500"
+          >About Us</a
+        >
+      </li>
+    </ul>
+    <div class="md:flex md:items-center md:static absolute md:ml-4">
+      <span
+        class="rounded border w-[348px] pl-2 h-[49px] border-[#B3B3B3] md:mx-5"
+      >
+        <svg
+          class="w-5 h-5 inline-block"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
 
-<div class="grid grid-cols-4 gap-4 w-full h-screen">
-  <div class="bg-green-300 w-full">one</div>
-  <div class="col-span-3 bg-red-400">two</div>
-</div>
+        <input
+          type="search"
+          placeholder="search"
+          class="rounded m-0 bg-transparent h-[48px] focus:outline-none border-none w-[311px]"
+        />
+      </span>
+      <span class="md:mx-4 my-6 md:my-0 md:">
+        <a href="#" class="text-xl hover:text-text_primary duration-500"
+          >login</a
+        >
+      </span>
+      <button
+        class="bg-primary hover:text-text_primary text-white duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded"
+      >
+        Signup
+      </button>
+    </div>
+  </div>
+</nav>
+{% comment %} end of navbar {% endcomment %}
+<section class="bg-[#E9EFFF] pt-10 h-screen">
+  <div class="container md:flex justify-evenly mx-auto mt-12">
+    <div class="col-start-1 w-full">
+      <div class="md:w-[600px] mx-auto text-text_primary">
+        <h1 class="text-[40px] font-bold text-12">Secure Codes for Free</h1>
+        <p class="text-text_primary mt-5 mb-10 text-lg">
+          We offer free libraries of authentication codes for developers to aid
+          speed and ease thier work load in other to make great effort in
+          improving “TECH” space.
+        </p>
+        <button class="w-[192px] bg-primary h-[64px] text-white rounded">
+          Get Started
+        </button>
+      </div>
+    </div>
+    <div class="mt-32 mr-28">
+      <img
+        src="{% static 'img/logo/water.png' %}"
+        class="w-[420.9px] h-[200px]"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+{% comment %} about section {% endcomment %}
+<section
+  class="container mx-auto bg-white md:grid grid-cols-4 gap-6 pt-20 text-text_primary"
+>
+  <div class="col-span-2 my-6 ml-20 w-3/4">
+    <h1 class="font-m text-[40px] mb-4 font-bold">What we offer</h1>
+    <p class="text-[16px]">
+      We offer free libraries of authentication codes for developers to aid
+      speed and ease thier work load in other to make great effort in improving
+      “TECH” space.
+    </p>
+  </div>
+  <div class="col-span-1">
+    <div class="my-5">
+      <svg
+        width="91"
+        height="91"
+        viewBox="0 0 91 91"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M34.875 11.375C18.0292 11.375 4.375 25.0333 4.375 41.8766C4.375 58.7208 18.0292 72.375 34.875 72.375C51.7208 72.375 65.375 58.7208 65.375 41.8766C65.375 25.0333 51.7208 11.375 34.875 11.375ZM12.8312 45.9165H17.5095C18.2923 51.8103 20.7883 57.3446 24.688 61.8326C18.5872 58.7061 14.1025 52.868 12.8312 45.9165ZM17.5095 37.8327H12.8312C14.1033 30.882 18.588 25.0439 24.6888 21.9174C20.7891 26.4052 18.2927 31.9391 17.5095 37.8327ZM30.8327 56.563C28.1965 53.5397 26.4229 49.8624 25.6982 45.9173H30.8327V56.563ZM30.8327 37.8327H25.6982C26.4233 33.8879 28.1969 30.211 30.8327 27.1878V37.8327ZM56.918 37.8327H52.2405C51.4577 31.9396 48.9619 26.4059 45.0628 21.9182C51.162 25.0455 55.6467 30.8836 56.918 37.8327ZM38.9173 56.5614V45.9165H44.0518C43.3262 49.8611 41.5527 53.5379 38.9173 56.5614ZM38.9173 37.8327V27.187C41.5535 30.2103 43.3271 33.8876 44.0518 37.8327H38.9173ZM45.0604 61.8334C48.9607 57.3453 51.4573 51.8107 52.2405 45.9165H56.9188C55.6475 52.8688 51.162 58.7069 45.0604 61.8334Z"
+          fill="#1F5AF3"
+        />
+      </svg>
+      <h3 class="text-[20px] my-3 font-semibold">
+        Making web development as easy as possible
+      </h3>
+      <p>Teams with flexible support for ever-growing teams</p>
+    </div>
+    <div class="my-5">
+      <svg
+        width="61"
+        height="61"
+        viewBox="0 0 61 61"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M59.093 30.5L44.7961 5.71875H28.562L23.3389 14.7734H39.567L48.6396 30.5L39.567 46.2266H23.3389L28.562 55.2812H44.7961L59.093 30.5Z"
+          fill="#1F5AF3"
+        />
+        <path
+          d="M21.4334 46.2266L12.3596 30.5L21.4334 14.7734L26.6565 5.71875H16.2031L1.90625 30.5L16.2031 55.2812H26.6565L21.4334 46.2266Z"
+          fill="#1F5AF3"
+        />
+      </svg>
+      <h3 class="text-[20px] font-semibold my-3">
+        A one-stop shop for your codes.
+      </h3>
+      <p>WIth our library of authentication codes.</p>
+    </div>
+    <div class="my-5">
+      <svg
+        width="81"
+        height="81"
+        viewBox="0 0 81 81"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="40.5" cy="40.5" r="40.5" fill="#D9D9D9" />
+        <path
+          d="M56.2087 60.375V55.2917C56.2087 52.5953 55.1375 50.0094 53.2309 48.1027C51.3243 46.1961 48.7384 45.125 46.042 45.125H25.7087C23.0123 45.125 20.4264 46.1961 18.5197 48.1027C16.6131 50.0094 15.542 52.5953 15.542 55.2917V60.375"
+          stroke="#1F5AF3"
+          stroke-width="1.92"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M35.8747 34.9583C41.4896 34.9583 46.0413 30.4066 46.0413 24.7917C46.0413 19.1768 41.4896 14.625 35.8747 14.625C30.2598 14.625 25.708 19.1768 25.708 24.7917C25.708 30.4066 30.2598 34.9583 35.8747 34.9583Z"
+          stroke="#1F5AF3"
+          stroke-width="1.92"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M71.458 60.3747V55.2913C71.4563 53.0387 70.7066 50.8505 69.3265 49.0701C67.9464 47.2898 66.0141 46.0182 63.833 45.4551"
+          stroke="#1F5AF3"
+          stroke-width="1.92"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M53.667 14.9551C55.8539 15.515 57.7922 16.7869 59.1764 18.5701C60.5606 20.3534 61.3119 22.5466 61.3119 24.804C61.3119 27.0615 60.5606 29.2547 59.1764 31.038C57.7922 32.8212 55.8539 34.0931 53.667 34.653"
+          stroke="#1F5AF3"
+          stroke-width="1.92"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
 
+      <h3 class="text-[20px] my-3 font-semibold">Optimum user experience</h3>
+      <p>HR teams with flexible support for ever-growing teams</p>
+    </div>
+  </div>
+
+  <div class="col-span-1 my-32">
+    <div class="">
+      <h3 class="text-[20px] font-semibold">Get codes in minutes!</h3>
+      <p>Teams with flexible support for ever-growing teams</p>
+    </div>
+
+    <div class="mt-32">
+      <h3 class="text-[20px] my-3 font-semibold">Authentication Libraries.</h3>
+      <p>Browse through our library of authentication codes.</p>
+    </div>
+    <div class="my-24">
+      <h3 class="text-[20px] my-3 font-semibold">Start using for free</h3>
+      <p>Our website is free and easy to use.</p>
+    </div>
+  </div>
+</section>
+<section class="bg-[#E9EFFF] pt-10 min-h-screen">
+  <h1 class="text-center text-[35px] mb-10 text-6xl font-semibold">
+    Add authentication in minutes!
+  </h1>
+  <div class="md:w-[1200px] mx-auto md:flex gap-8 line-numbers">
+    <div class="w-[500px] mx-auto">
+      <pre>
+        <code class='lang-python'>
+              class AuthInterface:
+    def isLoggedIn(self) -> bool:
+        """Check if user is logged in"""
+        pass
+
+    def login(self, username: str, password: str) -> int:
+        """Attempt to login user"""
+        pass
+
+    def logout(self) -> bool:
+        """Logout user"""
+        pass
+
+    def getUser(self) -> User:
+        """Get the currently logged in user"""
+        pass
+
+ 
+
+        </code>
+      </pre>
+    </div>
+    <div class="w-[500px] mx-auto">
+      <pre>
+        <code class='lang-php'>
+          {
+    /**
+     * Check if user is logged in
+     */
+    public static function isLoggedIn(): bool;
+static function login(string $username, string $password): int;
+
+require_once __DIR__.'/AuthInterface.php';
+
+/**
+ * The Auth Class
+ */
+class Auth implements AuthInterface
+{
+    // implement methods
+}
+
+        </code>
+      </pre>
+    </div>
+  </div>
+</section>
+<section class="h-[287px] md:flex md:items-center justify-center md:flex-col">
+  <h1 class="text-3xl font-bold text-center mb-8">Our Partner</h1>
+  <div class="w-[471px] mx-auto md:flex gap-9">
+    <div class="">
+      <img
+        src="{% static 'img/logo/zuri.png' %}"
+        class="w-[134px] h-[134px]"
+        alt=""
+      />
+    </div>
+    <div class="">
+      <img
+        src="{% static 'img/logo/i4g.png' %}"
+        class="w-[181.82px] h-[44px]"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+{% comment %} end of main section {% endcomment %}
+<footer class="footer w-full md:h-[425px] bg-[#505050] p-8">
+  <div class="md:grid grid-cols-8 gap-4 mx-auto text-center text-white text-xl">
+    <div class="col-start-2 col-span-2 my-8 md:my-5">
+      <h3 class="text-3xl  md:mb-0">Docs</h3>
+      <ul>
+        <li class="my-3">PHP</li>
+        <li class="my-3">JavaScript</li>
+        <li class="my-3">Python</li>
+      </ul>
+    </div>
+    <div class="col-span-2 my-8 md:my-5">
+      <h3 class="text-3xl">Community</h3>
+      <ul>
+        <li class="my-3">Community Resources</li>
+        <li class="my-3">codes of Conduct</li>
+      </ul>
+    </div>
+    <div class="col-span-2 col-end-8 my-5">
+      <h3 class="text-3xl">More</h3>
+      <ul>
+        <li class="my-3">About</li>
+        <li class="my-3">Blog</li>
+        <li class="my-3">Privacy</li>
+      </ul>
+    </div>
+  </div>
+  {% comment %} <div class="md:grid grid-cols-8 gap-1 mx-auto text-center text-white text-xl"> {% endcomment %}
+    <div class="md:flex w-80 md:justify-between md:items-center md:w-[800px] mx-auto ">
+    {% comment %} <div class="col-start-3 my-5"> {% endcomment %}
+      <div class="w-40 mx-auto mt-9 md:mt-0 md:ml-16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    </div>
+    <div class="mx-auto my-9 md:my-5">
+      <input type="text" class="md:w-[350px] mx-7 bg-transparent border-b-gray-400 border-b-2 border-t-0 border-l-0 border-r-0 focus:outline-none focus:ring focus:border-white text-2xl " placeholder='subscribe to email updates' />
+    </div>
+    <div class="mx-auto w-40  mt-10 md:mr-12 md:my-5 ">
+      <button class='w-[152px] h-[40px] bg-[#7A7A7A] text-white'>Submit</button>
+    </div>
+  </div>
+</footer>
 {% endblock %}

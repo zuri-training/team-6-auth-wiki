@@ -2,145 +2,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Django Tailwind</title>
+    <title>Team-6-Auth-Wiki App</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     {% tailwind_css %}
     <link href="{% static 'css/prism.css' %}" rel="stylesheet" />
+    {% comment %} google font {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
-  <body class="bg-cyan-500 font-serif leading-normal tracking-normal">
-    <div class="mx-auto">
-      <nav
-        class="p-5 md:px-8 bg-white shadow w-full mb-1 md:flex md:items-center md:justify-between font-sans text-2xl"
-      >
-        <div class="flex justify-between items-center">
-          <span class="text-2xl font-[Poppins] cursore-pointer">
-            Auth-wiki
-          </span>
+  <body class="my-font leading-normal tracking-normal">
+    <div class="mx-auto">{% block content %} {% endblock %}</div>
 
-          <span class="text-3xl cursor-pointer mx-2 md:hidden block">
-            {% comment %} <ion-icon name="menu"></ion-icon> {% endcomment %}
-            <img
-              src="{% static 'img/menu.svg' %}"
-              name="name"
-              class="h-10"
-              onclick="Menu(this)"
-              alt="My image"
-            />
-          </span>
-        </div>
-        <div class="nav-menu md:justify-between">
-          <ul class="md:flex md:items-center md:static absolute md:mr-20">
-            <li class="md:mx-6 my-6 md:my-0">
-              <a href="#" class="text-xl hover:text-cyan-500 duration-500"
-                >Doc</a
-              >
-            </li>
-            <li class="md:mx-6 my-6 md:my-0">
-              <a href="#" class="text-xl hover:text-cyan-500 duration-500"
-                >Wiki</a
-              >
-            </li>
-            <li class="md:mx-6 my-6 md:my-0">
-              <a href="#" class="text-xl hover:text-cyan-500 duration-500"
-                >About Us</a
-              >
-            </li>
-          </ul>
-          <div class="md:flex md:items-center md:static absolute md:ml-4">
-            <span class="rounded border w-[348px] pl-3 border-blue-700 md:mx-5">
-              <svg
-                class="w-5 h-5 inline-block"
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-
-              <input
-                type="search"
-                placeholder="search"
-                class="rounded border-none w-[305px]"
-              />
-            </span>
-            <span class="md:mx-4 my-6 md:my-0 md:">
-              <a href="#" class="text-xl hover:text-cyan-500 duration-500"
-                >login</a
-              >
-            </span>
-            <button
-              class="bg-cyan-400 text-white duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded"
-            >
-              Signup
-            </button>
-          </div>
-        </div>
-      </nav>
-      {% block content %} {% endblock %}
-    </div>
-    <footer class="footer w-full md:h-[425px] bg-[#505050] p-8">
-  <div class="md:grid grid-cols-8 gap-4 mx-auto text-center text-white text-xl">
-    <div class="col-start-2 col-span-2 my-8 md:my-5">
-      <h3 class="text-3xl  md:mb-0">Docs</h3>
-      <ul>
-        <li class="my-3">PHP</li>
-        <li class="my-3">JavaScript</li>
-        <li class="my-3">Python</li>
-      </ul>
-    </div>
-    <div class="col-span-2 my-8 md:my-5">
-      <h3 class="text-3xl">Community</h3>
-      <ul>
-        <li class="my-3">Community Resources</li>
-        <li class="my-3">codes of Conduct</li>
-      </ul>
-    </div>
-    <div class="col-span-2 col-end-8 my-5">
-      <h3 class="text-3xl">More</h3>
-      <ul>
-        <li class="my-3">About</li>
-        <li class="my-3">Blog</li>
-        <li class="my-3">Privacy</li>
-      </ul>
-    </div>
-  </div>
-  {% comment %} <div class="md:grid grid-cols-8 gap-1 mx-auto text-center text-white text-xl"> {% endcomment %}
-    <div class="md:flex w-80 md:justify-between md:items-center md:w-[800px] mx-auto ">
-    {% comment %} <div class="col-start-3 my-5"> {% endcomment %}
-      <div class="w-40 mx-auto mt-9 md:mt-0 md:ml-16">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-12 w-10 text-center"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
-        />
-      </svg>
-    </div>
-    <div class="mx-auto my-9 md:my-5">
-      <input type="text" class="md:w-[350px] mx-7 bg-transparent border-b-gray-400 border-b-2 border-t-0 border-l-0 border-r-0 focus:outline-none focus:ring focus:border-white text-2xl " placeholder='subscribe to email updates' />
-    </div>
-    <div class="mx-auto w-40  mt-10 md:mr-12 md:my-5 ">
-      <button class='w-[152px] h-[40px] bg-[#7A7A7A] text-white'>Submit</button>
-    </div>
-  </div>
-</footer>
     {% comment %} prism {% endcomment %}
     <script>
       function Menu(e) {
@@ -154,6 +40,52 @@
             list.classList.remove("top-[80px]"),
             list.classList.remove("opacity-100"));
       }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        //const buttons = document.querySelectorAll(".menu-btn");
+        const button = document.querySelector(".menu-btn");
+        const button2 = document.querySelector(".menu-btn2");
+        const button3 = document.querySelector(".menu-btn3");
+        const button4 = document.querySelector(".menu-btn4");
+        const dropdown1 = document.querySelector(".dropdown1");
+        const dropdown2 = document.querySelector(".dropdown2");
+        const dropdown3 = document.querySelector(".dropdown3");
+        const dropdown4 = document.querySelector(".dropdown4");
+
+        button.addEventListener("click", () => {
+          dropdown1.classList.toggle("hidden");
+          dropdown1.classList.toggle("flex");
+        });
+
+        button2.addEventListener("click", () => {
+          dropdown2.classList.toggle("hidden");
+          dropdown2.classList.toggle("flex");
+        });
+
+        button3.addEventListener("click", () => {
+          dropdown3.classList.toggle("hidden");
+          dropdown3.classList.toggle("flex");
+        });
+        button4.addEventListener("click", () => {
+          dropdown4.classList.toggle("hidden");
+          dropdown4.classList.toggle("flex");
+        });
+        /* for (let i = 0; i < buttons.length; i++) {
+          buttons[2].addEventListener("click", () => {
+            console.log(buttons[1]);
+            dropdown1.classList.toggle("hidden");
+            dropdown1.classList.toggle("flex");
+          });
+          /* button[1].addEventListener("click", () => {
+            dropdown.classList.toggle("hidden");
+            dropdown2.classList.toggle("flex");
+          });
+            button[2].addEventListener("click", () => {
+            dropdown3.classList.toggle("hidden");
+            dropdown3.classList.toggle("flex");
+          });*
+        }*/
+      });
     </script>
     <script src="{% static '/js/prism.js' %}">
 

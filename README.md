@@ -46,28 +46,13 @@ To ease developers' work by developing a user authentication library that can be
 >
 > > then run `pip install -r requirements.txt` to install the required dependencies
 
+### Activate environment variable
 
-# clone the repository
-git clone https://github.com/zuri-training/team-6-auth-wiki.git
-
-cd team-6-auth-wiki 
-```
-```python
-# Setup virtual environment
-python -m venv env # python3 -m venv env
-
-source env/bin/activate
-```
-
-Then install the dependencies by running
-
-```python
-pip install -r requirements.txt
-```
+> on mac/linux os RUN `source env/bin/activate`
+> on Windows os RUN `env.Scripts/Activate.ps1
 
 Install npm package to build tailwind css
 
-```bash
 # change directory to the project
 cd auth_wiki
 

@@ -2,11 +2,12 @@ import React from 'react'
 import SideBar from './SideBar'
 import { BiBell } from 'react-icons/bi'
 import { VscComment } from 'react-icons/vsc'
+import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai'
 import { RiDownload2Line } from 'react-icons/ri'
 import Code from '../Code'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import user from '../../img/user.png'
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
 
 // import Context from '@ckeditor/ckeditor5-core/src/context';
@@ -115,24 +116,42 @@ const Python_Board = () => {
                       <button type='submit' className='bg-[#9B9696] w-[192px] h-[72px] mt-10 '>Comment</button>
                       </div>
                   </div>
-                  <div className="w-832px mx-auto">
+                  <div className="w-832px mx-auto mt-12">
                       <div className="flex ">
-                          
-                      <p className='mr-3 text-700 '>Sork by Date:</p>
-                      <select name="comment" id="comment">
-                          <option value="Sort by date"></option>
+                      <select name="comment" className='text-700 mr-3' id="comment">
+                          <option value="">Sort by Date:</option>
                       </select>
                       </div>
-                      <div className="flex">
-                          <div className="details flex">
-                              <img src="" alt="img" />
-                              <p>John Olamide</p>
+                      <div className="flex justify-between text-primary ">
+                          <div className="details flex my-5">
+                              <img src={user} className='ml-3' alt="img" />
+                              <p className='mx-6 text-[#5E5656] font-bold text-[16px]'>John Olamide</p>
                               <p>4 days ago</p>
                           </div>
                           <button>View More</button>
                       </div>
+                      <div className="message h-[124px] md:w-[660px] flex mb-4">
+                          <div className="w-[32px] h-[124px] border-l-4 border[#5E5656] ml-8"></div>
+                          <div className="w-[32px] h-[124px] border-l-3 border-r-8 border[#5E5656] mr-5"></div>
+                          <p>the unique values explicitly tests in input parameters and loops are properly initialised.. THUMBS UP </p>
+                          </div>
+                          <div className="flex font-bold text-[16px]">
+                              
+                          <div className="flex mr-4 items-center text-primary">
+                              <AiOutlineLike />
+                              <span className='ml-3 '>70k</span>
+                          </div>
+                          <div className="flex mr-4 items-center text-primary">
+                              <AiOutlineDislike />
+                              <span className='ml-3 '>0</span>
+                          </div>
+                          <div className="flex mr-4 items-center text-primary">
+                              <VscComment />
+                              <span className='ml-3 '>Reply</span>
+                          </div>
+                      </div>
+                          </div>
                   </div>
-              </div>
                         </div>
       </>
   )

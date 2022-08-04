@@ -118,7 +118,7 @@ const Python_Board = () => {
                   </div>
                   <div className="w-832px mx-auto mt-12">
                       <div className="flex ">
-                      <select name="comment" className='text-700 mr-3' id="comment">
+                      <select name="comment" className='text-700 mr-3 border-b-3 border-[#5E5656]' id="comment">
                           <option value="">Sort by Date:</option>
                       </select>
                       </div>
@@ -135,7 +135,7 @@ const Python_Board = () => {
                           <div className="w-[32px] h-[124px] border-l-3 border-r-8 border[#5E5656] mr-5"></div>
                           <p>the unique values explicitly tests in input parameters and loops are properly initialised.. THUMBS UP </p>
                           </div>
-                          <div className="flex font-bold text-[16px]">
+                          <div className="flex font-bold ml-5 text-[16px]">
                               
                           <div className="flex mr-4 items-center text-primary">
                               <AiOutlineLike />

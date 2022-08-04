@@ -1,4 +1,5 @@
 import React from 'react'
+import user_img from '../../img/user.png';
 import logo from '../../img/logo/logo2.png';
 import watermark from '../../img/logo/water.png';
 import { FaArrowDown, FaArrowLeft, FaArrowRight, FaArrowUp, FaBeer, FaDesktop, FaReact } from 'react-icons/fa';
@@ -6,8 +7,16 @@ import { FiLogOut, } from 'react-icons/fi';
 import { BsMenuButtonWideFill, } from 'react-icons/bs';
 import { BiUserCircle, } from 'react-icons/bi';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/auth';
+
 const SideBar = () => {
+  const auth = useAuth()
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    auth.logout()
+    navigate('/')
+  }
   const [menu, setMenu] = useState(false)
   const [overviewMenu, setOverviewMenu] = useState(false)
   const [codeMenu, setCodeMenu] = useState(false)
@@ -21,6 +30,7 @@ const [arrow, setArrow] = useState(false)
   // else if (menu || codeMenu) {
   //   ()=>setOverviewMenu(false)
   // }
+  // const auth = 
   return (
       <>
             <div className="col-start-1">
@@ -31,8 +41,9 @@ const [arrow, setArrow] = useState(false)
     />
     <div
       className="w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 ml-2 rounded"
-    >
-      <p className="text-white ml-4 text-[24px] font-bold">Miracle Aigbovo</p>
+        >
+          <img src={user_img} alt="" />
+          <p className="text-white ml-4 text-[24px] font-bold">{ auth.user }</p>
     </div>
        <aside className="mx-6 mt-10">
       <ul className="">
@@ -51,13 +62,13 @@ const [arrow, setArrow] = useState(false)
         </li>
         <ul className={`${menu ? 'flex' : 'hidden'} flex-col pl-10 dropdown1 text-[20px]`}>
           <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-            <a href="#">Lorem</a>
+            <a href="#">Get Started</a>
           </li>
           <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-            <a href="#">Lorem</a>
+            <a href="#">Requirements</a>
           </li>
           <li className="px-2 py-3 mb-3 hover:bg-[#E9EFFF] rounded">
-            <a href="#">Lorem</a>
+            <a href="#">Troubleshooting</a>
           </li>
         </ul>
 
@@ -124,7 +135,8 @@ const [arrow, setArrow] = useState(false)
             <li className='mt-4 md:mt-9 flex items-center '>
 
               <FiLogOut className='h-6 w-6 mr-3 stroke-2 hover:stroke-3 text-red-600 stroke-red-600' />
-              <span>Logout</span>
+                            <button onClick={handleLogout} className="text-xl hover:text-text_primary duration-500" to="/login">Logout</button>
+
             </li>
       </ul>
           </aside>

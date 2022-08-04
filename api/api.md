@@ -7,7 +7,21 @@ baseurl: `/api`
 {
     "paths":[
         "/login",
-        "/register"
+        "/register",
+        "/logout",
+
+        "/user/{id}",
+        
+        "/posts",
+        "/posts/create",
+        "/posts/{id}",
+
+        "/posts/{id}/comments",
+        "/posts/{id}/comments/create",
+        "/posts/{id}/comments/delete",
+        "/posts/{id}/comments/{id}",
+        "/posts/{id}/comments/{id}/like",
+        "/posts/{id}/comments/{id}/unlike",
     ]
 }
 ```
@@ -22,7 +36,6 @@ Login a user
 }
 
 // Response
-// nb: using session
 {
     "error": false // or error message
 }

@@ -10,10 +10,11 @@ baseurl: `/api`
         "/register",
         "/logout",
 
-        "/user/{id}",
+        // "/user/{id}",
         
         "/posts",
-        "/posts/create",
+        // "/posts/create",
+        // "/posts/{id}/delete",
         "/posts/{id}",
 
         "/posts/{id}/comments",
@@ -31,13 +32,19 @@ Login a user
 `POST /login`
 ```json
 {
-    "email_address": "user@example.com",
+    "email": "user@example.com",
     "password": "*****"
 }
 
 // Response
 {
-    "error": false // or error message
+    "error": false, // or error message
+    "user" : {
+        "id": "123",
+        "email": "user@example.com",
+        "username": "John Doe",
+        "avatar": "https://example.com/avatar.png"
+    }
 }
 ```
 
@@ -45,9 +52,56 @@ Register a user
 `POST /register`
 ```json
 {
-    "email_address": "user@example.com",
+    "email": "user@example.com",
     "password": "*****",
-    "first_name": "John",
-    "last_name": "Doe"
+    "username": "John Doe"
+}
+
+// Response
+{
+    "error": false // or error message
+}
+```
+Logout
+
+`GET /logout`
+
+```json
+{
+    "error": false // or error message
+}
+```
+
+## Posts
+
+Get posts
+`GET /posts`
+```json
+{
+    "limit": 5,
+    "sort_by": "ASC" //ASC or DESC
+}
+
+// Response
+{
+    "error": false, // or error message
+    "posts": [
+        {
+            "id": 2,
+            "user_id": 1,
+            "title": "John Doe",
+            "content": "lorem ipsum sit dolor amit",
+            "media_location": "https://example.com/avatar.png",
+            "likes_count": 5,
+            "comments": [
+                {
+                    "id": 1,
+                    "post_id": 2,
+                    "comment_text": "This is fun",
+                    "likes_count": 2
+                }
+            ]
+        }
+    ]
 }
 ```

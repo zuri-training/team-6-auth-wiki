@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineGithub, } from 'react-icons/ai';
 import { FcGoogle, } from 'react-icons/fc';
 // import { AuthContext } from "../../App";
@@ -13,13 +13,15 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const auth = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
+  const redirectPath = location.state?.path || '/dashboard'
   const handleLogin = () => {
     auth.login(user)
     console.log(user, password);
     if (user === 'sanyaoluadefemi' && password === '1234') {
 
-    navigate('/dashboard', {replace: true })
+    navigate(redirectPath, {replace: true })
     }
     else {
       alert('incorrect user details')

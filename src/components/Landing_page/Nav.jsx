@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from '../../img/logo/logo2.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../auth/auth';
 const Nav = () => {
+  const auth = useAuth()
   return (
       <>
       <nav
@@ -34,7 +36,7 @@ const Nav = () => {
       </li>
     </ul>
     <div className="md:flex md:items-center md:static absolute md:ml-4">
-      <span
+      {/* <span
         className="rounded border w-[348px] pl-2 h-[49px] border-[#B3B3B3] md:mx-5"
       >
 
@@ -43,17 +45,23 @@ const Nav = () => {
           placeholder="search"
           className="rounded m-0 bg-transparent h-[48px] focus:outline-none border-none w-[311px]"
         />
-      </span>
-      <span className="md:mx-4 my-6 md:my-0 md:">
-        <a href="#" className="text-xl hover:text-text_primary duration-500"
-          >login</a
-        >
-      </span>
+      </span> */}
+            <span className="md:mx-4 my-6 md:my-0 md:">
+              {
+                !auth.user && (
+                  <Link className="text-xl hover:text-text_primary duration-500" to="/login">Login</Link>
+                )
+              }
+              
+            </span>
+              <Link className="text-xl hover:text-text_primary duration-500" to="/signup">
+            
       <button
         className="bg-primary hover:bg-text_primary text-white duration-500 px-6 py-2 mx-4 rounded"
       >
         Signup
-      </button>
+              </button>
+              </Link>
     </div>
   </div>
 </nav>

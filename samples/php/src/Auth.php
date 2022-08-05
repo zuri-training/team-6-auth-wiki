@@ -40,6 +40,11 @@ class Auth implements AuthInterface
         ]);
     }
 
+    /**
+     * Get an instance of the database object
+     *
+     * @return $db
+     */
     public static function getDb()
     {
         if (!(self::$db instanceof Medoo)) {
@@ -205,7 +210,9 @@ class Auth implements AuthInterface
             throw new \Exception('Email already exists');
         }
 
-        $smt = self::getDb()->insert(
+        $db = self::getDb();
+
+        $smt = $db->insert(
             'users',
             [
                 'username' => $username,
@@ -216,7 +223,7 @@ class Auth implements AuthInterface
             ]
         );
         if ($smt) {
-            return $smt->lastInsertId();
+            return $db->id();
         }
         return 0;
     }

@@ -41,7 +41,7 @@ const PHP_Board = () => {
               <SideBar />
               <div className="p-8 col-span-3 bg-[#e9effe]">
     <div className="flex justify-between items-center">
-      <h1 className="text-[40px] text-primary">PHP Board</h1>
+      <h1 className="text-xl text-center md:text-left md:text-[40px] text-primary">PHP Board</h1>
           <BiBell className="h-6 w-6" />
     </div>
     <p className="text-[16px] my-7">
@@ -59,13 +59,13 @@ const PHP_Board = () => {
                       
                       </div>
                       <div className="flex">
-                          <span className='flex ml-9'>
+                          <span className='flex items-center md:ml-9'>
                               
-                              <VscComment className="h-6 w-6 mr-3 stroke-1 hover:stroke-3 stroke-primary" />
+                              <VscComment className="h-3 w-3 mx-4 md:mr-3 stroke-1 hover:stroke-3 stroke-primary" />
                               <span>279 Comments</span>
                           </span>
-                          <span className='flex ml-8'>
-                          <RiDownload2Line className="h-6 w-6 mr-3 stroke-1 hover:stroke-3 stroke-primary" />
+                          <span className='flex items-center ml-8'>
+                          <RiDownload2Line className="h-3 w-3 mr-2 md:mr-3 stroke-1 hover:stroke-3 stroke-primary" />
                               <span>Download</span>
                           </span>
                           </div>
@@ -112,7 +112,7 @@ const PHP_Board = () => {
                       />
                       <div className="flex justify-end">
                           
-                      <button type='submit' className='bg-[#9B9696] w-[192px] h-[72px] mt-10 '>Comment</button>
+                      <button type='submit' className='bg-[#9B9696] p-2 md:w-[192px] h-full md:h-[72px] mt-10 '>Comment</button>
                       </div>
                   </div>
                   <div className="w-[832px] mx-auto">

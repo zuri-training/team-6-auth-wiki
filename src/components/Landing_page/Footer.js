@@ -38,7 +38,7 @@ const Footer = () => {
       <input type="text" class="md:w-[350px] mx-7 bg-transparent border-b-gray-400 border-b-2 border-t-0 border-l-0 border-r-0 focus:outline-none focus:ring focus:border-white text-2xl " placeholder='subscribe to email updates' />
     </div>
     <div class="mx-auto w-40  mt-10 md:mr-12 md:my-5 ">
-      <button class='w-[152px] h-[40px] bg-[#7A7A7A] text-white'>Submit</button>
+      <button class='w-[152px] h-[40px] bg-primary text-white'>Submit</button>
     </div>
   </div>
 </footer>

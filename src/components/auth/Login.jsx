@@ -16,9 +16,12 @@ const Login = () => {
   const location = useLocation()
 
   const redirectPath = location.state?.path || '/dashboard'
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
+    // const response = await fetch()
     auth.login(user)
     console.log(user, password);
+
     if (user === 'sanyaoluadefemi' && password === '1234') {
 
     navigate(redirectPath, {replace: true })
@@ -96,18 +99,18 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex ">
-        <div className="w-[600px] basis-1/3 h-screen" style={{ backgroundImage: `url(${img})` }}>
+      <div className="block md:flex ">
+        <div className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" style={{ backgroundImage: `url(${img})` }}>
         </div>
-        <div className="basis-2/3 bg-white h-screen flex items-center">
-          <div className="w-[600px] mx-auto">
-            <p className='text-[40px] text-center'><span className='text-primary'>Login</span> to Auth - Wiki</p>
+        <div className="mx-auto md:basis-2/3 bg-white h-screen flex items-center">
+          <div className="w-5/6 md:w-[600px] mx-auto">
+            <p className='text-2xl md:text-[40px] text-center'><span className='text-primary'>Login</span> to Auth - Wiki</p>
             <form>
               <div className="w-full my-5">
-                <input type="email" placeholder='Email Address' className='w-full p-3 border-2 rounded-md border-black-400' onChange={(e) => setUser(e.target.value)} />
+                <input type="email" placeholder='Email Address' required className='w-full p-3 border-2 rounded-md border-black-400' onChange={(e) => setUser(e.target.value)} />
               </div>
               <div className="mb-1">
-                <input type="password" placeholder='Password' className='w-full p-3 rounded border-2 border-black-400' onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder='Password' className='w-full p-3 rounded border-2 border-black-400 required:' onChange={(e) => setPassword(e.target.value)} />
               </div>
               <div className="flex justify-end">
 
@@ -117,7 +120,7 @@ const Login = () => {
 
               <p className='mt-4'>Don’t have an account? <Link className="font-bold text-primary" to="/signup">Sign Up</Link> </p>
             </form>
-            <div className="mt-7 w-[550px] mx-auto flex items-center">
+            <div className="mt-7 w-5/6 md:w-[550px] mx-auto flex items-center">
               <div className="w-[224px] border-t-4 border-[#B0ADAD]"></div>
               <p className='mx-6'> OR </p>
               <div className="w-[224px] border-t-4 border-[#B0ADAD]"></div>
@@ -151,7 +154,7 @@ const Login = () => {
               <div className="gmail ">
                 <GoogleLogin clientId="917362236368-ogbbb58fg24nn76js03ste4lsr2sph4m.apps.googleusercontent.com"
                   buttonText="Login WIth Google"
-                  className='bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-400 w-full'
+                  className='bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full'
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'}

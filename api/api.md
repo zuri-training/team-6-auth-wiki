@@ -9,20 +9,20 @@ baseurl: `/api`
         "/login",
         "/register",
         "/logout",
-
-        // "/user/{id}",
         
-        "/posts",
-        // "/posts/create",
-        // "/posts/{id}/delete",
+        "/languages",
+        "/languages/{language_id}/posts",
+
+        "/posts/create",
         "/posts/{id}",
+        "/posts/{id}/like",
 
         "/posts/{id}/comments",
         "/posts/{id}/comments/create",
         "/posts/{id}/comments/delete",
-        "/posts/{id}/comments/{id}",
         "/posts/{id}/comments/{id}/like",
         "/posts/{id}/comments/{id}/unlike",
+
     ]
 }
 ```
@@ -89,6 +89,7 @@ Get posts
         {
             "id": 2,
             "user_id": 1,
+            "language_id": 1,
             "title": "John Doe",
             "content": "lorem ipsum sit dolor amit",
             "media_location": "https://example.com/avatar.png",
@@ -105,3 +106,5 @@ Get posts
     ]
 }
 ```
+
+Create

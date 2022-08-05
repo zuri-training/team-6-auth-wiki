@@ -91,6 +91,7 @@ Get posts
         {
             "id": 2,
             "user_id": 1,
+            "language_id": 1,
             "title": "John Doe",
             "content": "lorem ipsum sit dolor amit",
             "media_location": "https://example.com/avatar.png",

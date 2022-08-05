@@ -42,6 +42,9 @@ class Auth extends BaseController
         }
     }
 
+    /**
+     * Handle requests to create new users
+     */
     public function register()
     {
         if (!$this->validate(
@@ -72,6 +75,10 @@ class Auth extends BaseController
         }
     }
 
+    /**
+     * The logout route
+     *
+     */
     public function logout()
     {
         AuthWikiAuth::logout();

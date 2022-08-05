@@ -9,20 +9,20 @@ baseurl: `/api`
         "/login",
         "/register",
         "/logout",
-
-        // "/user/{id}",
         
-        "/posts",
-        // "/posts/create",
-        // "/posts/{id}/delete",
+        "/languages",
+        "/languages/{language_id}/posts",
+
+        "/posts/create",
         "/posts/{id}",
+        "/posts/{id}/like",
 
         "/posts/{id}/comments",
         "/posts/{id}/comments/create",
         "/posts/{id}/comments/delete",
-        "/posts/{id}/comments/{id}",
         "/posts/{id}/comments/{id}/like",
         "/posts/{id}/comments/{id}/unlike",
+
     ]
 }
 ```
@@ -91,33 +91,6 @@ Get posts
         {
             "id": 2,
             "user_id": 1,
-            "language_id": 1,
-            "title": "John Doe",
-            "content": "lorem ipsum sit dolor amit",
-            "media_location": "https://example.com/avatar.png",
-            "likes_count": 5,
-            "comments": [
-                {
-                    "id": 1,
-                    "post_id": 2,
-                    "comment_text": "This is fun",
-                    "likes_count": 2
-                }
-            ]
-        }
-    ]
-}
-```
-
-Get post
-
-`GET/posts/{id}`
-```json
-{
-    "error": false, // or error message
-    "posts": {
-            "id": 2,
-            "user_id": 1,
             "title": "John Doe",
             "content": "lorem ipsum sit dolor amit",
             "media_location": "https://example.com/avatar.png",
@@ -169,100 +142,3 @@ Get Comments
     ]
 }
 ```
-
-Create Comment
-
-`POST/posts/{id}/comments/create`
-```json
-{
-    "comment_text": "This is fun"
-}
-
-//Response
-{
-    "error": false, // or error message
-    "message": "Post Successful"
-            
-}
-
-// Error response
-{
-    "error": True, 
-    "message": "Invalid id"
-            
-}
-
-```
-
-Delete Comment
-
-`DELETE/posts/{id}/comments/delete`
-```json
-{
-    "error": false, // or error message
-    "message": "Delete Successful"
-            
-}
-
-// Error response
-{
-    "error": True, 
-    "message": "Invalid id"
-            
-}
-
-```
-
-Get comment
-
-`GET/posts/{id}/comments/{id}`
-```json
-{
-    "error": false, // or error message
-    "comments": {
-                "id": 2,
-                "user_id": 1,
-                "username": "John Doe",
-                "comment_text": "lorem ipsum sit dolor amit",
-                "media_location": "https://example.com/avatar.png",
-                "likes_count": 5
-            }
-}
-```
-
-Like Comment
-
-`POST/posts/{id}/comments/{id}/like`
-```json
-{
-    "error": false, // or error message
-    "message": "Like Successful"   
-}
-
-// Error response
-{
-    "error": True, 
-    "message": "Invalid id"
-            
-}
-
-```
-
-Unlike Comment
-
-`POST/posts/{id}/comments/{id}/unlike`
-```json
-{
-    "error": false, // or error message
-    "message": "Unlike Successful"   
-}
-
-// Error response
-{
-    "error": True, 
-    "message": "Invalid id"
-            
-}
-
-```
-"",

@@ -31,7 +31,13 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "post-install-cmd": [
+            "post-install.sh"
+        ],
+        "post-update-cmd": [
+            "post-install.sh"
+        ]
     },
     "support": {
         "forum": "http://forum.codeigniter.com/",

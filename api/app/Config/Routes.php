@@ -39,6 +39,14 @@ $routes->post('/login', 'Auth::login');
 $routes->post('/register', 'Auth::register');
 $routes->post('/logout', 'Auth::logout');
 
+$routes->get('/languages', 'Posts::languages');
+$routes->get('/languages/(:num)/posts', 'Posts::posts/$1');
+
+$routes->post('/posts/create', 'Posts::create');
+$routes->get('/posts/(:num)', 'Posts::post/$1');
+$routes->get('/posts/(:num)/like', 'Posts::like/$1');
+$routes->get('/posts/(:num)/unlike', 'Posts::unlike/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

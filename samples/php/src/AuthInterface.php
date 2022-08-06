@@ -47,11 +47,11 @@ interface AuthInterface
     /**
      * Get a user by id
      *
-     * @param string $id
+     * @param int $id
      * 
      * @return User
      */
-    public static function getUserById(string $id);
+    public static function getUserById(int $id);
 
 
     /**

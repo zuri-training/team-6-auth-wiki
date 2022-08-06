@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/team-6-auth-wiki/static/css/main.dcf37bef.css",
+    "main.js": "/team-6-auth-wiki/static/js/main.3825b8fc.js",
+    "static/media/login-img.png": "/team-6-auth-wiki/static/media/login-img.58d6a3c60075a86d855e.png",
+    "static/media/water.png": "/team-6-auth-wiki/static/media/water.390c068338016aa88bc1.png",
+    "index.html": "/team-6-auth-wiki/index.html",
+    "main.dcf37bef.css.map": "/team-6-auth-wiki/static/css/main.dcf37bef.css.map",
+    "main.3825b8fc.js.map": "/team-6-auth-wiki/static/js/main.3825b8fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dcf37bef.css",
+    "static/js/main.3825b8fc.js"
+  ]
+}

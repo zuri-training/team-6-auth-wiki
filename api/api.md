@@ -1,6 +1,6 @@
 # API Documentation
 
-baseurl: `/api`
+baseurl: `/`
 <hr>
 
 ```json

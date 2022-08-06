@@ -59,9 +59,12 @@ class Auth extends BaseController
                 'password' => 'required',
             ]
         )) {
+            $error = \Config\Services::validation()->getErrors();
+            $error = array_values($error);
+
             return $this->respond(
                 [
-                    "error" => "Validation failed"
+                    "error" => implode(", ", $error)
                 ],
                 400
             );

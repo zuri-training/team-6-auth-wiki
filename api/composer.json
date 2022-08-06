@@ -33,10 +33,10 @@
     "scripts": {
         "test": "phpunit",
         "post-install-cmd": [
-            "post-install.sh"
+            "cp env .env && php spark migrate --all"
         ],
         "post-update-cmd": [
-            "post-install.sh"
+            "cp env .env && php spark migrate --all"
         ]
     },
     "support": {

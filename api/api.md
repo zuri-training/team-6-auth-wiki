@@ -184,6 +184,8 @@ Like post
 
 `GET /posts/{id}/like`
 
+// Authentication required
+
 ```json
 // response
 {
@@ -194,6 +196,8 @@ Like post
 Unlike post
 
 `GET /posts/{id}/unlike`
+
+// Authentication required
 
 ```json
 // response

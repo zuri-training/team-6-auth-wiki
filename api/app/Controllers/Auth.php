@@ -30,10 +30,15 @@ class Auth extends BaseController
         $attempt = AuthWikiAuth::login($email, $password);
 
         if ($attempt) {
+
+            $user = AuthWikiAuth::getUserByEmail($email);
+
+            unset($user->password_hash);
+
             return $this->respond(
                 [
                     "error" => false,
-                    "user" => AuthWikiAuth::getUserByEmail($email)
+                    "user" => $user
                 ],
                 200
             );

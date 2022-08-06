@@ -13,7 +13,7 @@ class Post extends Entity
 
     public function getUserId()
     {
-        $user = Auth::getUserById($this->attributes['user_id']);
+        $user = Auth::getUserById((int)$this->attributes['user_id']);
         unset($user->password_hash);
         unset($user->status);
         return $user;

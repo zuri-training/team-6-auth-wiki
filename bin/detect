@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
 
-# used for inline heroku buildpack
-
-echo "My Subdir buildpack"
-exit 0
+# this pack is valid for apps with a api/composer.json in the root
+if [ -f $1/api/composer.json ]; then
+  echo "AuthWiki"
+  exit 0
+else
+  exit 1
+fi

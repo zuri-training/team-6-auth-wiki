@@ -1,14 +1,11 @@
 import React,{useState} from 'react'
 import user_img from '../../img/user.png';
 import logo from '../../img/logo/logo2.png';
-import watermark from '../../img/logo/water.png';
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaArrowUp, FaBeer, FaDesktop, FaReact } from 'react-icons/fa';
 import { FiLogOut, } from 'react-icons/fi';
+import { FaDesktop, FaReact } from 'react-icons/fa';
 import { IoIosArrowDown, } from 'react-icons/io';
 import { BsMenuButtonWideFill, } from 'react-icons/bs';
 import { GrMenu, } from 'react-icons/gr';
-import { BiUserCircle, } from 'react-icons/bi';
-// import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/auth';
 
@@ -55,7 +52,7 @@ const [arrow, setArrow] = useState(false)
         <GrMenu onClick={handleMenu} />
     </span>
   </div>
-  <div className={`${mymenu ? 'top-[80px] opacity-100 pb-6' : 'hidden'} md:justify-between md:flex md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}>
+  <div className={`${mymenu ? 'top-[80px] opacity-100 pb-6' : 'hidden md:block'} block md:justify-between  md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}>
     <div
       className="w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 ml-2 rounded"
         >
@@ -80,13 +77,16 @@ const [arrow, setArrow] = useState(false)
         </li>
         <ul className={`${menu ? 'flex' : 'hidden'} flex-col pl-10 dropdown1 text-[20px]`}>
           <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-            <a href="#">Get Started</a>
+           <Link className="text-xl hover:text-primary duration-500" to="/getstarted">Get Started</Link>
+
           </li>
           <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-            <a href="#">Requirements</a>
+            <Link className="text-xl hover:text-primary duration-500" to="/requirements">Requirements</Link>
+
           </li>
-          <li className="px-2 py-3 mb-3 hover:bg-[#E9EFFF] rounded">
-            <a href="#">Troubleshooting</a>
+                <li className="px-2 py-3 mb-3 hover:bg-[#E9EFFF] rounded">
+                  <Link className="text-xl hover:text-primary duration-500" to="/troubleshoot">Trouble Shooting</Link>
+
           </li>
         </ul>
 
@@ -114,7 +114,7 @@ const [arrow, setArrow] = useState(false)
               <Link className="text-xl hover:text-white duration-500" to="/javascript_board">JavaScript</Link>
           </li>
         </ul>
-        <li
+        {/* <li
           className="flex justify-between hover:text-primary text-[24px] menu-btn3 cursor-pointer" onClick={()=> setOverviewMenu(prevState =>(!prevState))}
         >
           <div className="flex items-center">
@@ -137,7 +137,7 @@ const [arrow, setArrow] = useState(false)
           <li className="px-2 py-3 mb-3 hover:bg-[#E9EFFF] rounded">
             <a href="#">Lorem</a>
           </li>
-        </ul>
+        </ul> */}
       </ul>
       <ul className="text-[20px] cursor-pointer">
         {/* <li

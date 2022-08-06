@@ -3,7 +3,7 @@
 baseurl: `/`
 <hr>
 
-```json
+```jsonc
 {
     "paths":[
         "/login",
@@ -32,7 +32,7 @@ baseurl: `/`
 Login a user
 
 `POST /login`
-```json
+```jsonc
 {
     "email": "user@example.com",
     "password": "*****"
@@ -53,7 +53,7 @@ Login a user
 Register a user
 
 `POST /register`
-```json
+```jsonc
 {
     "email": "user@example.com",
     "password": "*****",
@@ -69,7 +69,7 @@ Logout
 
 `GET /logout`
 
-```json
+```jsonc
 {
     "error": false // or error message
 }
@@ -77,7 +77,7 @@ Logout
 ## Languages 
 `GET /languages`
 
-```json
+```jsonc
 // response
 [
     {
@@ -96,7 +96,7 @@ Get posts by language
 
 `GET /languages/{language_id}/posts`
 
-```json
+```jsonc
 {
     "limit": 5,
     "sort_by": "ASC" //ASC or DESC
@@ -135,7 +135,7 @@ Create post
 
 `POST /posts/create`
 
-```json
+```jsonc
 {
     "language_id": 1,
     "title": "Lorem ipsum sit",
@@ -153,7 +153,7 @@ Get post
 
 `GET /posts/{id}`
 
-```json
+```jsonc
 // response
 {
     "error": false, // or error message
@@ -186,7 +186,7 @@ Like post
 
 // Authentication required
 
-```json
+```jsonc
 // response
 {
     "error": false // or error message
@@ -199,7 +199,7 @@ Unlike post
 
 // Authentication required
 
-```json
+```jsonc
 // response
 {
     "error": false // or error message
@@ -211,7 +211,7 @@ Unlike post
 Get Comments 
 
 `GET /posts/{id}/comments`
-```json
+```jsonc
 
 {
     "limit": 5,
@@ -237,7 +237,7 @@ Create comment
 
 `POST /posts/{id}/comments/create`
 
-```json
+```jsonc
 {
     "comment_text": "This is fun"
 }
@@ -252,7 +252,7 @@ Like a comment
 
 `GET /comments/{id}/like`
 
-```json
+```jsonc
 // response
 {
     "error": false // or error message
@@ -263,7 +263,7 @@ Unlike a comment
 
 `GET /comments/{id}/unlike`
 
-```json
+```jsonc
 // response
 {
     "error": false // or error message

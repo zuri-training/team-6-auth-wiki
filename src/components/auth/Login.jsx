@@ -22,7 +22,7 @@ const Login = () => {
     auth.login(user)
     console.log(user, password);
 
-    if (user === 'sanyaoluadefemi' && password === '1234') {
+    if (user === 'femi' && password === '1234') {
 
     navigate(redirectPath, {replace: true })
     }

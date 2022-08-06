@@ -37,7 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->post('/login', 'Auth::login');
 $routes->post('/register', 'Auth::register');
-$routes->post('/logout', 'Auth::logout');
+$routes->get('/logout', 'Auth::logout');
 
 $routes->get('/languages', 'Posts::languages');
 $routes->get('/languages/(:num)/posts', 'Posts::posts/$1');

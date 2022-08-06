@@ -108,9 +108,20 @@ Get posts by language
     "posts": [
         {
                 "id": 2,
-                "user_id": 1,
-                "language_id": 2,
-                "title": "John Doe",
+                "user_id": {
+                    "id": "1",
+                    "email": "demo@example.com",
+                    "username": "Migo Hendricks",
+                    "extra_data": [],
+                    "created_at": "1659709239",
+                    "updated_at": null
+                },
+                "language_id": {
+                    "id": 2,
+                    "language": "JavaScript"
+                },
+                "title": "Hello World",
+                "slug": "hello-world",
                 "content": "lorem ipsum sit dolor amit",
                 "media_location": "https://example.com/avatar.png",
                 "likes_count": 5,
@@ -157,9 +168,20 @@ Get post
     "error": false, // or error message
     "post": {
         "id": 2,
-        "user_id": 1,
-        "language_id": 2,
-        "title": "John Doe",
+        "user_id": {
+            "id": "1",
+            "email": "demo@example.com",
+            "username": "Migo Hendricks",
+            "extra_data": [],
+            "created_at": "1659709239",
+            "updated_at": null
+        },
+        "language_id": {
+            "id": 2,
+            "language": "JavaScript"
+        },
+        "title": "Hello World",
+        "slug": "hello-world",
         "content": "lorem ipsum sit dolor amit",
         "media_location": "https://example.com/avatar.png",
         "likes_count": 5,

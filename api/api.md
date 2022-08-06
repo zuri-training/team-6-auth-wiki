@@ -125,16 +125,7 @@ Get posts by language
                 "content": "lorem ipsum sit dolor amit",
                 "media_location": "https://example.com/avatar.png",
                 "likes_count": 5,
-                "created_at": 1659735293,
-                "comments": [
-                    {
-                        "id": 1,
-                        "post_id": 2,
-                        "comment_text": "This is fun",
-                        "likes_count": 2,
-                        "created_at": 1659735293
-                    }
-                ]
+                "created_at": 1659735293
         }
     ]
 }
@@ -185,14 +176,6 @@ Get post
         "content": "lorem ipsum sit dolor amit",
         "media_location": "https://example.com/avatar.png",
         "likes_count": 5,
-        "comments": [
-            {
-                "id": 1,
-                "post_id": 2,
-                "comment_text": "This is fun",
-                "likes_count": 2
-            }
-        ]
     }
 }
 ```

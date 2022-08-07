@@ -1,0 +1,134 @@
+const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const auth = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const [input, setInput] = useState({
+    user: '',
+    email: '',
+    password: '',
+    confirmPass: '',
+  })
+  const [userSession, setUserSession] = useState(null)
+
+
+  const redirectPath = location.state?.path || '/dashboard'
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    const user = await logindata();
+    const {username, userpassword} = user
+    auth.login(user)
+    if (name === username && password === userpassword) {
+    navigate(redirectPath, {replace: true })
+    }
+    else {
+      setError('incorrect name details')
+    }
+    setName('')
+    setPassword('')
+  }
+  // google auth
+  const responseGoogle = (response) => {
+    // console.log(response);
+    // console.log(response.profileObj);
+    const user = response.profileObj
+    auth.login(user)
+    if (user) {
+      navigate(redirectPath, {replace: true })
+    }
+//     email: "sanyaoluadefemi@gmail.com"
+// familyName: "Adefemi"
+// givenName: "Sanyaolu"
+// googleId: "107281195968002164127"
+// imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpE1W9Vk9Nb4xFNU1f0Z3InLLTms5v3mTtwta54Mg=s96-c"
+// name: "Sanyaolu Adefemi"
+
+  }
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
+        scope: 'email',
+      });
+    }
+
+    gapi.load('client:auth2', start);
+  }, []);
+
+  // ============= github login ================
+  // const { state, dispatch } = useContext(AuthProvider);
+  const [data, setData] = useState({ errorMessage: "", isLoading: false });
+
+  const { client_id, redirect_uri } = auth.state;
+
+  useEffect(() => {
+    // After requesting Github access, Github redirects back to your app with a code parameter
+    const url = window.location.href;
+    const hasCode = url.includes("?code=");
+
+    // If Github API returns the code parameter
+    if (hasCode) {
+      const newUrl = url.split("?code=");
+      window.history.pushState({}, null, newUrl[0]);
+      setData({ ...data, isLoading: true });
+
+      const requestData = {
+        code: newUrl[1]
+      };
+
+      const proxy_url = auth.state.proxy_url;
+
+      // Use code parameter and other parameters to make POST request to proxy_server
+      fetch(proxy_url, {
+        method: "POST",
+        body: JSON.stringify(requestData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          auth.dispatch({
+            type: "LOGIN",
+            payload: { user: data, isLoggedIn: true }
+          });
+        })
+        .catch(error => {
+          setData({
+            isLoading: false,
+            errorMessage: "Sorry! Login failed"
+          });
+        });
+    }
+  }, [auth.state, auth.dispatch, data]);
+
+  if (auth.state.isLoggedIn) {
+    return <Navigate to="/dashboard" replace={true} />;
+  }
+
+
+
+  // const [number, setNumber] = useState()
+  const handleChange = (e) => {
+    const value = e.target.value
+    setInput({
+      ...input,
+      [e.target.name]: value,
+    })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const { user, email, password, confirmPass } = input
+    console.log(user, email, password, confirmPass)
+    axios
+      .post('https://myapi.dataxis.ng/register', { user, email, password })
+      .then(({ data }) => {
+        const { token, user } = data
+        setUserSession(token, user)
+        
+        console.log(token, user)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }

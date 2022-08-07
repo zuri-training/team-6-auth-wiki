@@ -2,6 +2,7 @@ import React from 'react'
 import zuri from '../../img/logo/zuri.png';
 import watermark from '../../img/logo/water.png';
 import Prism from "prismjs";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min";
 import '../../prism.css'
 import Code from '../Code';
 import auth from '../../img/icons/auth.png'
@@ -61,7 +62,7 @@ const Body = () => {
 <section
   className="container mx-auto bg-white md:grid grid-cols-4 gap-6 pt-20 text-text_primary px-7 md:px-3"
 >
-  <div className="col-span-2 my-6 md:ml-20 w-3/4">
+  <div className="col-span-2 my-6 md:ml-20 w-3/4 mx-auto">
     <h1 className="font-m  text-2xl md:text-[40px] text-center md:textleft mb-4 font-bold">What we offer</h1>
     <p className="text-[16px] text-center md:text-justify ">
       We offer free libraries of authentication codes for developers to aid
@@ -125,9 +126,11 @@ const Body = () => {
   <div className="w-full px-5 md:w-[1200px] mx-auto md:flex gap-8 line-numbers">
     <div className="w-full md:w-[500px] mx-auto">
         <Code code={python} language='javascript' />
+        {/* <Code codeSnippet={python} /> */}
     </div>
                   <div className="w-full md:w-[500px] mx-auto">
                       <Code code={python} language='javascript' />
+                      {/* <Code codeSnippet={python} /> */}
     </div>
   </div>
 </section>

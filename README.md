@@ -1,108 +1,71 @@
-# AUTH_WIKI &mdash; TEAM 6 PROJECT
+## check the live view (here)[https://zuri-training.github.io/team-6-auth-wiki/]
+# Getting Started with Create React App
 
-> A wiki to ease developers' work by providing a user authentication librariesthat can be used as middleware within a web application to authenticate (their application user) requests.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-### First of all Fork and Clone Repository
+In the project directory, you can run:
 
-1. Fork the repository: Click the "Fork" button on the upper right corner of the Repository page.
+### `npm start`
 
-2. Make a Local Clone: Clone the forked repository to your local machine (computer)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-- Click on the "Code" button on the Repo page
-- Copy the URL for the forked repo
-```bash
-git clone https://github.com/zuri-training/team-6-auth-wiki.git
-```
-- Create a Folder on your Local machine for the project Workspace
-- Open Command prompt / Terminal / GitBash in the same folder location
-- In your Terminal, type: 
-```bash
-git clone https://github.com/zuri-training/team-6-auth-wiki.git
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Add "Remote To" and "Pull From" Upstream
+### `npm test`
 
-3. Track the original repository as a remote of the fork:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Switch directories to the forked repository you just cloned and run the following commands
+### `npm run build`
 
-```bash
-git remote add --track main upstream https://github.com/zuri-training/team-6-auth-wiki.git
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-git fetch upstream
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-4. Create a new branch for your changes
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```bash
-# replace branch_name with your branch name
-git checkout -b branch_name upstream/main
-```
+### `npm run eject`
 
-5. Make your changes, Add, commit, and push the changes
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### After making neccessary changes Run
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```bash
-git add <filename>
-git commit -m "add your commit message"
-git push -u origin branchname
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-6. Submit your pull request
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-You’re now all ready to submit the improvement you’ve made to the project’s maintainers for aproval. Head over to the original repositories Pull Requests tab, and you should see an automatic suggestion from GitHub to create a pull request from your new branch.
+## Learn More
 
-## Running the application
- ### before running the application you need to install the neccessary dependencies.
-#### Install environment variable by running 
-```bash
-python -m venv env
-```
-#### Activate environment variable
-on mac/linux os run 
-```bash
-source env/bin/activate
-```
-on Windows os run 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-```powershell
-env.Scripts/Activate.ps1
-```
-#### Install dependencies
-```bash
-# install the required dependencies
-pip install -r requirements.txt
-``` 
-#### change directory to the project
-```bash
-cd auth_wiki
-```
-#### Install and build tailwind css
-```bash
-# install tailwindcss
-python manage.py tailwind install
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-# load tailwindcss
-python manage.py tailwind start
-```
+### Code Splitting
 
-#### run migrations
-```bash
-python manage.py migrate
-```
-#### start the server
-```bash
-python manage.py runserver
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Important
-* On some systems, `python` might not point to the correct version of Python. Alternatively, you can run the above commands using `python3` instead.
-* Installation fails on some systems due to an error with `psycopg2-binary`. A fix for that is available [here](https://stackoverflow.com/questions/71390492/failed-error-to-install-psycopg2-binary-on-termux).
-## Samples
-* [PHP](samples/php/README.md)
-* [Python](samples/python/README.md)
-* [JavaScript](samples/javascript/README.md)
-## References
-* [TAILWINDCSS](https://django-tailwind.readthedocs.io/en/latest/installation.html#step-by-step-instructions)
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

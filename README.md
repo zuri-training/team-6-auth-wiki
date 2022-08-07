@@ -55,7 +55,7 @@ git push -u origin branchname
 You’re now all ready to submit the improvement you’ve made to the project’s maintainers for aproval. Head over to the original repositories Pull Requests tab, and you should see an automatic suggestion from GitHub to create a pull request from your new branch.
 
 ## Running the application
-
+ ### before running the application you need to install the neccessary dependencies.
 #### Install environment variable by running 
 ```bash
 python -m venv env

@@ -1,5 +1,5 @@
 # AUTH_WIKI &mdash; TEAM 6 PROJECT
-
+[Update from master]
 > A wiki to ease developers' work by providing a user authentication librariesthat can be used as middleware within a web application to authenticate (their application user) requests.
 
 

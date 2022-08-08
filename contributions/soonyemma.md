@@ -8,4 +8,4 @@ Name: Onyemma Gregory Somtochukwu
 
 | Task | Link |
 |------|------|
-| Create interface for python implementation of auth library | [https://github.com/zuri-training/team-6-auth-wiki/issues/37](https://github.com/zuri-training/team-6-auth-wiki/issues/37) |
+| Create interface for python implementation of auth library | [Issue #37](https://github.com/zuri-training/team-6-auth-wiki/issues/37) |

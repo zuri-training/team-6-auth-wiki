@@ -8,4 +8,4 @@ Name: Chukwu Kingsley
 
 | Task | Link |
 |------|------|
-| Testing | [https://github.com/zuri-training/team-6-auth-wiki/issues/32](https://github.com/zuri-training/team-6-auth-wiki/issues/32) |
+| Testing | [Issue #32](https://github.com/zuri-training/team-6-auth-wiki/issues/32) |

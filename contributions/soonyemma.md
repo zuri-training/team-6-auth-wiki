@@ -1,0 +1,11 @@
+Team: Team_6
+
+Name: Onyemma Gregory Somtochukwu
+
+<hr />
+
+## Contributions
+
+| Task | Link |
+|------|------|
+| Create interface for python implementation of auth library | [https://github.com/zuri-training/team-6-auth-wiki/issues/37](https://github.com/zuri-training/team-6-auth-wiki/issues/37) |

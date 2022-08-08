@@ -268,3 +268,6 @@ Unlike a comment
 {
     "error": false // or error message
 }
+
+## Important
+> When using PostMan, set the Content-Type to "x-www-form-urlencode" and pass the parameters as key-value pairs

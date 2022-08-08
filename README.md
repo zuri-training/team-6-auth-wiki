@@ -1,3 +1,4 @@
+## check the live view (here)[https://zuri-training.github.io/team-6-auth-wiki/]
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

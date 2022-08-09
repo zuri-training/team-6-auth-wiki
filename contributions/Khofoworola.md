@@ -13,3 +13,4 @@ Student ID: I4G023081QVX
 | User Research | [issue #17](https://github.com/zuri-training/team-6-auth-wiki/issues/17) |
 | Create wireframes | [issue #18](https://github.com/zuri-training/team-6-auth-wiki/issues/18) |
 | Create low fidelity design screens | [issue #19](https://github.com/zuri-training/team-6-auth-wiki/issues/19) |
+| Create moodboard | [issue #40](https://github.com/zuri-training/team-6-auth-wiki/issues/40) |

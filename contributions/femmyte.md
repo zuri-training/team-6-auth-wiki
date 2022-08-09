@@ -12,3 +12,4 @@ Name: Sanyaolu Adefemi
 | Setup Django structure | [Issue #34](https://github.com/zuri-training/team-6-auth-wiki/issues/34) |
 | Setup layout for frontend | [Issue #35](https://github.com/zuri-training/team-6-auth-wiki/issues/35) |
 | Implement frontend using React | [Issue #36](https://github.com/zuri-training/team-6-auth-wiki/issues/36) |
+| Make the frontend app available online | [Issue #41](https://github.com/zuri-training/team-6-auth-wiki/issues/41) |

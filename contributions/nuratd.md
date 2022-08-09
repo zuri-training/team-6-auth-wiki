@@ -1,7 +1,7 @@
-Team: Team_6
-
 Name: Nurat Durowade
-
+Track: Product Design
+Student id: I4G001051MMH
+Team_6
 <hr />
 
 ## Contributions

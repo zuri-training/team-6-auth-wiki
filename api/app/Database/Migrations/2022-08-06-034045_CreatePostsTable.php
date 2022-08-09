@@ -46,12 +46,6 @@ class CreatePostsTable extends Migration
                     'contraint' => 255,
                     'null' => true
                 ],
-                'likes_count' => [
-                    'type' => 'INT',
-                    'contraint' => 255,
-                    'null' => false,
-                    'default' => 0
-                ],
                 'created_at' => [
                     'type' => 'INT',
                     'constraint' => 255,

@@ -146,14 +146,35 @@ class Posts extends BaseController
         $posts = new \App\Models\PostsModel();
         $post = $posts->find((int)$post_id);
         if ($post) {
-            $post->likes_count++;
-            $posts->save($post);
-            return $this->respond(
-                [
-                    "error" => false
-                ],
-                200
-            );
+            $likes = new \App\Models\PostLikesModel();
+
+            // note that findAll() return an array
+            $like = $likes
+                ->where('user_id', AuthWikiAuth::getUserId())
+                ->where('post_id', (int)$post_id)->findAll();
+
+            if (empty($like)) {
+                // create a new like
+                $like = new \App\Entities\PostLike();
+                $like->user_id = AuthWikiAuth::getUserId();
+                $like->post_id = (int)$post_id;
+                $likes->save($like);
+
+                return $this->respond(
+                    [
+                        "error" => false
+                    ],
+                    200
+                );
+            } else {
+                // like already exists, return a bad request
+                return $this->respond(
+                    [
+                        "error" => "You have already liked this post"
+                    ],
+                    400
+                );
+            }
         } else {
             return $this->respond(
                 [
@@ -176,15 +197,34 @@ class Posts extends BaseController
         }
         $posts = new \App\Models\PostsModel();
         $post = $posts->find((int)$post_id);
+
         if ($post) {
-            $post->likes_count--;
-            $posts->save($post);
-            return $this->respond(
-                [
-                    "error" => false
-                ],
-                200
-            );
+            $likes = new \App\Models\PostLikesModel();
+
+            // note that findAll() return an array
+            $like = $likes
+                ->where('user_id', AuthWikiAuth::getUserId())
+                ->where('post_id', (int)$post_id)->findAll();
+
+            if (empty($like)) {
+                // like does not exists, return a bad request
+                return $this->respond(
+                    [
+                        "error" => "You have already liked this post"
+                    ],
+                    400
+                );
+            } else {
+                // delete the like
+                $likes->delete($like[0]->id);
+
+                return $this->respond(
+                    [
+                        "error" => false
+                    ],
+                    200
+                );
+            }
         } else {
             return $this->respond(
                 [

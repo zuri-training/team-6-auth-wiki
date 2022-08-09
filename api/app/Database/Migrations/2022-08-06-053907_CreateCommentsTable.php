@@ -21,6 +21,11 @@ class CreateCommentsTable extends Migration
                     'constraint' => 255,
                     'null' => false
                 ],
+                'user_id' => [
+                    'type'       => 'INT',
+                    'constraint' => 255,
+                    'null' => false
+                ],
                 'comment_text' => [
                     'type'       => 'TEXT',
                     'null' => false

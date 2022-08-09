@@ -1,6 +1,8 @@
-Team: Team_6
-
 Name: Ledogo fadum
+
+Track: Product design
+
+Team: Team_6
 
 Student ID: I4G0098936OO
 

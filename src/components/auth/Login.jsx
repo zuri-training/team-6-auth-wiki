@@ -1,51 +1,74 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { AiOutlineGithub, } from 'react-icons/ai';
-import { FcGoogle, } from 'react-icons/fc';
+import { AiOutlineGithub } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
 // import { AuthContext } from "../../App";
 import GoogleLogin from "react-google-login";
-import { gapi } from "gapi-script"
-import img from '../../img/logo/login-img.png'
+import { gapi } from "gapi-script";
+import img from "../../img/logo/login-img.png";
 import { AuthProvider, useAuth } from "./auth";
+import { logindata } from "./logindata";
+import axios from "../api/axios";
+// import axios from "axios";
+
+// const baseURL = "http://myapi.dataxis.ng";
+const LOGIN_URL = "/login";
 const Login = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const [user, setUser] = useState('')
-  const [password, setPassword] = useState('')
-  const auth = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  const redirectPath = location.state?.path || '/dashboard'
-  const handleLogin = (e) => {
-    e.preventDefault()
-    // const response = await fetch()
-    auth.login(user)
-    console.log(user, password);
-
-    if (user === 'sanyaoluadefemi' && password === '1234') {
-
-    navigate(redirectPath, {replace: true })
-    }
-    else {
-      alert('incorrect user details')
-    }
-  }
+  const redirectPath = location.state?.path || "/dashboard";
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    // if (user.name === name && user.password === password) {
+    //   navigate(redirectPath, { replace: true });
+    // } else {
+    //   setError("incorrect name details");
+    // }
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ email: name, password: password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(JSON.stringify(response));
+      // setName(response.data);
+    } catch (error) {}
+  };
   // google auth
   const responseGoogle = (response) => {
-    console.log(response);
-    console.log(response.profileObj);
-
-  }
+    // console.log(response);
+    // console.log(response.profileObj);
+    const user = response.profileObj;
+    auth.login(user);
+    if (user) {
+      navigate(redirectPath, { replace: true });
+    }
+    //     email: "sanyaoluadefemi@gmail.com"
+    // familyName: "Adefemi"
+    // givenName: "Sanyaolu"
+    // googleId: "107281195968002164127"
+    // imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpE1W9Vk9Nb4xFNU1f0Z3InLLTms5v3mTtwta54Mg=s96-c"
+    // name: "Sanyaolu Adefemi"
+  };
 
   useEffect(() => {
     function start() {
       gapi.client.init({
         clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
-        scope: 'email',
+        scope: "email",
       });
     }
 
-    gapi.load('client:auth2', start);
+    gapi.load("client:auth2", start);
   }, []);
 
   // ============= github login ================
@@ -66,7 +89,7 @@ const Login = () => {
       setData({ ...data, isLoading: true });
 
       const requestData = {
-        code: newUrl[1]
+        code: newUrl[1],
       };
 
       const proxy_url = auth.state.proxy_url;
@@ -74,19 +97,19 @@ const Login = () => {
       // Use code parameter and other parameters to make POST request to proxy_server
       fetch(proxy_url, {
         method: "POST",
-        body: JSON.stringify(requestData)
+        body: JSON.stringify(requestData),
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           auth.dispatch({
             type: "LOGIN",
-            payload: { user: data, isLoggedIn: true }
+            payload: { user: data, isLoggedIn: true },
           });
         })
-        .catch(error => {
+        .catch((error) => {
           setData({
             isLoading: false,
-            errorMessage: "Sorry! Login failed"
+            errorMessage: "Sorry! Login failed",
           });
         });
     }
@@ -96,38 +119,82 @@ const Login = () => {
     return <Navigate to="/dashboard" replace={true} />;
   }
 
-
   return (
     <>
+      {errMessage && (
+        <p className="bg-red-600 text-white text-center p-5 text-2xl uppercase font-bold">
+          {errMessage}
+        </p>
+      )}
+      {data.errorMessage && (
+        <p className="bg-red-600 text-white text-center p-5 text-2xl uppercase font-bold">
+          {data.errorMessage}
+        </p>
+      )}
       <div className="block md:flex ">
-        <div className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" style={{ backgroundImage: `url(${img})` }}>
-        </div>
+        <div
+          className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen"
+          style={{ backgroundImage: `url(${img})` }}
+        ></div>
         <div className="mx-auto md:basis-2/3 bg-white h-screen flex items-center">
           <div className="w-5/6 md:w-[600px] mx-auto">
-            <p className='text-2xl md:text-[40px] text-center'><span className='text-primary'>Login</span> to Auth - Wiki</p>
+            <p className="text-2xl md:text-[40px] text-center">
+              <span className="text-primary">Login</span> to Auth - Wiki
+            </p>
             <form>
               <div className="w-full my-5">
-                <input type="email" placeholder='Email Address' required className='w-full p-3 border-2 rounded-md border-black-400' onChange={(e) => setUser(e.target.value)} />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  required
+                  autoComplete="off"
+                  value={name}
+                  className={`${
+                    errMessage && "border-red-500"
+                  } w-full p-3 rounded border-2 my-2`}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
               <div className="mb-1">
-                <input type="password" placeholder='Password' className='w-full p-3 rounded border-2 border-black-400 required:' onChange={(e) => setPassword(e.target.value)} />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  className={`${
+                    errMessage && "border-red-500"
+                  } w-full p-3 rounded border-2 my-2`}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="flex justify-end">
-
-                <a href="#" className='text-left'>Forget Password</a>
+                <a href="#" className="text-left">
+                  Forget Password
+                </a>
               </div>
-              <button className='text-white font-bold bg-primary w-full p-3 border-none rounded mt-5' onClick={handleLogin}>Login</button>
+              <button
+                className="text-white font-bold bg-primary w-full p-3 border-none rounded mt-5"
+                disabled={!name || !password ? true : false}
+                onClick={handleLogin}
+              >
+                Login
+              </button>
 
-              <p className='mt-4'>Don’t have an account? <Link className="font-bold text-primary" to="/signup">Sign Up</Link> </p>
+              <p className="mt-4">
+                Don’t have an account?{" "}
+                <Link className="font-bold text-primary" to="/signup">
+                  Sign Up
+                </Link>{" "}
+              </p>
             </form>
             <div className="mt-7 w-5/6 md:w-[550px] mx-auto flex items-center">
               <div className="w-[224px] border-t-4 border-[#B0ADAD]"></div>
-              <p className='mx-6'> OR </p>
+              <p className="mx-6"> OR </p>
               <div className="w-[224px] border-t-4 border-[#B0ADAD]"></div>
             </div>
             <div className="">
               <div className="github py-5">
-                <span>{data.errorMessage}</span>
+                {/* <span>{data.errorMessage}</span> */}
                 {data.isLoading ? (
                   <div className="loader-container">
                     <div className="loader"></div>
@@ -143,21 +210,23 @@ const Login = () => {
                       onClick={() => {
                         setData({ ...data, errorMessage: "" });
                       }}
-
                     >
                       <AiOutlineGithub className="mr-3" />
-                      <span className='text-primary'>Login with <span className='font-bold'>GitHub</span></span>
+                      <span className="text-primary">
+                        Login with <span className="font-bold">GitHub</span>
+                      </span>
                     </a>
                   </>
                 )}
               </div>
               <div className="gmail ">
-                <GoogleLogin clientId="917362236368-ogbbb58fg24nn76js03ste4lsr2sph4m.apps.googleusercontent.com"
+                <GoogleLogin
+                  clientId="917362236368-ogbbb58fg24nn76js03ste4lsr2sph4m.apps.googleusercontent.com"
                   buttonText="Login WIth Google"
-                  className='bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full'
+                  className="bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
-                  cookiePolicy={'single_host_origin'}
+                  cookiePolicy={"single_host_origin"}
                 />
                 {/* <button className='bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-400 w-full'>  <FcGoogle className='mr-3' />Login with  <span className='font-bold'>Google</span></button> */}
               </div>
@@ -166,7 +235,7 @@ const Login = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

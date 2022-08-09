@@ -155,16 +155,25 @@ const Python_Board = () => {
                 <option value="">Sort by Date:</option>
               </select>
             </div>
-            <div className="flex justify-between text-primary ">
-              <div className="details flex my-5">
-                <img src={user} className="ml-3" alt="img" />
-                <p className="mx-6 text-[#5E5656] font-bold text-[16px]">
-                  John Olamide
-                </p>
-                <p>4 days ago</p>
-              </div>
-              <button>View More</button>
-            </div>
+            {posts &&
+              posts.map((post) => {
+                return (
+                  <>
+                    <div className="flex justify-between text-primary ">
+                      <div className="details flex my-5 ">
+                        <img src={user} className="ml-3" alt="img" />
+                        <p className="mx-2 md:mx-6 text-[#5E5656] font-bold text-[12px] md:text-[16px]">
+                          John Olamide
+                        </p>
+                        <p>4 days ago</p>
+                      </div>
+
+                      <button>View More</button>
+                    </div>
+                  </>
+                );
+              })}
+
             <div className="message h-[124px] md:w-[660px] flex mb-4">
               <div className="w-[32px] h-[124px] border-l-4 border[#5E5656] ml-8"></div>
               <div className="w-[32px] h-[124px] border-l-3 border-r-8 border[#5E5656] mr-5"></div>

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreatePostsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     public function up()
     {
@@ -16,35 +16,19 @@ class CreatePostsTable extends Migration
                     'unsigned'       => true,
                     'auto_increment' => true,
                 ],
+                'post_id' => [
+                    'type'       => 'INT',
+                    'constraint' => 255,
+                    'null' => false
+                ],
                 'user_id' => [
                     'type'       => 'INT',
-                    'constraint' => 5,
+                    'constraint' => 255,
                     'null' => false
                 ],
-                'language_id' => [
-                    'type'       => 'INT',
-                    'constraint' => 5,
+                'comment_text' => [
+                    'type'       => 'TEXT',
                     'null' => false
-                ],
-                'title' => [
-                    'type' => 'VARCHAR',
-                    'contraint' => 255,
-                    'null' => false
-                ],
-                'slug' => [
-                    'type' => 'VARCHAR',
-                    'contraint' => 255,
-                    'null' => false,
-                    'unique' => true
-                ],
-                'content' => [
-                    'type' => 'TEXT',
-                    'null' => false
-                ],
-                'media_location' => [
-                    'type' => 'VARCHAR',
-                    'contraint' => 255,
-                    'null' => true
                 ],
                 'created_at' => [
                     'type' => 'INT',
@@ -55,20 +39,15 @@ class CreatePostsTable extends Migration
                     'type' => 'INT',
                     'constraint' => 255,
                     'null' => true
-                ],
-                'deleted_at' => [
-                    'type' => 'INT',
-                    'constraint' => 255,
-                    'null' => true
                 ]
             ]
         );
         $this->forge->addKey('id', true);
-        $this->forge->createTable('posts');
+        $this->forge->createTable('comments');
     }
 
     public function down()
     {
-        $this->forge->dropTable('posts');
+        $this->forge->dropTable('comments');
     }
 }

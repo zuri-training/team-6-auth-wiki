@@ -25,23 +25,29 @@ const Login = () => {
   const redirectPath = location.state?.path || "/dashboard";
   const handleLogin = async (e) => {
     e.preventDefault();
-    // if (user.name === name && user.password === password) {
-    //   navigate(redirectPath, { replace: true });
-    // } else {
-    //   setError("incorrect name details");
+    const user = await logindata();
+    // console.log(user);
+    auth.login(user);
+    if (user.name === name && user.password === password) {
+      // if (name === "femi" && password === "1234") {
+      navigate(redirectPath, { replace: true });
+    } else {
+      setError("incorrect name details");
+    }
+    // try {
+    //   const response = await axios.post(
+    //     LOGIN_URL,
+    //     JSON.stringify({ email: name, password: password }),
+    //     {
+    //       headers: { "Content-Type": "application/json" },
+    //       withCredentials: true,
+    //     }
+    //   );
+    //   console.log(JSON.stringify(response));
+    //   // setName(response.data);
+    // } catch (error) {
+    //   console.log(error)
     // }
-    try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ email: name, password: password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response));
-      // setName(response.data);
-    } catch (error) {}
   };
   // google auth
   const responseGoogle = (response) => {

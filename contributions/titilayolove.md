@@ -4,7 +4,7 @@ Track: Product Design
 
 StudentID:  I4G015556EVA
 
-Team: Team 6 Auth_wiki
+Team: Team_6
 
 <hr />
 

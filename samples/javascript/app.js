@@ -96,8 +96,13 @@ app.post("/login", async (req, res) => {
     }
   });
 
-  app.post("/welcome", auth, (req, res) => {
-    res.status(200).send("Welcome 🙌 ");
-  });
+  //logout
+  app.post("/logout", auth, (req, res) => {
+    res.clearCookie(process.env.LOGIN_COOKIE)
+    res.status(200).json({
+      status: 200,
+      message: "Logout Successful"
+    })
+  })
 
 module.exports = app;

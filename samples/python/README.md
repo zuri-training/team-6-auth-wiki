@@ -50,29 +50,8 @@ Once you have a copy of the source, you can embed it in your Python package, or 
 $ cd authlib
 $ pip install .
 ```
-## Troubleshooting
-### Logging
-
-You can always enable debug logging when you run into issues in your code.
-```python
-import logging
-import sys
-log = logging.getLogger('authlib')
-log.addHandler(logging.StreamHandler(sys.stdout))
-log.setLevel(logging.DEBUG)
-```
-Logging system still being worked on at Authlib. (TBD)
-### Dependencies
-You may enter problems when installing cryptography, check its official document at https://cryptography.io/en/latest/installation/.
-
-For issued with OAuth Client, please read [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients) at first.
-Authlib has a shared API design among framework integrations, learn them from [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients).
-
-Be aware, using secure cookie as session backend will expose your request token.
-
-## Code Sample
 ### Django OAuth Client
-Using OAuth 1.0 server
+The Django client can handle OAuth 1 and OAuth 2 services. Authlib has a shared API design among framework integrations.
 
 Create a registry with OAuth object:
 ```python
@@ -156,3 +135,26 @@ There should be a *id_token* in the response. Authlib has called **.parse_id_tok
 ```python
 userinfo = token['userinfo']
 ```
+
+## Troubleshooting
+### Logging
+
+You can always enable debug logging when you run into issues in your code.
+```python
+import logging
+import sys
+log = logging.getLogger('authlib')
+log.addHandler(logging.StreamHandler(sys.stdout))
+log.setLevel(logging.DEBUG)
+```
+Logging system still being worked on at Authlib. (TBD)
+### Dependencies
+You may enter problems when installing cryptography, check its official document at https://cryptography.io/en/latest/installation/.
+
+For issued with OAuth Client, please read [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients) at first.
+Authlib has a shared API design among framework integrations, learn them from [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients).
+
+Be aware, using secure cookie as session backend will expose your request token.
+
+## Code Sample
+Find Django Google login sample [here](https://github.com/authlib/demo-oauth-client/tree/master/django-google-login).

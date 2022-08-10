@@ -52,6 +52,7 @@ app.post("/register", async (req, res) => {
       );
       // save user token
       user.token = token;
+      res.cookie(process.env.LOGIN_COOKIE, token);
   
       // return new user
       res.status(201).json(user);

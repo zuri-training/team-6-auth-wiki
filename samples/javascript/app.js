@@ -105,4 +105,24 @@ app.post("/login", async (req, res) => {
     })
   })
 
+  //getLoggedInUserDetails
+  app.get("/loggedInUser", auth, (req, res) => {
+    try {
+      const token = req.headers[process.env.TOKEN_HEADER_KEY]
+      const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+      const userEmail = decoded["email"]
+  
+      const user = await User.findOne({email: userEmail}).select("-password")
+      return res.json({
+        status: 200,
+        message: "Operation Successful",
+        body: user
+      })
+  
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Server Error")
+    }
+  })
+
 module.exports = app;

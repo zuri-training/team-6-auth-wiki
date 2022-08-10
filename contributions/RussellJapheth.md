@@ -17,3 +17,6 @@ Student ID: I4G583048ZYH
 | Setup samples structure | [issue #27](https://github.com/zuri-training/team-6-auth-wiki/issues/27) |
 | Create interface for Authentication class | [issue #28](https://github.com/zuri-training/team-6-auth-wiki/issues/28) |
 | Create interface for authentication library in Javascript | [issue #29](https://github.com/zuri-training/team-6-auth-wiki/issues/29) |
+
+## Commits
+[https://github.com/zuri-training/team-6-auth-wiki/commits?author=RussellJapheth](https://github.com/zuri-training/team-6-auth-wiki/commits?author=RussellJapheth)

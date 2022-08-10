@@ -1,6 +1,10 @@
-Team: Team_6
-
 Name: Oni Titilayo Grace
+
+Track: Product Design
+
+StudentID:  I4G015556EVA
+
+Team: Team 6 Auth_wiki
 
 <hr />
 

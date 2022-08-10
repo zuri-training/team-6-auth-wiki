@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use Team6\AuthWiki\Auth;
 
 class PostsModel extends Model
 {
@@ -20,8 +21,7 @@ class PostsModel extends Model
         'title',
         'slug',
         'content',
-        'media_location',
-        'likes_count'
+        'media_location'
     ];
 
     // Dates
@@ -47,4 +47,25 @@ class PostsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    protected function getLikes($postId)
+    {
+        $likes = new \App\Models\PostLikesModel();
+        return count($likes->where('post_id', $postId)->findAll());
+    }
+    protected function getComments($postId)
+    {
+        $comments = new \App\Models\CommentsModel();
+        return $comments->getAllCommentsByPost($postId);
+    }
+
+    public function getAllPostsByLanguage(int $language_id)
+    {
+        $posts = $this->where('language_id', $language_id)->findAll();
+        foreach ($posts as $post) {
+            $post->likes = $this->getLikes($post->id);
+            $post->comments = $this->getComments($post->id);
+        }
+        return $posts;
+    }
 }

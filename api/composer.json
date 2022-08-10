@@ -7,7 +7,8 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
-        "catfan/medoo": "^2.1"
+        "catfan/medoo": "^2.1",
+        "firebase/php-jwt": "^6.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
@@ -33,10 +34,10 @@
     "scripts": {
         "test": "phpunit",
         "post-install-cmd": [
-            "cp env .env && php spark migrate --all"
+            "cp env .env && php spark key:generate && php spark migrate --all"
         ],
         "post-update-cmd": [
-            "cp env .env && php spark migrate --all"
+            "php spark migrate --all"
         ]
     },
     "support": {

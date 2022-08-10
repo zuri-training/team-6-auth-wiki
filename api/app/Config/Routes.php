@@ -20,7 +20,12 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
+$routes->set404Override(function () {
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, PUT, DELETE");
+    echo '{"error": "404"}';
+});
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -35,19 +40,31 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->match(['get', 'post', 'options', 'head', 'put', 'delete'], '/', 'Home::index');
+$routes->match(
+    ['get', 'post', 'options', 'head', 'put', 'delete'],
+    '/',
+    'Home::index'
+);
 
 $routes->post('/login', 'Auth::login');
+
 $routes->post('/register', 'Auth::register');
 $routes->get('/logout', 'Auth::logout');
 
 $routes->get('/languages', 'Posts::languages');
 $routes->get('/languages/(:num)/posts', 'Posts::posts/$1');
 
-$routes->post('/posts/create', 'Posts::create');
+$routes->post('/posts/create', 'Posts::create', ['filter' => 'auth']);
+
 $routes->get('/posts/(:num)', 'Posts::post/$1');
-$routes->get('/posts/(:num)/like', 'Posts::like/$1');
-$routes->get('/posts/(:num)/unlike', 'Posts::unlike/$1');
+$routes->get('/posts/(:num)/like', 'Posts::like/$1', ['filter' => 'auth']);
+$routes->get('/posts/(:num)/unlike', 'Posts::unlike/$1', ['filter' => 'auth']);
+
+$routes->get('/comments/(:num)/like', 'Posts::comment_like/$1', ['filter' => 'auth']);
+$routes->get('/comments/(:num)/unlike', 'Posts::comment_unlike/$1', ['filter' => 'auth']);
+
+$routes->get('/posts/(:num)/comments', 'Posts::comments/$1');
+$routes->post('/posts/(:num)/comment', 'Posts::comment/$1', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

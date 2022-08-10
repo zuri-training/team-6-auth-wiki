@@ -16,7 +16,9 @@ class PostLikesModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'post_id',
-        'user_id'
+        'user_id',
+        'created_at',
+        'updated_at'
     ];
 
     // Dates

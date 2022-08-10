@@ -2,6 +2,8 @@ Team: Team_6
 
 Name: Japheth Russell Inyele
 
+Track: Full Stack
+
 Student ID: I4G583048ZYH
 
 <hr />

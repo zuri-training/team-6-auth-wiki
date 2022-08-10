@@ -65,4 +65,48 @@ Logging system still being worked on at Authlib. (TBD)
 ### Dependencies
 You may enter problems when installing cryptography, check its official document at https://cryptography.io/en/latest/installation/.
 
+For issued with OAuth Client, please read [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients) at first.
+Authlib has a shared API design among framework integrations, learn them from [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients).
+
+Be aware, using secure cookie as session backend will expose your request token.
+
 ## Code Sample
+### Django OAuth Client
+Using OAuth 1.0 server
+Create a registry with OAuth object:
+```python
+from authlib.integrations.django_client import OAuth
+oauth = OAuth()
+```
+The common use case for OAuth is authentication, e.g. let your users log in with Twitter, GitHub, Google etc.
+#### Configuration
+Authlib Django OAuth registry can load the configuration from your Django application settings automatically. Every key value pair can be omitted. They can be configured from your Django settings:
+```python
+AUTHLIB_OAUTH_CLIENTS = {
+    'twitter': {
+        'client_id': 'Twitter Consumer Key',
+        'client_secret': 'Twitter Consumer Secret',
+        'request_token_url': 'https://api.twitter.com/oauth/request_token',
+        'request_token_params': None,
+        'access_token_url': 'https://api.twitter.com/oauth/access_token',
+        'access_token_params': None,
+        'refresh_token_url': None,
+        'authorize_url': 'https://api.twitter.com/oauth/authenticate',
+        'api_base_url': 'https://api.twitter.com/1.1/',
+        'client_kwargs': None
+    }
+}
+```
+There are differences between OAuth 1.0 and OAuth 2.0, please check the parameters in .register in [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients).
+#### Saving Temporary Credential
+In OAuth 1.0, we need to use a temporary credential to exchange access token, this temporary credential was created before redirecting to the provider (Twitter), we need to save this temporary credential somewhere in order to use it later.
+
+In OAuth 1, Django client will save the request token in sessions. In this case, you just need to configure Session Middleware in Django:
+```python
+MIDDLEWARE = [
+    'django.contrib.sessions.middleware.SessionMiddleware'
+]
+```
+Follow the official Django documentation to set a proper session. Either a database backend or a cache backend would work well.
+#### Routes for Authorization
+Just like the example in [Web OAuth Clients](https://docs.authlib.org/en/latest/client/frameworks.html#frameworks-clients), everything is the same. But there is a hint to create redirect_uri with *request* in Django:

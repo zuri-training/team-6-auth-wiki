@@ -85,6 +85,7 @@ app.post("/login", async (req, res) => {
   
         // save user token
         user.token = token;
+        res.cookie(process.env.LOGIN_COOKIE, token);
   
         // user
         res.status(200).json(user);
@@ -95,8 +96,8 @@ app.post("/login", async (req, res) => {
     }
   });
 
-//   app.post("/welcome", auth, (req, res) => {
-//     res.status(200).send("Welcome 🙌 ");
-//   });
+  app.post("/welcome", auth, (req, res) => {
+    res.status(200).send("Welcome 🙌 ");
+  });
 
 module.exports = app;

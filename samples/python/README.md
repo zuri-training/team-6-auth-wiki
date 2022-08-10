@@ -65,4 +65,4 @@ Logging system still being worked on at Authlib. (TBD)
 ### Dependencies
 You may enter problems when installing cryptography, check its official document at https://cryptography.io/en/latest/installation/.
 
-# Code Sample
+## Code Sample

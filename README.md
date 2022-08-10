@@ -1,9 +1,85 @@
-## check the live view (here)[https://zuri-training.github.io/team-6-auth-wiki/]
-# Getting Started with Create React App
+# Auth Wiki &mdash; Team 6
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A wiki to ease developers' work by providing a user authentication librariesthat can be used as middleware within a web application to authenticate (their application user) requests.
 
-## Available Scripts
+<hr />
+
+_View the demo [here](https://zuri-training.github.io/team-6-auth-wiki/)._
+
+## Contributors
+The list of contributors to this project and their contributions is available [here](contributions/)
+## Getting Started
+
+### First of all Fork and Clone Repository
+
+1. Fork the repository: Click the "Fork" button on the upper right corner of the Repository page.
+
+2. Make a Local Clone: Clone the forked repository to your local machine (computer)
+
+- Click on the "Code" button on the Repo page
+- Copy the URL for the forked repo
+
+```bash
+git clone https://github.com/zuri-training/team-6-auth-wiki.git
+```
+- Create a Folder on your Local machine for the project Workspace
+- Open Command prompt / Terminal / GitBash in the same folder location
+- In your Terminal, type: 
+### Add "Remote To" and "Pull From" Upstream
+
+3. Track the original repository as a remote of the fork:
+
+- Switch directories to the forked repository you just cloned and run the following commands
+```bash
+git clone https://github.com/zuri-training/team-6-auth-wiki.git
+```
+
+```bash
+git remote add --track main upstream https://github.com/zuri-training/team-6-auth-wiki.git
+git fetch upstream
+```
+
+4. Create a new branch for your changes
+
+```bash
+# replace branch_name with your branch name
+git checkout -b branch_name upstream/main
+```
+
+5. Make your changes, Add, commit, and push the changes
+
+### After making neccessary changes Run
+
+```bash
+git add <filename>
+git commit -m "add your commit message"
+git push -u origin branchname
+```
+6. Submit your pull request
+You’re now all ready to submit the improvement you’ve made to the project’s maintainers for aproval. Head over to the original repositories Pull Requests tab, and you should see an automatic suggestion from GitHub to create a pull request from your new branch.
+
+## Running the application
+### Backend 
+
+Change to the `/api` directory
+
+```bash
+cd api
+```
+Install composer's dependencies
+
+```bash
+composer install
+```
+_Composer's post install script will setup the configuration and run the migrations_
+
+Start the server
+
+```bash
+php spark serve
+```
+
+### Frontend
 
 In the project directory, you can run:
 
@@ -28,44 +104,13 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Samples
+* [PHP](samples/php/README.md)
+* [Python](samples/python/README.md)
+* [JavaScript](samples/javascript/README.md)
+## References
+* [PHP CodeIgniter 4](https://codeigniter.com/)
+* [TAILWINDCSS](https://django-tailwind.readthedocs.io/en/latest/installation.html#step-by-step-instructions)
+* [Create React App](https://github.com/facebook/create-react-app).
+* [React documentation](https://reactjs.org/).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -38,7 +38,7 @@ const Post = ({ lang_id }) => {
                 </div>
                 <div className="message h-[124px] md:w-[660px] flex mb-4">
                   <div className="w-[32px] min-h-[124px] border-l-4 border[#5E5656] ml-1 md:ml-8"></div>
-                  <div className="w-[32px] min-h-[124px] border-l-3 border-r-8 border[#5E5656] mr-2 md:mr-5"></div>
+                  <div className="w-[32px] min-h-[124px] border-l-3 border-r-8 border[#5E5656] mr-2 md:mr-5 hidden md:inline-block "></div>
                   <p>{post.content}</p>
                 </div>
                 <div className="flex font-bold ml-1 md:ml-5 text-[10px] md:text-[16px]">

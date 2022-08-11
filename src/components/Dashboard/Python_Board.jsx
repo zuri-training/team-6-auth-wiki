@@ -9,7 +9,6 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import user from "../../img/user.png";
 import axios from "axios";
-import { data } from "../api/postData";
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
 
 // import Context from '@ckeditor/ckeditor5-core/src/context';
@@ -38,15 +37,7 @@ const python = `className AuthInterface:
 
 const Python_Board = () => {
   const [posts, setposts] = useState(null);
-  const fetchPost = async () => {
-    const post = await data();
-    if (!post.error) {
-      setposts(post.post);
-    }
-  };
-  useEffect(() => {
-    fetchPost();
-  }, []);
+
   console.log(posts);
   // const postDate = posts.created_at;
   // postDate = postDate.date;

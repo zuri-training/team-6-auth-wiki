@@ -7,47 +7,128 @@ import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import img from "../../img/logo/login-img.png";
 import { AuthProvider, useAuth } from "./auth";
-import { logindata } from "./logindata";
+import qs from "qs";
 import axios from "../api/axios";
 // import axios from "axios";
 
-// const baseURL = "http://myapi.dataxis.ng";
+// const baseURL = "http://myapi.dataxis.ng/login";
 const LOGIN_URL = "/login";
 const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [errMessage, setErrMessage] = useState("");
+  const [token, setToken] = useState("");
   const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   const redirectPath = location.state?.path || "/dashboard";
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    const user = await logindata();
-    // console.log(user);
-    auth.login(user);
-    if (user.name === name && user.password === password) {
-      // if (name === "femi" && password === "1234") {
-      navigate(redirectPath, { replace: true });
-    } else {
-      setError("incorrect name details");
-    }
-    // try {
-    //   const response = await axios.post(
-    //     LOGIN_URL,
-    //     JSON.stringify({ email: name, password: password }),
-    //     {
-    //       headers: { "Content-Type": "application/json" },
-    //       withCredentials: true,
-    //     }
-    //   );
-    //   console.log(JSON.stringify(response));
-    //   // setName(response.data);
-    // } catch (error) {
-    //   console.log(error)
+
+    // const loginFetch = async () => {
+    // fetch(baseURL, {
+    //   method: POST,
+    //   body: JSON.stringify({
+    //     email: name,
+    //     password: password,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //   });
+    // };
+
+    // const user = await logindata();
+    // // console.log(user);
+    // auth.login(user);
+    // if (user.name === name && user.password === password) {
+    //   // if (name === "femi" && password === "1234") {
+    //   navigate(redirectPath, { replace: true });
+    // } else {
+    //   setError("incorrect name details");
     // }
+
+    //   try {
+    //     const response = await axios.post(
+    //       LOGIN_URL,
+    //       JSON.stringify({ email: name, password: password }),
+    //       {
+    //         headers: { "Content-Type": "application/json" },
+    //       }
+    //     );
+    //     console.log(JSON.stringify(response?.data));
+    //     //console.log(JSON.stringify(response));
+    //     //  const accessToken = response?.data?.accessToken;
+    //     //  const roles = response?.data?.roles;
+    //     //  auth.login({ user, pwd, accessToken });
+    //     setPassword("");
+    //     setName("");
+    //     navigate(redirectPath, { replace: true });
+    //   } catch (err) {
+    //     if (!err?.response) {
+    //       setErrMessage("No Server Response");
+    //     } else if (err.response?.status === 400) {
+    //       setErrMessage("Missing Username or Password");
+    //     } else if (err.response?.status === 401) {
+    //       setErrMessage("Unauthorized");
+    //     } else {
+    //       setErrMessage("Login Failed");
+    //     }
+    //     //  errRef.current.focus();
+    //   }
+
+    //   // try {
+    //   //   const response = await axios.post(
+    //   //     LOGIN_URL,
+    //   //     JSON.stringify({ email: name, password: password }),
+    //   //     {
+    //   //       // headers: { "Content-Type": "application/json" },
+    //   //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   //       // withCredentials: false,
+    //   //     }
+    //   //   );
+    //   //   console.log(JSON.stringify(response));
+    //   // } catch (error) {
+    //   //   console.log(error);
+    //   // }
+
+    let demo = async () => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", `Bearer ${token}`);
+
+      let response = await fetch("https://myapi.dataxis.ng/login", {
+        method: "post",
+        headers: myHeaders,
+        body: JSON.stringify({
+          email: name,
+          // username: "bubba jay",
+          password: password,
+        }),
+      });
+      let data = await response.json();
+      console.log(data);
+      if (data?.error === false) {
+        const accessToken = data?.token;
+        const userData = data?.user;
+        auth.login({ userData, accessToken });
+        // useEffect(() => {
+        auth.getStorage(accessToken);
+        // }, [accessToken]);
+        setPassword("");
+        setName("");
+        navigate(redirectPath, { replace: true });
+      } else {
+        setErrMessage(data.error);
+      }
+    };
+    demo();
+
+    // const data = {user:}
   };
   // google auth
   const responseGoogle = (response) => {
@@ -58,6 +139,7 @@ const Login = () => {
     if (user) {
       navigate(redirectPath, { replace: true });
     }
+
     //     email: "sanyaoluadefemi@gmail.com"
     // familyName: "Adefemi"
     // givenName: "Sanyaolu"

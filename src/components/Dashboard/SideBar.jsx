@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import user_img from "../../img/user.png";
 import logo from "../../img/logo/logo2.png";
 import watermark from "../../img/logo/water.png";
@@ -22,7 +22,8 @@ import { useAuth } from "../auth/auth";
 
 const SideBar = () => {
   const auth = useAuth();
-  // console.log(auth.user);
+  const user = auth.user.userData;
+  // console.log(user.username);
   const navigate = useNavigate();
   const handleLogout = () => {
     auth.logout();
@@ -32,6 +33,21 @@ const SideBar = () => {
   const [overviewMenu, setOverviewMenu] = useState(false);
   const [codeMenu, setCodeMenu] = useState(false);
   const [arrow, setArrow] = useState(false);
+  const [token, setToken] = useState([]);
+  // const [user, setUser] = useState({});
+
+  // setUser(auth.user.userData);
+
+  // else {
+  //   handleLogout();
+  // }
+  // if (accesstoken) {
+  //   setToken(accesstoken);
+  // }
+  // }, []);
+  // if (token) {
+  // }
+  // console.log(token);
   // if (menu || overviewMenu) {
   //   ()=>setCodeMenu(false)
 
@@ -66,7 +82,9 @@ const SideBar = () => {
         >
           <div className="w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 ml-2 rounded">
             <img src={user_img} alt="" />
-            <p className="text-white ml-4 text-[24px] font-bold">femi</p>
+            <p className="text-white ml-4 text-[24px] font-bold">
+              {user.username}
+            </p>
           </div>
           <aside className="mx-6 mt-10">
             <ul className="">

@@ -7,7 +7,6 @@ import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import img from "../../img/logo/login-img.png";
 import { AuthProvider, useAuth } from "./auth";
-import { logindata } from "./logindata";
 import axios from "../api/axios";
 import { FaInfoCircle } from "react-icons/fa";
 
@@ -58,6 +57,9 @@ const Signup = () => {
   useEffect(() => {
     setErrMsg("");
   }, [user, email, pwd, matchPwd]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirectPath = location.state?.path || "/login";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,43 +71,69 @@ const Signup = () => {
       setErrMsg("Invalid Entry");
       return;
     }
-    console.log(user, pwd);
-    try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ username: user, email, password: pwd }),
-        {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          withCredentials: true,
-        }
-      );
-      // const response = await axios.defaults.headers.post(
-      //   REGISTER_URL,
-      //   JSON.stringify({ username: user, email, password: pwd }),
-      //   {
-      //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      //   }
+
+    let demo = async () => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      // myHeaders.append(
+      //     "Authorization",
+      //     "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjAxNjMzNzgsIm5iZiI6MTY2MDE2MzM3OCwidWlkIjozLCJlbWFpbCI6ImJ1YmJhQGV4YW1wbGUuY29tIn0.mvIGRddVcIlBMzPgCqBM3dwZY1hclUlwLer5sukbhwM"
       // );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
-      setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
-      setUser("");
-      setEmail("");
-      setPwd("");
-      setMatchPwd("");
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response Kindly check your internet connection ");
-      } else if (err.response?.status === 409) {
-        setErrMsg("User Taken");
-      } else {
-        setErrMsg("Registration Failed");
+
+      let response = await fetch("https://myapi.dataxis.ng/register", {
+        method: "post",
+        headers: myHeaders,
+        body: JSON.stringify({
+          email: email,
+          username: user,
+          password: pwd,
+        }),
+      });
+      let data = await response.json();
+      if (data.error === false) {
+        navigate(redirectPath, { replace: true });
       }
-      // errRef.current.focus();
-    }
+      console.log(data);
+    };
+    demo();
+
+    // console.log(user, pwd);
+    // try {
+    //   const response = await axios.post(
+    //     REGISTER_URL,
+    //     JSON.stringify({ username: user, email, password: pwd }),
+    //     {
+    //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //       withCredentials: true,
+    //     }
+    //   );
+    // const response = await axios.defaults.headers.post(
+    //   REGISTER_URL,
+    //   JSON.stringify({ username: user, email, password: pwd }),
+    //   {
+    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   }
+    // );
+    // console.log(response?.data);
+    // console.log(response?.accessToken);
+    // console.log(JSON.stringify(response));
+    // setSuccess(true);
+    // //clear state and controlled inputs
+    //need value attrib on inputs for this
+    //   setUser("");
+    //   setEmail("");
+    //   setPwd("");
+    //   setMatchPwd("");
+    // } catch (err) {
+    //   if (!err?.response) {
+    //     setErrMsg("No Server Response Kindly check your internet connection ");
+    //   } else if (err.response?.status === 409) {
+    //     setErrMsg("User Taken");
+    //   } else {
+    //     setErrMsg("Registration Failed");
+    //   }
+    // errRef.current.focus();
+    // }
   };
 
   return (

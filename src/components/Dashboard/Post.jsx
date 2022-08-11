@@ -25,7 +25,7 @@ const Post = ({ lang_id }) => {
 
             const timeago = moment(post.user_id.created_at).fromNow();
             return (
-              <div className="details flex">
+              <div className="details flex justify-betwen">
                 <img src="" alt="img" />
                 <p>{post.user_id.username}</p>
                 <p>{timeago}</p>

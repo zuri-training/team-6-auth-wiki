@@ -16,7 +16,10 @@ class CommentsModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'post_id',
-        'comment_text'
+        'user_id',
+        'comment_text',
+        'created_at',
+        'updated_at'
     ];
 
     // Dates
@@ -42,4 +45,24 @@ class CommentsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    protected function getLikes($commentId)
+    {
+        $likes = new \App\Models\CommentLikesModel();
+        return count($likes->where('comment_id', $commentId)->findAll());
+    }
+    protected function getComments($postId)
+    {
+        $comments = new \App\Models\CommentsModel();
+        return $comments->where('post_id', $postId)->findAll();
+    }
+
+    public function getAllCommentsByPost(int $post_id)
+    {
+        $comments = $this->where('post_id', $post_id)->findAll();
+        foreach ($comments as $comment) {
+            $comment->likes = $this->getLikes($comment->id);
+        }
+        return $comments;
+    }
 }

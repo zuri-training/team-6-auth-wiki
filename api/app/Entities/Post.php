@@ -24,4 +24,16 @@ class Post extends Entity
         $languages = new \App\Models\LanguagesModel();
         return $languages->find($this->attributes['language_id']);
     }
+
+    public function getLikes()
+    {
+        $likes = new \App\Models\PostLikesModel();
+        return count($likes->where('post_id', $this->attributes['id'])->findAll());
+    }
+
+    public function getComments()
+    {
+        $comments = new \App\Models\CommentsModel();
+        return $comments->getAllCommentsByPost($this->attributes['id']);
+    }
 }

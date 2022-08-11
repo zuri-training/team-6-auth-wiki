@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class CommentLikesModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'comment_likes';
+    protected $table            = 'comments_likes';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -16,7 +16,9 @@ class CommentLikesModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'comment_id',
-        'user_id'
+        'user_id',
+        'created_at',
+        'updated_at'
     ];
 
     // Dates

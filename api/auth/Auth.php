@@ -76,7 +76,8 @@ class Auth implements AuthInterface
         $user = self::getUserByEmail($email);
 
         if ($user && password_verify($password, $user->password_hash)) {
-            $_SESSION['user_id'] = $user->id;
+            setcookie('user_id', $user->id, time() + (86400 * 30), "/");
+            // $_SESSION['user_id'] = $user->id;
             return $user->id;
         }
         return 0;

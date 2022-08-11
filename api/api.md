@@ -2,28 +2,50 @@
 
 baseurl: `/`
 <hr>
+Sample API call:
+
+```javascript
+    let demo = async () => {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        // myHeaders.append(
+        //     "Authorization",
+        //     "Bearer your-token-here"
+        // );
+
+        let response = await fetch("https://myapi.dataxis.ng/login", {
+            method: "post",
+            headers: myHeaders,
+            body: JSON.stringify({
+                email: "user@example.com",
+                password: "user123",
+            }),
+        });
+        let data = await response.json();
+        console.log(data);
+    };
+    demo();
+```
 
 ```jsonc
 {
     "paths":[
         "/login",
         "/register",
-        "/logout",
         
         "/languages",
         "/languages/{language_id}/posts",
 
-        "/posts/create",
+        "/posts/create", // require authentication
         "/posts/{id}",
-        "/posts/{id}/like",
-        "/posts/{id}/unlike",
+        "/posts/{id}/like", // require authentication
+        "/posts/{id}/unlike", // require authentication
 
         "/posts/{id}/comments",
-        "/posts/{id}/comments/create",
-        // "/posts/{id}/comments/delete",
+        "/posts/{id}/comments/create", // require authentication
 
-        "/comments/{id}/like",
-        "/comments/{id}/unlike",
+        "/comments/{id}/like", // require authentication
+        "/comments/{id}/unlike", // require authentication
 
     ]
 }
@@ -65,15 +87,7 @@ Register a user
     "error": false // or error message
 }
 ```
-Logout
 
-`GET /logout`
-
-```jsonc
-{
-    "error": false // or error message
-}
-```
 ## Languages 
 `GET /languages`
 
@@ -97,10 +111,6 @@ Get posts by language
 `GET /languages/{language_id}/posts`
 
 ```jsonc
-{
-    "limit": 5,
-    "sort_by": "ASC" //ASC or DESC
-}
 
 // Response
 {

@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\API\ResponseTrait;
 use Team6\AuthWiki\Auth as AuthWikiAuth;
+use CodeIgniter\API\ResponseTrait;
+use Firebase\JWT\JWT;
 
-class Auth extends BaseController
+class Auth extends RestController
 {
     use ResponseTrait;
 
@@ -15,8 +15,8 @@ class Auth extends BaseController
      */
     public function login()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
 
         if (empty($email) || empty($password)) {
             return $this->respond(
@@ -35,9 +35,20 @@ class Auth extends BaseController
 
             unset($user->password_hash);
 
+            $key = getenv('encryption.key');
+            $payload = array(
+                "iat" => time(),
+                "nbf" => time(),
+                "uid" => $user->id,
+                "email" => $user->email
+            );
+
+            $token = JWT::encode($payload, $key, 'HS256');
+
             return $this->respond(
                 [
                     "error" => false,
+                    "token" => $token,
                     "user" => $user
                 ],
                 200
@@ -70,9 +81,9 @@ class Auth extends BaseController
             );
         }
 
-        $username = $this->request->getPost('username');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $username = $this->request->getVar('username');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
 
         $user_id = AuthWikiAuth::register($username, $password, $email, []);
 
@@ -83,13 +94,13 @@ class Auth extends BaseController
         }
     }
 
-    /**
-     * The logout route
-     *
-     */
-    public function logout()
-    {
-        AuthWikiAuth::logout();
-        return $this->respond(["error" => false], 200);
-    }
+    // /**
+    //  * The logout route
+    //  *
+    //  */
+    // public function logout()
+    // {
+    //     AuthWikiAuth::logout();
+    //     return $this->respond(["error" => false], 200);
+    // }
 }

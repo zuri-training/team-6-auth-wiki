@@ -78,7 +78,7 @@ const SideBar = () => {
         <div
           className={`${
             mymenu ? "top-[80px] opacity-100 pb-6" : "hidden"
-          } md:justify-between md:flex md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}
+          } md:justify-between md:block md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}
         >
           <div className="w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 ml-2 rounded">
             <img src={user_img} alt="" />
@@ -98,7 +98,7 @@ const SideBar = () => {
                   </span>
                   <span className="cursor-pointer">Installation</span>
                 </div>
-                <IoIosArrowDown className="h-6 w-6 mr-3 stroke-primary" />
+                <IoIosArrowDown className="h-6 w-6  mr-3 stroke-primary" />
                 {/* <FaArrowUp className="h-6 w-6 mr-3 stroke-primary"  /> */}
               </li>
               <ul
@@ -107,13 +107,28 @@ const SideBar = () => {
                 } flex-col pl-10 dropdown1 text-[20px]`}
               >
                 <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-                  <a href="#">Get Started</a>
+                  <Link
+                    className="text-xl hover:text-primary duration-500"
+                    to="/getstarted"
+                  >
+                    Get Started
+                  </Link>
                 </li>
                 <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-                  <a href="#">Requirements</a>
+                  <Link
+                    className="text-xl hover:text-primary duration-500"
+                    to="/requirements"
+                  >
+                    Requirements
+                  </Link>
                 </li>
                 <li className="px-2 py-3 mb-3 hover:bg-[#E9EFFF] rounded">
-                  <a href="#">Troubleshooting</a>
+                  <Link
+                    className="text-xl hover:text-primary duration-500"
+                    to="/troubleshooting"
+                  >
+                    TroubleShooting
+                  </Link>
                 </li>
               </ul>
 
@@ -136,7 +151,7 @@ const SideBar = () => {
               >
                 <li className="px-2 py-2 hover:bg-[#E9EFFF] rounded">
                   <Link
-                    className="text-xl hover:text-white duration-500"
+                    className="text-xl hover:text-primary duration-500"
                     to="/python_board"
                   >
                     Python
@@ -144,7 +159,7 @@ const SideBar = () => {
                 </li>
                 <li className="px-2 py-2 hover:bg-[#E9EFFF] rounded">
                   <Link
-                    className="text-xl hover:text-white duration-500"
+                    className="text-xl hover:text-primary duration-500"
                     to="/php_board"
                   >
                     PHP
@@ -152,7 +167,7 @@ const SideBar = () => {
                 </li>
                 <li className="px-2 mb-2 py-2 hover:bg-[#E9EFFF] rounded">
                   <Link
-                    className="text-xl hover:text-white duration-500"
+                    className="text-xl hover:text-primary duration-500"
                     to="/javascript_board"
                   >
                     JavaScript

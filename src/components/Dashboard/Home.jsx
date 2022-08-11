@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { BiBell } from 'react-icons/bi'
-import Code from '../Code'
+import React, { useContext } from "react";
+import { BiBell } from "react-icons/bi";
+import Code from "../Code";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 
@@ -19,7 +19,7 @@ const python = `className AuthInterface:
 
     def getUser(self) -> User:
         """Get the currently logged in user"""
-        pass`
+        pass`;
 
 const Home = () => {
   // const { state, dispatch } = useContext(AuthContext);
@@ -34,13 +34,15 @@ const Home = () => {
   //   dispatch({
   //     type: "LOGOUT"
   //   });
-  // } 
+  // }
 
   return (
-      <>
-        <div className="p-8 col-span-3 bg-[#e9effe]">
-    <div className="flex justify-between items-center">
-      <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">Lorem ipsum</h1>
+    <>
+      <div className="p-8 col-span-3 bg-[#e9effe]">
+        <div className="flex justify-between items-center">
+          <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">
+            Welcome back
+          </h1>
           <BiBell className="h-6 w-6" />
         </div>
         {/* <div className="container">
@@ -55,24 +57,22 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-    <p className="text-[16px] text-justify my-7">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur.
-    </p>
-    <div className="md:flex gap-8 line-numbers">
-      <div className="md:w-[380px] mx-auto">
-            <Code code={python} language='javascript' />
+        <p className="text-[16px] text-justify my-7">
+          Auth-wiki provides you with the library ao authentication codes which
+          specializes in Python, Javascript and PHP languages. Continue to
+          browse through our libraries of authentication codes to aid your work.
+        </p>
+        <div className="md:flex gap-8 line-numbers">
+          <div className="md:w-[380px] mx-auto">
+            <Code code={python} language="javascript" />
+          </div>
+          <div className="md:w-[380px] mx-auto">
+            <Code code={python} language="javascript" />
+          </div>
+        </div>
       </div>
-      <div className="md:w-[380px] mx-auto">
-            <Code code={python} language='javascript' />
-      </div>
-    </div>
-  </div>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default Home
+export default Home;

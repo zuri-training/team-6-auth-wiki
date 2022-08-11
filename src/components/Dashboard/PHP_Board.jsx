@@ -7,6 +7,7 @@ import Code from "../Code";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Post from "./Post";
+import Editor from "./Editor";
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
 
 // import Context from '@ckeditor/ckeditor5-core/src/context';
@@ -70,43 +71,9 @@ const PHP_Board = () => {
             </div>
           </div>
 
-          <div className="mt-12 bg-white">
-            <CKEditor
-              editor={ClassicEditor}
-              data=""
-              onReady={(editor) => {
-                // You can store the "editor" and use when it is needed.
-                // console.log("Editor is ready to use!", editor);
-                editor.editing.view.change((writer) => {
-                  writer.setStyle(
-                    "height",
-                    "352px",
-                    "width",
-                    "832px",
-                    editor.editing.view.document.getRoot()
-                  );
-                });
-              }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                // console.log({ event, editor, data });
-              }}
-              onBlur={(event, editor) => {
-                // console.log("Blur.", editor);
-              }}
-              onFocus={(event, editor) => {
-                // console.log("Focus.", editor);
-              }}
-            />
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="bg-[#9B9696] p-2 md:w-[192px] h-full md:h-[72px] mt-10 "
-              >
-                Comment
-              </button>
-            </div>
-          </div>
+          <>
+            <Editor />
+          </>
           <div className="w-[832px] mx-auto">
             <select name="comment" id="comment">
               <option value="sort">Sort by date</option>

@@ -1,4 +1,4 @@
-# Python Authentication Library &mdash; Authlib
+# Python Authentication Library &mdash; Authlib (Django)
 
 ## Get Started
 

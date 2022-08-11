@@ -52,6 +52,7 @@ app.post("/register", async (req, res) => {
       );
       // save user token
       user.token = token;
+      res.cookie(process.env.LOGIN_COOKIE, token);
   
       // return new user
       res.status(201).json(user);
@@ -85,6 +86,7 @@ app.post("/login", async (req, res) => {
   
         // save user token
         user.token = token;
+        res.cookie(process.env.LOGIN_COOKIE, token);
   
         // user
         res.status(200).json(user);
@@ -95,8 +97,33 @@ app.post("/login", async (req, res) => {
     }
   });
 
-//   app.post("/welcome", auth, (req, res) => {
-//     res.status(200).send("Welcome 🙌 ");
-//   });
+  //logout
+  app.post("/logout", auth, (req, res) => {
+    res.clearCookie(process.env.LOGIN_COOKIE)
+    res.status(200).json({
+      status: 200,
+      message: "Logout Successful"
+    })
+  })
+
+  //getLoggedInUserDetails
+  app.get("/loggedInUser", auth, (req, res) => {
+    try {
+      const token = req.headers[process.env.TOKEN_HEADER_KEY]
+      const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+      const userEmail = decoded["email"]
+  
+      const user = await User.findOne({email: userEmail}).select("-password")
+      return res.json({
+        status: 200,
+        message: "Operation Successful",
+        body: user
+      })
+  
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Server Error")
+    }
+  })
 
 module.exports = app;

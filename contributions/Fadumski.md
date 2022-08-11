@@ -18,3 +18,4 @@ Student ID: I4G0098936OO
 | Created prototype for HiFi | [issue #22](https://github.com/zuri-training/team-6-auth-wiki/issues/22) |
 | Create style guide | [issue #23](https://github.com/zuri-training/team-6-auth-wiki/issues/23) |
 | Create userflow diagram | [issue #24](https://github.com/zuri-training/team-6-auth-wiki/issues/24) |
+| Create wireframes | [issue #18](https://github.com/zuri-training/team-6-auth-wiki/issues/18) |

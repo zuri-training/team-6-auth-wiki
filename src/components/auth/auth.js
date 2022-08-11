@@ -1,30 +1,41 @@
 import { createContext, useContext, useState, useReducer } from "react";
 import { initialState, reducer } from "../../store/reducer/index";
 
-const AuthContext = createContext(null)
+const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    const [user, setUser] = useState(null)
-    const [regUser, setRegUser] = useState({})
-    const register = (user) => {
-        setUser(regUser)
-    }
-    const login = (user) => {
-        setUser(user)
-    }
-    const logout = () => {
-        setUser(null)
-    }
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [user, setUser] = useState(null);
+  const [regUser, setRegUser] = useState({});
+  const [token, setToken] = useState();
+  const [isWorking, setIsWorking] = useState(null);
 
-    return (
-        <AuthContext.Provider value={{ user, login, logout,  state,
-        dispatch, regUser }} >
-            {children}
-        </AuthContext.Provider>
-    )
-}
+  const getStorage = (token) => {
+    localStorage.setItem("token", token);
+    setToken(token);
+    // localStorage.getItem("token", JSON.stringify(token));
+  };
+  const register = (user) => {
+    setUser(regUser);
+  };
+  const login = (user) => {
+    setUser(user);
+  };
+  const logout = () => {
+    setUser(null);
+  };
+
+  const refreshToken = () => {};
+
+  return (
+    <AuthContext.Provider
+      value={{ user, login, logout, state, dispatch, regUser, getStorage }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export const useAuth = () => {
-    return useContext(AuthContext)
-}
+  return useContext(AuthContext);
+};

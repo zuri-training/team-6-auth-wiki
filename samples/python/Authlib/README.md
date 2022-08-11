@@ -184,4 +184,4 @@ Start server with:
 Then visit:
 
     http://127.0.0.1:8000/
-Find Django Google login sample [here](https://github.com/authlib/demo-oauth-client/tree/master/django-google-login).
+Find Django Google login sample [here](https://github.com/zuri-training/team-6-auth-wiki/tree/main/samples/python/Authlib/Django/Google%20login).

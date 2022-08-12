@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\RestController;
-use Team6\AuthWiki\Auth as AuthWikiAuth;
 use CodeIgniter\API\ResponseTrait;
 
 class Posts extends RestController
@@ -37,9 +36,7 @@ class Posts extends RestController
         if (!$this->validate(
             [
                 'language_id' => "required|is_not_unique[languages.id]",
-                'title' => 'required|alpha_numeric_space',
-                'content' => 'required',
-                'media_location' => 'required|valid_url'
+                'content' => 'required'
             ]
         )) {
             $error = \Config\Services::validation()->getErrors();
@@ -55,19 +52,13 @@ class Posts extends RestController
 
         $user_id = $data['id'];
         $language_id = $this->request->getVar('language_id');
-        $title = $this->request->getVar('title');
-        $slug = url_title($title);
         $content = $this->request->getVar('content');
-        $media_location = $this->request->getVar('media_location');
 
         $posts = new \App\Models\PostsModel();
         $post = new \App\Entities\Post();
         $post->user_id = $user_id;
         $post->language_id = $language_id;
-        $post->title = $title;
-        $post->slug = $slug;
         $post->content = $content;
-        $post->media_location = $media_location;
 
         if ($posts->save($post)) {
             return $this->respond(
@@ -94,7 +85,6 @@ class Posts extends RestController
 
         if ($post) {
             $post->likes = $post->getLikes();
-            $post->comments = $post->getComments();
             return $this->respond(
                 [
                     "error" => false,
@@ -242,7 +232,7 @@ class Posts extends RestController
         }
     }
 
-    public function comments($id)
+    /* public function comments($id)
     {
         $posts = new \App\Models\PostsModel();
 
@@ -426,5 +416,5 @@ class Posts extends RestController
                 404
             );
         }
-    }
+    } */
 }

@@ -60,11 +60,11 @@ $routes->get('/posts/(:num)', 'Posts::post/$1');
 $routes->get('/posts/(:num)/like', 'Posts::like/$1', ['filter' => 'auth']);
 $routes->get('/posts/(:num)/unlike', 'Posts::unlike/$1', ['filter' => 'auth']);
 
-$routes->get('/comments/(:num)/like', 'Posts::comment_like/$1', ['filter' => 'auth']);
-$routes->get('/comments/(:num)/unlike', 'Posts::comment_unlike/$1', ['filter' => 'auth']);
+// $routes->get('/comments/(:num)/like', 'Posts::comment_like/$1', ['filter' => 'auth']);
+// $routes->get('/comments/(:num)/unlike', 'Posts::comment_unlike/$1', ['filter' => 'auth']);
 
-$routes->get('/posts/(:num)/comments', 'Posts::comments/$1');
-$routes->post('/posts/(:num)/comment', 'Posts::comment/$1', ['filter' => 'auth']);
+// $routes->get('/posts/(:num)/comments', 'Posts::comments/$1');
+// $routes->post('/posts/(:num)/comment', 'Posts::comment/$1', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

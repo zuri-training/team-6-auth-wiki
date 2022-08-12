@@ -39,6 +39,18 @@ const GetStarted = () => {
             attached. If one is not available, please write to us @teamsix.io.
             We only collect minimal data necessary to authenticate users.
           </p>
+          <div className="my-5">
+            <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">
+              Installation
+            </h1>
+            <p className="text-[16px] text-justify my-7">
+              The source code for the libraries is freely available for download
+              on GitHub. Specific installation steps are provided with each
+              library. Rather to the code samples section for usage
+              instructions. You can report bugd using the issue tracker on
+              GitHub
+            </p>
+          </div>
           <div className="md:flex gap-8 line-numbers">
             <div className="md:w-[380px] mx-auto">
               <Code code={python} language="javascript" />

@@ -1,7 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
-export default axios.create({
-    baseURL: "https://team6authwikiapi.zurifordummies.com",
-});
+// export default axios.create({
+//     baseURL: "https://team6authwikiapi.zurifordummies.com",
+// });

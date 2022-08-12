@@ -8,8 +8,8 @@ import { gapi } from "gapi-script";
 // import img from "../../img/logo/login-img.png";
 import img from "../../img/logo/login.png";
 import { AuthProvider, useAuth } from "./auth";
-import qs from "qs";
-import axios from "../api/axios";
+// import qs from "qs";
+// import axios from "../api/axios";
 // import axios from "axios";
 
 // const baseURL = "http://myapi.dataxis.ng/login";

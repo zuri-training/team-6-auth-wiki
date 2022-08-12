@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [regUser, setRegUser] = useState({});
   const [token, setToken] = useState();
-  const [isWorking, setIsWorking] = useState(null);
+  const [isGoogle, setIsGoogle] = useState(false);
 
   const getStorage = (token) => {
     localStorage.setItem("token", token);
@@ -29,7 +29,17 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, state, dispatch, regUser, getStorage }}
+      value={{
+        user,
+        login,
+        logout,
+        state,
+        dispatch,
+        setIsGoogle,
+        isGoogle,
+        regUser,
+        getStorage,
+      }}
     >
       {children}
     </AuthContext.Provider>

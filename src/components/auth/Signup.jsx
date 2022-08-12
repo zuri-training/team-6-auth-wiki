@@ -17,6 +17,9 @@ const NUMBER_REGEX =
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REGISTER_URL = "/register";
 const Signup = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -44,34 +47,33 @@ const Signup = () => {
   }, []);
 
   useEffect(() => {
-    setValidName(USER_REGEX.test(user));
+    // setValidName(USER_REGEX.test(user));
+    setValidName(user);
   }, [user]);
   useEffect(() => {
     setValidEmail(EMAIL_REGEX.test(email));
   }, [email]);
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd]);
+    // setValidMatch(pwd === matchPwd);
+  }, [pwd]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, email, pwd, matchPwd]);
-  const navigate = useNavigate();
-  const location = useLocation();
+  }, [user, email, pwd]);
   const redirectPath = location.state?.path || "/login";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if button enabled with JS hack
-    const v1 = USER_REGEX.test(user);
-    const v2 = EMAIL_REGEX.test(email);
-    const v3 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2 || !v3) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
-
+    // const v1 = USER_REGEX.test(user);
+    // const v2 = EMAIL_REGEX.test(email);
+    // const v3 = PWD_REGEX.test(pwd);
+    // if (!v1 || !v2 || !v3) {
+    //   setErrMsg("Invalid Entry");
+    //   return;
+    // }
+    console.log("clicked");
     let demo = async () => {
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -90,51 +92,88 @@ const Signup = () => {
         }),
       });
       let data = await response.json();
+      // console.log(data);
       if (data.error === false) {
         navigate(redirectPath, { replace: true });
+      } else {
+        setErrMsg(data.error);
       }
-      console.log(data);
     };
     demo();
-
-    // console.log(user, pwd);
-    // try {
-    //   const response = await axios.post(
-    //     REGISTER_URL,
-    //     JSON.stringify({ username: user, email, password: pwd }),
-    //     {
-    //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //       withCredentials: true,
-    //     }
-    //   );
-    // const response = await axios.defaults.headers.post(
-    //   REGISTER_URL,
-    //   JSON.stringify({ username: user, email, password: pwd }),
-    //   {
-    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   }
-    // );
-    // console.log(response?.data);
-    // console.log(response?.accessToken);
-    // console.log(JSON.stringify(response));
-    // setSuccess(true);
-    // //clear state and controlled inputs
-    //need value attrib on inputs for this
-    //   setUser("");
-    //   setEmail("");
-    //   setPwd("");
-    //   setMatchPwd("");
-    // } catch (err) {
-    //   if (!err?.response) {
-    //     setErrMsg("No Server Response Kindly check your internet connection ");
-    //   } else if (err.response?.status === 409) {
-    //     setErrMsg("User Taken");
-    //   } else {
-    //     setErrMsg("Registration Failed");
-    //   }
-    // errRef.current.focus();
-    // }
   };
+  const GoogleredirectPath = location.state?.path || "/dashboard";
+
+  // google auth
+  const responseGoogle = (response) => {
+    // console.log(response);
+    // console.log(response.profileObj);
+    const user = response.profileObj;
+    auth.login(user);
+    // console.log(user);
+    auth.setIsGoogle(true);
+    if (user) {
+      navigate(GoogleredirectPath, { replace: true });
+    }
+  };
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
+        scope: "email",
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  }, []);
+
+  // ============= github login ================
+  // const { state, dispatch } = useContext(AuthProvider);
+  const [data, setData] = useState({ errorMessage: "", isLoading: false });
+
+  const { client_id, redirect_uri } = auth.state;
+
+  useEffect(() => {
+    // After requesting Github access, Github redirects back to your app with a code parameter
+    const url = window.location.href;
+    const hasCode = url.includes("?code=");
+
+    // If Github API returns the code parameter
+    if (hasCode) {
+      const newUrl = url.split("?code=");
+      window.history.pushState({}, null, newUrl[0]);
+      setData({ ...data, isLoading: true });
+
+      const requestData = {
+        code: newUrl[1],
+      };
+
+      const proxy_url = auth.state.proxy_url;
+
+      // Use code parameter and other parameters to make POST request to proxy_server
+      fetch(proxy_url, {
+        method: "POST",
+        body: JSON.stringify(requestData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          auth.dispatch({
+            type: "LOGIN",
+            payload: { user: data, isLoggedIn: true },
+          });
+        })
+        .catch((error) => {
+          setData({
+            isLoading: false,
+            errorMessage: "Sorry! Login failed",
+          });
+        });
+    }
+  }, [auth.state, auth.dispatch, data]);
+
+  if (auth.state.isLoggedIn) {
+    return <Navigate to="/dashboard" replace={true} />;
+  }
 
   return (
     <>
@@ -143,17 +182,21 @@ const Signup = () => {
           {errMsg}
         </p>
       )}
-      {/* {data.errorMessage && <p className="bg-red-600 text-white text-center p-5 text-2xl uppercase font-bold">{data.errorMessage}</p> } */}
+      {data.errorMessage && (
+        <p className="bg-red-600 text-white text-center p-5 text-2xl uppercase font-bold">
+          {data.errorMessage}
+        </p>
+      )}
 
-      <div className="flex ">
+      <div className="block md:flex ">
         <div
-          className="w-[600px] basis-1/3 h-screen"
+          className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen"
           style={{ backgroundImage: `url(${img})` }}
         ></div>
-        <div className="basis-2/3 bg-white h-screen flex items-center">
-          <div className="w-[600px] mx-auto">
-            <p className="text-[40px] text-center">
-              <span className="text-primary">Signup</span> to Auth - Wiki
+        <div className="mx-auto md:basis-2/3 bg-white h-screen flex items-center">
+          <div className="w-5/6 md:w-[600px] mx-auto">
+            <p className="text-2xl md:text-[40px] text-center">
+              <span className="text-primary">Create</span> your free account
             </p>
             <form onSubmit={handleSubmit}>
               <div className="w-full my-5">
@@ -231,7 +274,7 @@ const Signup = () => {
                   <span aria-label="percent">%</span>
                 </p>
               </div>
-              <div className="mb-1">
+              {/* <div className="mb-1">
                 <input
                   type="password"
                   placeholder="Confirm Password"
@@ -260,23 +303,57 @@ const Signup = () => {
                   <FaInfoCircle />
                   Must match the first password input field.
                 </p>
-              </div>
+              </div> */}
               <button
                 type="submit"
                 className="text-white font-bold bg-primary w-full p-3 border-none rounded mt-5 hover:bg-text_primary"
-                disabled={
-                  !validName || !validEmail || !validPwd || !validMatch
-                    ? true
-                    : false
-                }
               >
                 Signup
               </button>
             </form>
-            <div className="mt-3 w-[550px] mx-auto flex items-center">
+            <div className="mt-7 w-5/6 md:w-[550px] mx-auto flex items-center">
               <div className="w-[224px] border-t-4 border-[#B0ADAD]"></div>
               <p className="mx-6"> OR </p>
               <div className="w-[224px] border-t-4 border-[#B0ADAD]"></div>
+            </div>
+            <div className="">
+              <div className="github py-5">
+                {/* <span>{data.errorMessage}</span> */}
+                {data.isLoading ? (
+                  <div className="loader-container">
+                    <div className="loader"></div>
+                  </div>
+                ) : (
+                  <>
+                    {
+                      // Link to request GitHub access
+                    }
+                    <a
+                      className="login-link flex items-center justify-center p-3 rounded border-2 border-black-400 w-full"
+                      href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+                      onClick={() => {
+                        setData({ ...data, errorMessage: "" });
+                      }}
+                    >
+                      <AiOutlineGithub className="mr-3" />
+                      <span className="text-primary">
+                        Sign up with <span className="font-bold">GitHub</span>
+                      </span>
+                    </a>
+                  </>
+                )}
+              </div>
+              <div className="gmail ">
+                <GoogleLogin
+                  clientId="917362236368-ogbbb58fg24nn76js03ste4lsr2sph4m.apps.googleusercontent.com"
+                  buttonText="Sign up with Google"
+                  className="bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+                {/* <button className='bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-400 w-full'>  <FcGoogle className='mr-3' />Login with  <span className='font-bold'>Google</span></button> */}
+              </div>
             </div>
             <div className="flex justify-end">
               <p className="text-primary mt-4">

@@ -30,7 +30,7 @@ const Editor = () => {
       <div className="flex justify-end">
         <button
           type="submit"
-          className="bg-[#9B9696] md:w-[180px] w-[100px] h-[60px] md:h-[62px] mt-10 text-primary "
+          className="bg-[#9B9696] md:w-[180px] w-[100px] h-[60px] md:h-[62px] mt-5 text-primary "
         >
           Comment
         </button>

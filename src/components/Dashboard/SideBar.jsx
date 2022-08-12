@@ -22,8 +22,7 @@ import { useAuth } from "../auth/auth";
 
 const SideBar = () => {
   const auth = useAuth();
-  const user = auth.user.userData;
-  // console.log(user.username);
+
   const navigate = useNavigate();
   const handleLogout = () => {
     auth.logout();
@@ -34,8 +33,15 @@ const SideBar = () => {
   const [codeMenu, setCodeMenu] = useState(false);
   const [arrow, setArrow] = useState(false);
   const [token, setToken] = useState([]);
-  // const [user, setUser] = useState({});
 
+  let name = "";
+
+  if (auth.isGoogle === true) {
+    name = auth.user.name;
+  }
+  if (!auth.isGoogle) {
+    name = auth.user.userData.username;
+  }
   // setUser(auth.user.userData);
 
   // else {
@@ -59,6 +65,8 @@ const SideBar = () => {
   // }
   // const auth =
   const [mymenu, setMyMenu] = useState(false);
+  const [username, setusername] = useState(false);
+
   const handleMenu = () => {
     if (mymenu) {
       setMyMenu(false);
@@ -82,9 +90,7 @@ const SideBar = () => {
         >
           <div className="w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 ml-2 rounded">
             <img src={user_img} alt="" />
-            <p className="text-white ml-4 text-[24px] font-bold">
-              {user.username}
-            </p>
+            <p className="text-white ml-4 text-[18px] font-bold">{name}</p>
           </div>
           <aside className="mx-6 mt-10">
             <ul className="">
@@ -147,7 +153,7 @@ const SideBar = () => {
               <ul
                 className={`${
                   codeMenu ? "flex" : "hidden"
-                } flex-col pl-10 dropdown2 text-[20px] mb-2`}
+                } flex-col pl-10 dropdown2 text-[24px] mb-2`}
               >
                 <li className="px-2 py-2 hover:bg-[#E9EFFF] rounded">
                   <Link
@@ -174,33 +180,6 @@ const SideBar = () => {
                   </Link>
                 </li>
               </ul>
-              <li
-                className="flex justify-between hover:text-primary text-[24px] menu-btn3 cursor-pointer"
-                onClick={() => setOverviewMenu((prevState) => !prevState)}
-              >
-                <div className="flex items-center">
-                  <span>
-                    <BsMenuButtonWideFill className="h-[24px] text-primary w-[24px] mr-3 stroke-2 hover:stroke-3 hover:stroke-primary" />
-                  </span>
-                  <span className="cursor-pointer">Overview</span>
-                </div>
-                <IoIosArrowDown className="h-6 w-6 mr-3 stroke-primary" />
-              </li>
-              <ul
-                className={`${
-                  overviewMenu ? "flex" : "hidden"
-                } flex-col pl-10 dropdown3 text-[20px]`}
-              >
-                <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-                  <a href="#">Lorem</a>
-                </li>
-                <li className="px-2 py-3 hover:bg-[#E9EFFF] rounded">
-                  <a href="#">Lorem</a>
-                </li>
-                <li className="px-2 py-3 mb-3 hover:bg-[#E9EFFF] rounded">
-                  <a href="#">Lorem</a>
-                </li>
-              </ul>
             </ul>
             <ul className="text-[20px] cursor-pointer">
               {/* <li
@@ -214,7 +193,7 @@ const SideBar = () => {
           <FaArrowRight  className="h-6 w-6 ml-12 stroke-primary"/>
           </div>
             </li> */}
-              <li className="mt-4 md:mt-9 flex items-center ">
+              <li className="mt-5 md:mt-16 flex items-center ">
                 <FiLogOut className="h-6 w-6 mr-3 stroke-2 hover:stroke-3 text-red-600 stroke-red-600" />
                 <button
                   onClick={handleLogout}

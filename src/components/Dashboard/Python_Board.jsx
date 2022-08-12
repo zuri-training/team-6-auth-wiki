@@ -11,7 +11,7 @@ import user from "../../img/user.png";
 import Editor from "./Editor";
 import Post from "./Post";
 
-import axios from "axios";
+// import axios from "axios";
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
 
 // import Context from '@ckeditor/ckeditor5-core/src/context';

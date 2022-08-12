@@ -17,22 +17,50 @@ import Editor from "./Editor";
 // import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 // import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 
-const python = `className AuthInterface:
-    def isLoggedIn(self) -> bool:
-        """Check if user is logged in"""
-        pass
+const installation = `-- Create statement for SQLite databases
+CREATE TABLE "users" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"status"	TEXT NOT NULL DEFAULT 'user',
+	"email"	TEXT NOT NULL UNIQUE,
+	"password"	TEXT UNIQUE,
+	"username"	TEXT NOT NULL UNIQUE,
+	"extra_data"	TEXT NOT NULL DEFAULT '{}',
+	"created_at"	integer NOT NULL,
+	"updated_at"	integer
+);`;
 
-    def login(self, username: str, password: str) -> int:
-        """Attempt to login user"""
-        pass
+const usage = `use \Team6\AuthWiki\Auth;
+// Require composer autoload
+require_once __DIR__ . '/vendor/autoload.php';
 
-    def logout(self) -> bool:
-        """Logout user"""
-        pass
+// ensure that the session is started. Call this as 
+// early as possible in your script.
+Auth::startSession();
 
-    def getUser(self) -> User:
-        """Get the currently logged in user"""
-        pass`;
+// Initialize the database connection
+Auth::initDb(new \PDO("sqlite:" . __DIR__ . "/database.db"), 'sqlite');
+`;
+const usage2 = `
+// check if the user is logged in
+if (Auth::isLoggedIn()) {
+// the user is logged in
+} else {
+// the user is not logged in
+}
+// login a user
+$id = Auth::login('user@example.com', 'password');
+`;
+const usage3 = `
+// logout a user
+Auth::logout();
+
+// register a user
+$id = Auth::register(
+'Demo User', 
+'password', 
+'admin@admin.com', 
+['phone' => '08134343422']
+);`;
 
 const PHP_Board = () => {
   return (
@@ -55,13 +83,25 @@ const PHP_Board = () => {
             For useage, This is a PHP code about clock, Firstly copy the source
             code below to a class file "clock.PHP"
           </p>
+          <div>
+            <h3>Installation</h3>
+            <p>Create your database tables</p>
+          </div>
           <div className="">
             <div className="md:flex gap-8 line-numbers">
               <div className="md:w-[380px] mx-auto">
-                <Code code={python} language="javascript" />
+                <Code code={installation} language="javascript" />
               </div>
               <div className="md:w-[380px] mx-auto">
-                <Code code={python} language="javascript" />
+                <Code code={usage} language="javascript" />
+              </div>
+            </div>
+            <div className="md:flex gap-8 line-numbers">
+              <div className="md:w-[380px] mx-auto">
+                <Code code={usage2} language="javascript" />
+              </div>
+              <div className="md:w-[380px] mx-auto">
+                <Code code={usage3} language="javascript" />
               </div>
             </div>
             <div className="flex">

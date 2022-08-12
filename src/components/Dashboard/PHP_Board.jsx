@@ -42,13 +42,18 @@ const PHP_Board = () => {
         <div className="p-8 col-span-3 bg-[#e9effe]">
           <div className="flex justify-between items-center">
             <h1 className="text-xl text-center md:text-left md:text-[40px] text-primary">
-              PHP Board
+              PHP Library
             </h1>
             <BiBell className="h-6 w-6" />
           </div>
           <p className="text-[16px] my-7">
-            This is a Python code about clock, Firstly copy the source code
-            below to a class file "clock.python"
+            PHP is a server-side scripting language designed for web
+            development-purpose programming language. Auth-wiki PHP library
+            provides authentication codes already written in PHP and is made
+            available for every developer for easy programming. We provide
+            secure, flexible and easy to use authentication libraries for PHP
+            For useage, This is a PHP code about clock, Firstly copy the source
+            code below to a class file "clock.PHP"
           </p>
           <div className="">
             <div className="md:flex gap-8 line-numbers">
@@ -79,14 +84,6 @@ const PHP_Board = () => {
               <option value="sort">Sort by date</option>
             </select>
             {<Post lang_id={1} />}
-            {/* <div className="flex"> */}
-            {/* <div className="details flex">
-                <img src="" alt="img" />
-                <p>John Olamide</p>
-                <p>4 days ago</p>
-              </div>
-              <button>View More</button> */}
-            {/* </div> */}
           </div>
         </div>
       </div>

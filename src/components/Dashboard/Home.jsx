@@ -62,14 +62,14 @@ const Home = () => {
           specializes in Python, Javascript and PHP languages. Continue to
           browse through our libraries of authentication codes to aid your work.
         </p>
-        <div className="md:flex gap-8 line-numbers">
+        {/* <div className="md:flex gap-8 line-numbers">
           <div className="md:w-[380px] mx-auto">
             <Code code={python} language="javascript" />
           </div>
           <div className="md:w-[380px] mx-auto">
             <Code code={python} language="javascript" />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

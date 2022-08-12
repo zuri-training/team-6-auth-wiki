@@ -67,7 +67,7 @@ const PHP_Board = () => {
     <>
       <div className="md:grid grid-cols-4 min-h-screen">
         <SideBar />
-        <div className="p-8 col-span-3 bg-[#e9effe]">
+        <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
             <h1 className="text-xl text-center md:text-left md:text-[40px] text-primary">
               PHP Library
@@ -84,8 +84,8 @@ const PHP_Board = () => {
             code below to a class file "clock.PHP"
           </p>
           <div>
-            <h3>Installation</h3>
-            <p>Create your database tables</p>
+            <h3 className="text-3xl font-bold">Installation</h3>
+            <p className="my-5">Create your database tables</p>
           </div>
           <div className="">
             <div className="md:flex gap-8 line-numbers">

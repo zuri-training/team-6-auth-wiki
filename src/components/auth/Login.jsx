@@ -34,23 +34,24 @@ const Login = () => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
 
-      let response = await fetch("https://myapi.dataxis.ng/login", {
-        method: "post",
-        headers: myHeaders,
-        body: JSON.stringify({
-          email: name,
-          password: password,
-        }),
-      });
+      let response = await fetch(
+        "https://team6authwikiapi.zurifordummies.com/login",
+        {
+          method: "post",
+          headers: myHeaders,
+          body: JSON.stringify({
+            email: name,
+            password: password,
+          }),
+        }
+      );
       let data = await response.json();
       console.log(data);
       if (data?.error === false) {
         const accessToken = data?.token;
         const userData = data?.user;
         auth.login({ userData, accessToken });
-        // useEffect(() => {
         auth.getStorage(accessToken);
-        // }, [accessToken]);
         setPassword("");
         setName("");
         navigate(redirectPath, { replace: true });
@@ -222,9 +223,6 @@ const Login = () => {
                   </div>
                 ) : (
                   <>
-                    {
-                      // Link to request GitHub access
-                    }
                     <a
                       className="login-link flex items-center justify-center p-3 rounded border-2 border-black-400 w-full"
                       href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}

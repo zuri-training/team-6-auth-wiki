@@ -40,7 +40,7 @@ const JavaScript_Board = () => {
     <>
       <div className="md:grid grid-cols-4 min-h-screen">
         <SideBar />
-        <div className="p-8 col-span-3 bg-[#e9effe]">
+        <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
             <h1 className="text-[40px] text-primary">Javascript Library</h1>
             <BiBell className="h-6 w-6" />

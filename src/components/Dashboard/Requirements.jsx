@@ -24,7 +24,7 @@ const Requirements = () => {
     <>
       <div className="md:grid grid-cols-4 min-h-screen">
         <SideBar />
-        <div className="p-8 col-span-3 bg-[#e9effe]">
+        <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
             <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">
               Requirements
@@ -39,14 +39,14 @@ const Requirements = () => {
             for usage instructions. You can report bugs using the issue tracker
             on Github.
           </p>
-          <div className="md:flex gap-8 line-numbers">
+          {/* <div className="md:flex gap-8 line-numbers">
             <div className="md:w-[380px] mx-auto">
               <Code code={python} language="javascript" />
             </div>
             <div className="md:w-[380px] mx-auto">
               <Code code={python} language="javascript" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -82,15 +82,18 @@ const Signup = () => {
       //     "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjAxNjMzNzgsIm5iZiI6MTY2MDE2MzM3OCwidWlkIjozLCJlbWFpbCI6ImJ1YmJhQGV4YW1wbGUuY29tIn0.mvIGRddVcIlBMzPgCqBM3dwZY1hclUlwLer5sukbhwM"
       // );
 
-      let response = await fetch("https://myapi.dataxis.ng/register", {
-        method: "post",
-        headers: myHeaders,
-        body: JSON.stringify({
-          email: email,
-          username: user,
-          password: pwd,
-        }),
-      });
+      let response = await fetch(
+        "https://team6authwikiapi.zurifordummies.com/register",
+        {
+          method: "post",
+          headers: myHeaders,
+          body: JSON.stringify({
+            email: email,
+            username: user,
+            password: pwd,
+          }),
+        }
+      );
       let data = await response.json();
       // console.log(data);
       if (data.error === false) {

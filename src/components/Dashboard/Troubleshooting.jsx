@@ -24,7 +24,7 @@ const Troubleshooting = () => {
     <>
       <div className="md:grid grid-cols-4 min-h-screen">
         <SideBar />
-        <div className="p-8 col-span-3 bg-[#e9effe]">
+        <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
             <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">
               Troubleshooting
@@ -38,14 +38,14 @@ const Troubleshooting = () => {
             stackoverflow. Please report security issues by sendig an email to
             security @teamsix.io
           </p>
-          <div className="md:flex gap-8 line-numbers">
+          {/* <div className="md:flex gap-8 line-numbers">
             <div className="md:w-[380px] mx-auto">
               <Code code={python} language="javascript" />
             </div>
             <div className="md:w-[380px] mx-auto">
               <Code code={python} language="javascript" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

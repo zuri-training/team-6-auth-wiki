@@ -34,7 +34,7 @@ const Login = () => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
 
-      let response = await fetch("https://myapi.dataxis.ng/login", {
+      let response = await fetch("https://team6authwikiapi.zurifordummies.com/login", {
         method: "post",
         headers: myHeaders,
         body: JSON.stringify({

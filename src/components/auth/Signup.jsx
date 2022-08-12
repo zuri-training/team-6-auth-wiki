@@ -7,7 +7,7 @@ import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 import img from "../../img/logo/login-img.png";
 import { AuthProvider, useAuth } from "./auth";
-import axios from "../api/axios";
+// import axios from "../api/axios";
 import { FaInfoCircle } from "react-icons/fa";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;

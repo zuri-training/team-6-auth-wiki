@@ -8,6 +8,9 @@ import Code from "../Code";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import user from "../../img/user.png";
+import Editor from "./Editor";
+import Post from "./Post";
+
 import axios from "axios";
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
 
@@ -62,12 +65,17 @@ const Python_Board = () => {
         <SideBar />
         <div className="p-8 col-span-3 bg-[#e9~effe]">
           <div className="flex justify-between items-center">
-            <h1 className="text-[40px] text-primary">Python Board</h1>
+            <h1 className="text-[40px] text-primary">Python Library</h1>
             <BiBell className="h-6 w-6" />
           </div>
           <p className="text-[16px] my-7">
-            This is a Python code about clock, Firstly copy the source code
-            below to a class file "clock.python"
+            Python is a widely used high-level programming language for
+            general-purpose programming. Auth-wiki python library provides
+            authentication codes already written in python and is made available
+            for every developer for easy programming. We provide secure,
+            flexible and easy to use authentication libraries for python. For
+            useage, This is a Python code about clock, Firstly copy the source
+            code below to a class file "clock.python"
           </p>
           <div className="">
             <div className="md:flex gap-8 line-numbers">
@@ -90,82 +98,16 @@ const Python_Board = () => {
             </div>
           </div>
 
-          <div className="mt-12 bg-white">
-            <CKEditor
-              editor={ClassicEditor}
-              data=""
-              onReady={(editor) => {
-                editor.editing.view.change((writer) => {
-                  writer.setStyle(
-                    "height",
-                    "200px",
-                    editor.editing.view.document.getRoot()
-                  );
-                });
-              }}
-              // onReady={(editor) => {
-              // You can store the "editor" and use when it is needed.
-              // console.log('Editor is ready to use!', editor);
-              // editor.editing.view.change((writer) => {
-              //   writer.setStyle(
-              //     "height",
-              //     "352px",
-              //     "width",
-              //     "832px",
-              //     editor.editing.view.document.getRoot()
-              //   );
-              // });
-              // }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                // console.log( { event, editor, data } );
-              }}
-              onBlur={(event, editor) => {
-                // console.log( 'Blur.', editor );
-              }}
-              onFocus={(event, editor) => {
-                // console.log( 'Focus.', editor );
-              }}
-            />
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="bg-[#9B9696] w-[192px] h-[72px] mt-10 "
-              >
-                Comment
-              </button>
-            </div>
-          </div>
-          <div className="w-832px mx-auto mt-12">
-            <div className="flex ">
-              <select
-                name="comment"
-                className="text-700 mr-3 border-b-3 border-[#5E5656]"
-                id="comment"
-              >
-                <option value="">Sort by Date:</option>
-              </select>
-            </div>
-            {posts &&
-              posts.map((post) => {
-                return (
-                  <>
-                    <div className="flex justify-between text-primary ">
-                      <div className="details flex my-5 ">
-                        <img src={user} className="ml-3" alt="img" />
-                        <p className="mx-2 md:mx-6 text-[#5E5656] font-bold text-[12px] md:text-[16px]">
-                          John Olamide
-                        </p>
-                        <p>4 days ago</p>
-                      </div>
-
-                      <button>View More</button>
-                    </div>
-                  </>
-                );
-              })}
-
-            <div className="message h-[124px] md:w-[660px] flex mb-4">
+          <>
+            <Editor />
+          </>
+          <div className="w-[832px] mx-auto">
+            <select name="comment" id="comment">
+              <option value="sort">Sort by date</option>
+            </select>
+            {<Post lang_id={1} />}
+            {}
+            {/* <div className="message h-[124px] md:w-[660px] flex mb-4">
               <div className="w-[32px] h-[124px] border-l-4 border[#5E5656] ml-8"></div>
               <div className="w-[32px] h-[124px] border-l-3 border-r-8 border[#5E5656] mr-5"></div>
               <p>
@@ -186,7 +128,7 @@ const Python_Board = () => {
                 <VscComment />
                 <span className="ml-3 ">Reply</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

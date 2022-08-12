@@ -78,6 +78,90 @@ const Python_Board = () => {
             code below to a class file "clock.python"
           </p>
           <div className="">
+            <h1 className="text-4xl">
+              Python Authentication Library — Authlib (Django)
+            </h1>
+            <h2 className="text-3xl">Get Started</h2>
+            <h3 className="text-2xl">Introduction</h3>
+            <p className="text-[18px] my-7">
+              Authlib is the ultimate Python library in building OAuth and
+              OpenID Connect clients and servers. It offers generic
+              implementations of RFCs, including OAuth 1.0, OAuth 2.0, JWT and
+              many more. It becomes a Monolithic project that powers from
+              low-level specification implementation to high-level framework
+              integrations.
+            </p>
+            <h4 className="text-xl">Monolithic</h4>
+            <p className="text-[18px] my-7">
+              Authlib is a monolithic library. While being monolithic, it keeps
+              everything synchronized, from spec implementation to framework
+              integrations, from client requests to service providers.
+            </p>
+            <p className="text-[18px] my-7">
+              The benefits are obvious; it won’t break things. When
+              specifications changed, implementation will change too. Let the
+              developers of Authlib take the pain, users of Authlib should not
+              suffer from it.
+            </p>
+            <p className="text-[18px] my-7">
+              You don’t have to worry about monolithic, it doesn’t cost your
+              memory. If you don’t import a module, it won’t be loaded. We don’t
+              madly import everything into the root init.py.
+            </p>
+            <h4 className="text-xl">Extendable</h4>
+            <p className="text-[18px] my-7">
+              Authlib is designed as flexible as possible. Since it is built
+              from low-level specification implementation to high-level
+              framework integrations, if a high level can’t meet your needs, you
+              can always create one for your purpose based on the low-level
+              implementation.
+            </p>
+            <p className="text-[18px] my-7">
+              Most of the cases, you don’t need to do so. Extendable has been
+              taken into account from the start of the project. Take OAuth 2.0
+              server as an example, instead of a pre-configured server, Authlib
+              takes advantage of register.
+            </p>
+            <div className=" w-4/5 mx-auto">
+              <Code
+                code={`authorization_server.register_grant(AuthorizationCodeGrant)
+authorization_server.register_endpoint(RevocationEndpoint)`}
+                language="javascript"
+              />
+            </div>
+            <p>
+              If you find anything not that extendable, you can ask help on
+              StackOverflow or open an issue on GitHub.
+            </p>
+            <h4>Requirements This part</h4>
+            <p>
+              of the documentation covers the installation of Authlib, just like
+              any other software package needs to be installed first.
+            </p>
+            <h3> $ pip install Authlib</h3>
+            <p>Installing Authlib is simple with pip:</p>
+            <div className=" w-4/5 mx-auto">
+              <Code code={`$ pip install Authlib`} language="javascript" />
+            </div>
+            ``` It will also install the dependencies: . cryptography Using
+            Authlib with Django: ```bash $ pip install Authlib Django ``` ###
+            Get the Source Code Authlib is actively developed on GitHub, where
+            the code is [always available](https://github.com/lepture/authlib).
+            You can clone the public repository: ```bash $ git clone
+            git://github.com/lepture/authlib.git ``` Once you have a copy of the
+            source, you can embed it in your Python package, or install it into
+            your site-packages easily: ```bash $ cd authlib $ pip install . ```
+            ### Django OAuth Client The Django client can handle OAuth 1 and
+            OAuth 2 services. Authlib has a shared API design among framework
+            integrations. Create a registry with OAuth object: ```python from
+            authlib.integrations.django_client import OAuth oauth = OAuth() ```
+            The common use case for OAuth is authentication, e.g. let your users
+            log in with Twitter, GitHub, Google etc. #### Configuration Authlib
+            Django OAuth registry can load the configuration from your Django
+            application settings automatically. Every key value pair can be
+            omitted. They can be configured from your Django settings:
+          </div>
+          <div className="">
             <div className="md:flex gap-8 line-numbers">
               <div className="md:w-[380px] mx-auto">
                 <Code code={python} language="javascript" />

@@ -41,11 +41,11 @@ Sample API call:
         "/posts/{id}/like", // require authentication
         "/posts/{id}/unlike", // require authentication
 
-        "/posts/{id}/comments",
-        "/posts/{id}/comments/create", // require authentication
+        // "/posts/{id}/comments",
+        // "/posts/{id}/comments/create", // require authentication
 
-        "/comments/{id}/like", // require authentication
-        "/comments/{id}/unlike", // require authentication
+        // "/comments/{id}/like", // require authentication
+        // "/comments/{id}/unlike", // require authentication
 
     ]
 }
@@ -130,10 +130,7 @@ Get posts by language
                     "id": 2,
                     "language": "JavaScript"
                 },
-                "title": "Hello World",
-                "slug": "hello-world",
                 "content": "lorem ipsum sit dolor amit",
-                "media_location": "https://example.com/avatar.png",
                 "likes_count": 5,
                 "created_at": 1659735293
         }
@@ -148,9 +145,7 @@ Create post
 ```jsonc
 {
     "language_id": 1,
-    "title": "Lorem ipsum sit",
     "content": "lorem ipsum sit dolor amit...",
-    "media_location": "https://example.com/avatar.png"
 }
 
 // response
@@ -181,10 +176,7 @@ Get post
             "id": 2,
             "language": "JavaScript"
         },
-        "title": "Hello World",
-        "slug": "hello-world",
         "content": "lorem ipsum sit dolor amit",
-        "media_location": "https://example.com/avatar.png",
         "likes_count": 5,
     }
 }
@@ -215,69 +207,5 @@ Unlike post
     "error": false // or error message
 }
 ```
-
-## COMMENTS
-
-Get Comments 
-
-`GET /posts/{id}/comments`
-```jsonc
-
-{
-    "limit": 5,
-    "sort_by": "ASC" //ASC or DESC
-}
-
-//Response
-{
-    "error": false, // or error message
-    "comments": [
-        {
-            "id": 1,
-            "post_id": 2,
-            "comment_text": "This is fun",
-            "likes_count": 2,
-            "created_at": 1659735293
-        }
-    ]
-}
-```
-
-Create comment
-
-`POST /posts/{id}/comments/create`
-
-```jsonc
-{
-    "comment_text": "This is fun"
-}
-
-// response
-{
-    "error": false // or error message
-}
-```
-
-Like a comment
-
-`GET /comments/{id}/like`
-
-```jsonc
-// response
-{
-    "error": false // or error message
-}
-```
-
-Unlike a comment
-
-`GET /comments/{id}/unlike`
-
-```jsonc
-// response
-{
-    "error": false // or error message
-}
-
 ## Important
 > When using PostMan, set the Content-Type to "x-www-form-urlencode" and pass the parameters as key-value pairs

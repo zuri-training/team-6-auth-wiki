@@ -5,7 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 // import { AuthContext } from "../../App";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
-import img from "../../img/logo/login-img.png";
+// import img from "../../img/logo/login-img.png";
+import img from "../../img/logo/login.png";
 import { AuthProvider, useAuth } from "./auth";
 import qs from "qs";
 import axios from "../api/axios";
@@ -28,74 +29,6 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // const loginFetch = async () => {
-    // fetch(baseURL, {
-    //   method: POST,
-    //   body: JSON.stringify({
-    //     email: name,
-    //     password: password,
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //   });
-    // };
-
-    // const user = await logindata();
-    // // console.log(user);
-    // auth.login(user);
-    // if (user.name === name && user.password === password) {
-    //   // if (name === "femi" && password === "1234") {
-    //   navigate(redirectPath, { replace: true });
-    // } else {
-    //   setError("incorrect name details");
-    // }
-
-    //   try {
-    //     const response = await axios.post(
-    //       LOGIN_URL,
-    //       JSON.stringify({ email: name, password: password }),
-    //       {
-    //         headers: { "Content-Type": "application/json" },
-    //       }
-    //     );
-    //     console.log(JSON.stringify(response?.data));
-    //     //console.log(JSON.stringify(response));
-    //     //  const accessToken = response?.data?.accessToken;
-    //     //  const roles = response?.data?.roles;
-    //     //  auth.login({ user, pwd, accessToken });
-    //     setPassword("");
-    //     setName("");
-    //     navigate(redirectPath, { replace: true });
-    //   } catch (err) {
-    //     if (!err?.response) {
-    //       setErrMessage("No Server Response");
-    //     } else if (err.response?.status === 400) {
-    //       setErrMessage("Missing Username or Password");
-    //     } else if (err.response?.status === 401) {
-    //       setErrMessage("Unauthorized");
-    //     } else {
-    //       setErrMessage("Login Failed");
-    //     }
-    //     //  errRef.current.focus();
-    //   }
-
-    //   // try {
-    //   //   const response = await axios.post(
-    //   //     LOGIN_URL,
-    //   //     JSON.stringify({ email: name, password: password }),
-    //   //     {
-    //   //       // headers: { "Content-Type": "application/json" },
-    //   //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   //       // withCredentials: false,
-    //   //     }
-    //   //   );
-    //   //   console.log(JSON.stringify(response));
-    //   // } catch (error) {
-    //   //   console.log(error);
-    //   // }
-
     let demo = async () => {
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -106,7 +39,6 @@ const Login = () => {
         headers: myHeaders,
         body: JSON.stringify({
           email: name,
-          // username: "bubba jay",
           password: password,
         }),
       });
@@ -127,8 +59,6 @@ const Login = () => {
       }
     };
     demo();
-
-    // const data = {user:}
   };
   // google auth
   const responseGoogle = (response) => {
@@ -136,6 +66,8 @@ const Login = () => {
     // console.log(response.profileObj);
     const user = response.profileObj;
     auth.login(user);
+    // console.log(user);
+    auth.setIsGoogle(true);
     if (user) {
       navigate(redirectPath, { replace: true });
     }
@@ -221,10 +153,11 @@ const Login = () => {
       )}
       <div className="block md:flex ">
         <div
-          className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen"
+          // className="w-screen object-cover md:w-[600px] md:basis-1/3 h-[428px] md:h-screen"
+          className="object-contain  md:basis-2/5 h-[428px] md:h-screen"
           style={{ backgroundImage: `url(${img})` }}
         ></div>
-        <div className="mx-auto md:basis-2/3 bg-white h-screen flex items-center">
+        <div className="mx-auto md:basis-3/5 bg-white h-screen flex items-center">
           <div className="w-5/6 md:w-[600px] mx-auto">
             <p className="text-2xl md:text-[40px] text-center">
               <span className="text-primary">Login</span> to Auth - Wiki

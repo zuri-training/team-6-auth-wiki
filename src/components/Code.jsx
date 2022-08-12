@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
-import '../prism.css'
+import "../prism.css";
 
 export default function Code({ code, language }) {
   useEffect(() => {
@@ -9,7 +9,7 @@ export default function Code({ code, language }) {
   }, []);
   return (
     <div className="Code">
-      <pre>
+      <pre className="line-numbers">
         <code className={`language-${language}`}>{code}</code>
       </pre>
     </div>

@@ -20,6 +20,37 @@ const Post = ({ lang_id }) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // calculate time in ago format
+  var periods = {
+    month: 30 * 24 * 60 * 60 * 1000,
+    week: 7 * 24 * 60 * 60 * 1000,
+    day: 24 * 60 * 60 * 1000,
+    hour: 60 * 60 * 1000,
+    minute: 60 * 1000,
+  };
+
+  function formatTime(timeCreated) {
+    var diff = Date.now() - timeCreated;
+
+    if (diff > periods.month) {
+      // it was at least a month ago
+      return Math.floor(diff / periods.month) + "m";
+    } else if (diff > periods.week) {
+      return Math.floor(diff / periods.week) + "w";
+    } else if (diff > periods.day) {
+      return Math.floor(diff / periods.day) + "d";
+    } else if (diff > periods.hour) {
+      return Math.floor(diff / periods.hour) + "h";
+    } else if (diff > periods.minute) {
+      return Math.floor(diff / periods.minute) + "m";
+    }
+    return "Just now";
+  }
+  // console.log(formatTime(Date.now()));
+  // console.log(formatTime(1510507151026));
+  // console.log(formatTime(1510517051026));
+  // console.log(formatTime(1508189037313));
   return (
     <section className="flex justify-between text-primary">
       {posts && (
@@ -34,7 +65,7 @@ const Post = ({ lang_id }) => {
                   <p className="mx-2 md:mx-6 text-[#5E5656] font-bold text-[12px] md:text-[16px]">
                     {post.user_id.username}
                   </p>
-                  <p>4 days ago</p>
+                  <p>{formatTime(post.created_at.date)}</p>
                 </div>
                 <div className="message h-[124px] md:w-[660px] flex mb-4">
                   <div className="w-[32px] min-h-[124px] border-l-4 border[#5E5656] ml-1 md:ml-8"></div>

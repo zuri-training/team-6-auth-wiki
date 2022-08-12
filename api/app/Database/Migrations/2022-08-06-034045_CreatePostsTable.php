@@ -26,25 +26,9 @@ class CreatePostsTable extends Migration
                     'constraint' => 5,
                     'null' => false
                 ],
-                'title' => [
-                    'type' => 'VARCHAR',
-                    'contraint' => 255,
-                    'null' => false
-                ],
-                'slug' => [
-                    'type' => 'VARCHAR',
-                    'contraint' => 255,
-                    'null' => false,
-                    'unique' => true
-                ],
                 'content' => [
                     'type' => 'TEXT',
                     'null' => false
-                ],
-                'media_location' => [
-                    'type' => 'VARCHAR',
-                    'contraint' => 255,
-                    'null' => true
                 ],
                 'created_at' => [
                     'type' => 'INT',

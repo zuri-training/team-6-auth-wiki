@@ -18,10 +18,7 @@ class PostsModel extends Model
     protected $allowedFields    = [
         'user_id',
         'language_id',
-        'title',
-        'slug',
-        'content',
-        'media_location'
+        'content'
     ];
 
     // Dates
@@ -53,18 +50,12 @@ class PostsModel extends Model
         $likes = new \App\Models\PostLikesModel();
         return count($likes->where('post_id', $postId)->findAll());
     }
-    protected function getComments($postId)
-    {
-        $comments = new \App\Models\CommentsModel();
-        return $comments->getAllCommentsByPost($postId);
-    }
 
     public function getAllPostsByLanguage(int $language_id)
     {
         $posts = $this->where('language_id', $language_id)->findAll();
         foreach ($posts as $post) {
             $post->likes = $this->getLikes($post->id);
-            $post->comments = $this->getComments($post->id);
         }
         return $posts;
     }

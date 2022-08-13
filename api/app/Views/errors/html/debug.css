@@ -195,3 +195,13 @@ td pre {
 .args {
     display: none;
 }
+.text-left {
+    color: blue;
+    text-decoration: underline;
+}
+.text-left:hover {
+    color: rgb(82, 48, 161);
+    font-weight: bold;
+    font-size: large;
+    text-decoration: underline;
+}

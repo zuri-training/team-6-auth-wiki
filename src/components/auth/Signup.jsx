@@ -205,7 +205,7 @@ const Signup = () => {
               <div className="w-full my-5">
                 <input
                   type="text"
-                  placeholder="Fullname"
+                  placeholder="Full Name"
                   name="user"
                   value={user}
                   ref={userRef}
@@ -221,7 +221,8 @@ const Signup = () => {
                   } w-full p-3 rounded border-2 my-2`}
                 />
               </div>
-              <div className="w-full my-5">
+              {/*<div className="w-full my-5" ></div>*/}
+              <div className= "bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full">
                 <input
                   type="email"
                   placeholder="Email Address"
@@ -309,9 +310,8 @@ const Signup = () => {
               </div> */}
               <button
                 type="submit"
-                className="text-white font-bold bg-primary w-full p-3 border-none rounded mt-5 hover:bg-text_primary"
-              >
-                Signup
+                className="text-white font-bold bg-primary w-full p-3 border-none rounded mt-5 hover:bg-text_primary">
+                Sign Up
               </button>
             </form>
             <div className="mt-7 w-5/6 md:w-[550px] mx-auto flex items-center">
@@ -339,7 +339,7 @@ const Signup = () => {
                       }}
                     >
                       <AiOutlineGithub className="mr-3" />
-                      <span className="text-primary">
+                      <span className="text-primary" class="SignupwithGithub">
                         Sign up with <span className="font-bold">GitHub</span>
                       </span>
                     </a>
@@ -350,6 +350,7 @@ const Signup = () => {
                 <GoogleLogin
                   clientId="917362236368-ogbbb58fg24nn76js03ste4lsr2sph4m.apps.googleusercontent.com"
                   buttonText="Sign up with Google"
+                  class="GoogleSignIn"
                   className="bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}

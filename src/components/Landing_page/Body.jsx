@@ -34,7 +34,7 @@ const coding = "(num) => num + 1";
 const Body = () => {
   return (
     <>
-      <section className="max-w-screen bg-[#E9EFFF] py-10 ">
+      <section className="max-w-screen bg-[#E9EFFF] py-10 md:min-h-screen ">
         <motion.div
           className="container md:flex justify-evenly mx-auto mt-12"
           animate={{ rotateZ: 360 }}

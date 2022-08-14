@@ -25,8 +25,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const refreshToken = () => {};
-
   return (
     <AuthContext.Provider
       value={{
@@ -38,6 +36,7 @@ export const AuthProvider = ({ children }) => {
         setIsGoogle,
         isGoogle,
         regUser,
+        token,
         getStorage,
       }}
     >

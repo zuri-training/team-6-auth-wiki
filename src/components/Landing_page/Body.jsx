@@ -11,6 +11,7 @@ import second from "../../img/icons/second.png";
 import start from "../../img/icons/start.png";
 import time from "../../img/icons/time.png";
 import { Link } from "react-router-dom";
+import Highlighter from "../Dashboard/Highlighter";
 
 const python = `class AuthInterface:
     def isLoggedIn(self) -> bool:
@@ -28,6 +29,8 @@ const python = `class AuthInterface:
     def getUser(self) -> User:
         """Get the currently logged in user"""
         pass`;
+
+const coding = "(num) => num + 1";
 const Body = () => {
   return (
     <>
@@ -139,6 +142,7 @@ const Body = () => {
         <div className="w-full px-5 md:w-[1200px] mx-auto md:flex gap-8 line-numbers">
           <div className="w-full md:w-[500px] mx-auto">
             <Code code={python} language="javascript" />
+            {/* <Highlighter code={coding} /> */}
           </div>
           <div className="w-full md:w-[500px] mx-auto">
             <Code code={python} language="javascript" />

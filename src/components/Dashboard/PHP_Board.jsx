@@ -117,7 +117,7 @@ const PHP_Board = () => {
           </div>
 
           <>
-            <Editor />
+            <Editor language_id={1} />
           </>
           <div className="w-[832px] mx-auto">
             <select name="comment" id="comment">

@@ -384,13 +384,13 @@ log.setLevel(logging.DEBUG)`}
           </div>
 
           <>
-            <Editor />
+            <Editor language_id={2} />
           </>
           <div className="w-[832px] mx-auto">
             <select name="comment" id="comment">
               <option value="sort">Sort by date</option>
             </select>
-            {<Post lang_id={1} />}
+            {<Post lang_id={2} />}
             {}
             {/* <div className="message h-[124px] md:w-[660px] flex mb-4">
               <div className="w-[32px] h-[124px] border-l-4 border[#5E5656] ml-8"></div>

@@ -1,10 +1,63 @@
-import React from "react";
+import React, { useState, useNavigate } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-const Editor = () => {
+import { useAuth } from "../auth/auth";
+const Editor = ({ language_id }) => {
+  const [content, setContent] = useState("");
+  const auth = useAuth();
+  function handleSubmit(e) {
+    e.preventDefault();
+    const posts = { language_id, content };
+
+    let createPost = async () => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", `Bearer ${auth.token}`);
+      // myHeaders.append(
+      //     "Authorization",
+      //     "Bearer your-token-here"
+      // );
+
+      let response = await fetch(
+        "https://team6authwikiapi.zurifordummies.com/posts/create",
+        {
+          method: "post",
+          headers: myHeaders,
+          body: JSON.stringify({
+            language_id,
+            content,
+          }),
+        }
+      );
+      let data = await response.json();
+      console.log(data);
+    };
+    createPost();
+
+    //   e.preventDefault();
+    //   fetch("https://team6authwikiapi.zurifordummies.com/posts/create", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       accept: "application/json",
+    //     },
+    //     body: JSON.stringify(posts),
+    //   }).then(async (response) => {
+    //     if (response.error === false) {
+    //       const validation = await response.json();
+    //       console.log(validation);
+    //       // setErrors(validation.errors);
+    //       // console.log(validation.errors);
+    //     }
+    //     // else {
+    //     //   history("/categories");
+    //     // }
+    //   });
+  }
+  // console.log(content);
   return (
     <div className="mt-12 bg-white">
-      <CKEditor
+      {/* <CKEditor
         editor={ClassicEditor}
         data=""
         onReady={(editor) => {
@@ -18,7 +71,8 @@ const Editor = () => {
         }}
         onChange={(event, editor) => {
           const data = editor.getData();
-          // console.log( { event, editor, data } );
+          setContent(data);
+          // console.log({ event, editor, data });
         }}
         onBlur={(event, editor) => {
           // console.log( 'Blur.', editor );
@@ -26,15 +80,27 @@ const Editor = () => {
         onFocus={(event, editor) => {
           // console.log( 'Focus.', editor );
         }}
-      />
-      <div className="flex justify-end">
-        <button
-          type="submit"
-          className="bg-[#9B9696] md:w-[180px] w-[100px] h-[60px] md:h-[62px] mt-5 text-primary "
-        >
-          Comment
-        </button>
-      </div>
+      /> */}
+      <form onSubmit={handleSubmit}>
+        <textarea
+          className="h-[200px] w-full mx-auto p-5"
+          name="content"
+          placeholder="Enter your Comment here"
+          id="content"
+          onChange={(e) => {
+            setContent(e.target.value);
+          }}
+        ></textarea>
+
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="bg-primary md:w-[180px] w-[100px] h-[60px] md:h-[62px] mt-5 text-white "
+          >
+            Comment
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

@@ -5,10 +5,10 @@ import { useAuth } from "./auth";
 export const RequireAuth = ({ children }) => {
   const location = useLocation();
   const auth = useAuth();
-  if (!auth.user) {
+  if (!auth.user || !auth.token) {
     return <Navigate to="/login" state={{ path: location.pathname }} />;
   }
-  if (auth.getStorage) {
+  if (auth.token) {
     return children;
   }
   return children;

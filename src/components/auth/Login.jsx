@@ -62,10 +62,12 @@ const Login = () => {
   };
   // google auth
   const responseGoogle = (response) => {
-    // console.log(response);
+    console.log(response);
     // console.log(response.profileObj);
     const user = response.profileObj;
-    auth.login(user);
+    const accessToken = response.tokenObj.access_token;
+    auth.login({ user, accessToken });
+    auth.getStorage(accessToken);
     // console.log(user);
     auth.setIsGoogle(true);
     if (user) {

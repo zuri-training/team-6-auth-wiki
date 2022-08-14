@@ -3,7 +3,7 @@ import logo from '../../img/logo/logo2.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/auth';
 import { GrMenu, } from 'react-icons/gr';
-
+// import 
 const Nav = () => {
   const auth = useAuth()
   const [menu, setMenu] = useState(false)

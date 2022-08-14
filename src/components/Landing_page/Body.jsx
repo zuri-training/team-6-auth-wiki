@@ -12,7 +12,7 @@ import start from "../../img/icons/start.png";
 import time from "../../img/icons/time.png";
 import { Link } from "react-router-dom";
 import Highlighter from "../Dashboard/Highlighter";
-
+import { motion } from "framer-motion";
 const python = `class AuthInterface:
     def isLoggedIn(self) -> bool:
         """Check if user is logged in"""
@@ -35,7 +35,10 @@ const Body = () => {
   return (
     <>
       <section className="max-w-screen bg-[#E9EFFF] py-10 ">
-        <div className="container md:flex justify-evenly mx-auto mt-12">
+        <motion.div
+          className="container md:flex justify-evenly mx-auto mt-12"
+          animate={{ rotateZ: 360 }}
+        >
           <div className="col-start-1 w-full">
             <div className="md:w-[600px] flex flex-col justify-center items-center md:block mx-auto px-5 text-text_primary">
               <h1 className="text-xl md:text-[40px] font-bold text-12">
@@ -63,7 +66,7 @@ const Body = () => {
               alt=""
             />
           </div>
-        </div>
+        </motion.div>
       </section>
       <section className="container mx-auto bg-white md:grid grid-cols-4 gap-6 pt-20 text-text_primary px-7 md:px-3">
         <div className="col-span-2 my-6 md:ml-20 w-3/4 mx-auto">
@@ -142,7 +145,6 @@ const Body = () => {
         <div className="w-full px-5 md:w-[1200px] mx-auto md:flex gap-8 line-numbers">
           <div className="w-full md:w-[500px] mx-auto">
             <Code code={python} language="javascript" />
-            {/* <Highlighter code={coding} /> */}
           </div>
           <div className="w-full md:w-[500px] mx-auto">
             <Code code={python} language="javascript" />

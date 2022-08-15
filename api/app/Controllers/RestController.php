@@ -42,7 +42,7 @@ class RestController extends ResourceController
         $token = explode(' ', $header)[1];
 
         try {
-            $token = urldecode($token);
+            $token = base64_decode($token);
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
             $response = [
                 'id' => $decoded->uid,

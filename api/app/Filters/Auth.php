@@ -37,7 +37,7 @@ class Auth implements FilterInterface
         $token = explode(' ', $header)[1];
 
         try {
-            $token = urldecode($token);
+            $token = base64_decode($token);
             JWT::decode($token, new Key($key, 'HS256'));
         } catch (\Throwable $th) {
             return Services::response()

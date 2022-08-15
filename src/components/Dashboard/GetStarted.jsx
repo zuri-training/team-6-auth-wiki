@@ -2,6 +2,22 @@ import React, { useContext } from "react";
 import { BiBell } from "react-icons/bi";
 import Code from "../Code";
 import SideBar from "./SideBar";
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      delay: 0.5
+    }
+  }
+}
 const python = `className AuthInterface:
     def isLoggedIn(self) -> bool:
         """Check if user is logged in"""
@@ -22,14 +38,16 @@ const python = `className AuthInterface:
 const GetStarted = () => {
   return (
     <>
-      <div className="md:grid grid-cols-4 min-h-screen">
+      <motion.div className="md:grid grid-cols-4 min-h-screen"  variants={containerVariants}
+        initial='hidden'
+        animate='visible'>
         <SideBar />
-        <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
+        <div className="p-8 col-span-3 bg-[#e9effe] text-justify min-h-screen flex flex-col items-center justify-center">
           <div className="flex justify-between items-center">
             <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">
               Get started
             </h1>
-            <BiBell className="h-6 w-6" />
+            {/* <BiBell className="h-6 w-6" /> */}
           </div>
 
           <p className="text-[16px] text-justify my-7">
@@ -60,7 +78,7 @@ const GetStarted = () => {
             </div>
           </div> */}
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

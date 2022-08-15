@@ -14,12 +14,12 @@ const Post = ({ lang_id }) => {
     );
     const data = await response.json();
     setPosts(data.posts);
-    console.log(data.posts);
+    // console.log(data.posts);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [posts]);
 
   // calculate time in ago format
   var periods = {

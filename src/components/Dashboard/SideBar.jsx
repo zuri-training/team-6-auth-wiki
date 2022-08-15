@@ -76,8 +76,8 @@ const SideBar = () => {
   };
   return (
     <>
-      <div className="col-start-1">
-        <div className="flex justify-between items-center pt-4">
+      <div className="col-start-1 ">
+        <div className="flex justify-between items-center pt-4 max-w-[100%]">
           <img src={logo} className="ml-3 h-[44.16px]" alt="auth wiki logo" />
           <span className="text-3xl cursor-pointer mx-3 md:hidden block">
             <GrMenu onClick={handleMenu} />
@@ -85,17 +85,17 @@ const SideBar = () => {
         </div>
         <div
           className={`${
-            mymenu ? "top-[80px] opacity-100 pb-6" : "hidden"
+            mymenu ? "top-[80px] opacity-100 pb-6 z-10" : "hidden"
           } md:justify-between md:block md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}
         >
-          <div className="w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 ml-2 rounded">
+          <div className="md:w-[320px] bg-primary hover:bg-text_primary h-[80px] flex items-center px-5 mt-6 mx-2 rounded">
             <img src={user_img} alt="" />
             <p className="text-white ml-4 text-[18px] font-bold">{name}</p>
           </div>
-          <aside className="mx-6 mt-10">
+          <aside className="mx-6 mt-10 md:w-[320px]">
             <ul className="">
               <li
-                className="flex justify-between items-center hover:text-primary cursor-pointer text-[24px] menu-btn"
+                className="flex justify-between md:mr-3 items-center hover:text-primary cursor-pointer text-[24px] menu-btn"
                 onClick={() => setMenu((prevState) => !prevState)}
               >
                 <div className="flex items-center">
@@ -104,7 +104,7 @@ const SideBar = () => {
                   </span>
                   <span className="cursor-pointer">Installation</span>
                 </div>
-                <IoIosArrowDown className="h-6 w-6  mr-3 stroke-primary" />
+                <IoIosArrowDown className="h-6 w-6 stroke-primary" />
                 {/* <FaArrowUp className="h-6 w-6 mr-3 stroke-primary"  /> */}
               </li>
               <ul
@@ -139,7 +139,7 @@ const SideBar = () => {
               </ul>
 
               <li
-                className="flex justify-between my-7 hover:text-primary text-[20px] menu-btn2 cursor-pointer"
+                className="flex justify-between my-7 hover:text-primary text-[24px] menu-btn2 cursor-pointer"
                 onClick={() => setCodeMenu((prevState) => !prevState)}
               >
                 <div className="flex items-center">
@@ -148,7 +148,7 @@ const SideBar = () => {
                   </span>
                   <span className="cursor-pointer">Code Sample</span>
                 </div>
-                <IoIosArrowDown className="h-6 w-6 mr-3 stroke-primary" />
+                <IoIosArrowDown className="h-6 w-6 md:mr-3 stroke-primary" />
               </li>
               <ul
                 className={`${

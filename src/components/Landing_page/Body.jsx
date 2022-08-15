@@ -12,6 +12,7 @@ import start from "../../img/icons/start.png";
 import time from "../../img/icons/time.png";
 import { Link } from "react-router-dom";
 import Highlighter from "../Dashboard/Highlighter";
+import Card from './Card'
 import { motion } from "framer-motion";
 const python = `class AuthInterface:
     def isLoggedIn(self) -> bool:
@@ -34,10 +35,12 @@ const coding = "(num) => num + 1";
 const Body = () => {
   return (
     <>
-      <section className="max-w-screen bg-[#E9EFFF] py-10 md:min-h-screen ">
+      <section className="max-w-screen bg-[#E9EFFF] py-10  md:max-h-screen ">
         <motion.div
           className="container md:flex justify-evenly mx-auto mt-12"
-          animate={{ rotateZ: 360 }}
+          initial={{x: '-100vw'}}
+          animate={{ x: 0 }}
+          transition={{delay: 0.8}}
         >
           <div className="col-start-1 w-full">
             <div className="md:w-[600px] flex flex-col justify-center items-center md:block mx-auto px-5 text-text_primary">
@@ -51,7 +54,7 @@ const Body = () => {
               </p>
               <Link
                 className="text-xl hover:text-text_primary duration-500"
-                to="/login"
+                to="/signup"
               >
                 <button className="w-[120px] h-[44px] md:w-[192px] bg-primary md:h-[64px] text-white text-xl rounded">
                   Get Started
@@ -80,7 +83,7 @@ const Body = () => {
           </p>
         </div>
         <div className="col-span-1">
-          <div className="my-6 flex flex-col items-center justify-center md:block">
+          {/* <div className="my-6 flex flex-col items-center justify-center md:block">
             <img src={code} alt="code icon" />
             <h3 className="text-[20px] my-3 font-semibold text-center md:text-justify">
               Making web development as easy as possible
@@ -88,54 +91,20 @@ const Body = () => {
             <p className="text-center md:text-justify">
               Teams with flexible support for ever-growing teams
             </p>
-          </div>
-          <div className="my-10 text-center md:text-justify flex flex-col items-center justify-center md:block">
-            <img src={second} alt="code icon" />
-
-            <h3 className="text-[20px] font-semibold my-3 text-center md:text-justify">
-              A one-stop shop for your codes.
-            </h3>
-            <p>WIth our library of authentication codes.</p>
-          </div>
-          <div className="my-10 text-center md:text-justify flex flex-col items-center justify-center md:block">
-            <img src={internet} alt="code icon" />
-
-            <h3 className="text-[16px]text-[20px] my-3 font-semibold">
-              Optimum user experience
-            </h3>
-            <p>HR teams with flexible support for ever-growing teams</p>
-          </div>
+          </div> */}
+        <Card image={code} title='Making web development as easy as possible' content='Ceams with flexible support for ever-growing teams'  trans={{delay: 0.8, type: 'spring', stiffness: 120}} />
+          
+          <Card image={second} title='A one-stop shop for your codes.' content='WIth our library of authentication codes.' trans={{delay: 1, type: 'spring', stiffness: 120}} />
+        
+          <Card image={internet} title='Optimum user experience' content='HR teams with flexible support for ever-growing teams' trans={{delay: 1.2, type: 'spring', stiffness: 120}} />
         </div>
+        <div className="my-3 text-center md:text-justify flex flex-col items-center justify-center md:block">
 
-        {/* <div className="col-span-1 my-6 md:my-32 text-center md:text-justify"> */}
-        <div className="my-6 text-center md:text-justify flex flex-col items-center justify-center md:block">
-          <img src={time} alt="code icon" />
-          <div className="">
-            <h3 className="text-[16px] md:text-[20px] font-semibold">
-              Get codes in minutes!
-            </h3>
-            <p>Teams with flexible support for ever-growing teams</p>
-          </div>
-
-          {/* <div className="mt-4 md:mt-32 text-center md:text-justify"> */}
-          <div className="my-16 text-center md:text-justify flex flex-col items-center justify-center md:block">
-            <img src={auth} alt="code icon" />
-            <h3 className="text-16 md:text-[20px] my-3 font-semibold">
-              Authentication Libraries.
-            </h3>
-            <p>Browse through our library of authentication codes.</p>
-          </div>
-          {/* <div className="my-4 md:my-24"> */}
-          <div className="text-center my-16 md:text-justify flex flex-col items-center justify-center md:block">
-            {/* <div className="w-[38px] h-[38px] rounded-t-full bg-[#C6EFFF]"> */}
-
-            <img src={start} alt="code icon" />
-            {/* </div> */}
-            <h3 className="text-16 md:text-[20px] my-3 font-semibold">
-              Start using for free
-            </h3>
-            <p>Our website is free and easy to use.</p>
-          </div>
+            <Card image={time} title='Get codes in minutes!' content='Teams with flexible support for ever-growing teams' trans={{delay: 1.5, type: 'spring', stiffness: 120}} />
+          <Card image={auth} title='Authentication Libraries.' content='Browse through our library of authentication codes.' trans={{delay: 1.7, type: 'spring', stiffness: 120}} />
+        
+          <Card image={start} title='Start using for free' content='Our website is free and easy to use.'
+          trans={{delay: 2, type: 'spring', stiffness: 120}} />
         </div>
       </section>
       <section className="bg-[#E9EFFF] py-10 min-h-screen">
@@ -151,11 +120,11 @@ const Body = () => {
           </div>
         </div>
       </section>
-      <section className="h-[287px] md:flex md:items-center justify-center md:flex-col">
+      <section className="h-[287px] md:flex md:items-center justify-center w-5/6 mx-auto md:flex-col">
         <h1 className="text-3xl font-bold text-center mt-10 mb-8">
           Our Partner
         </h1>
-        <div className="mx-auto w-4/5 md:w-96 md:mx-auto px-4 flex items-center gap-9">
+        <div className=" flex items-center justify-evenly gap-9">
           <img
             src="https://ingressive.org/wp-content/uploads/2020/05/I4G-Logo-Color-Cropped.png"
             className="w-[100px] h-[28px] md:w-[181.82px] md:h-[44px]"

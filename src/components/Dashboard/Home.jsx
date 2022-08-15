@@ -3,7 +3,8 @@ import { BiBell } from "react-icons/bi";
 import Code from "../Code";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../App";
-
+import Dashboard from './Dashboard'
+import SideBar from './SideBar'
 const python = `className AuthInterface:
     def isLoggedIn(self) -> bool:
         """Check if user is logged in"""
@@ -38,12 +39,14 @@ const Home = () => {
 
   return (
     <>
-      <div className="p-8 col-span-3 bg-[#e9effe]">
+      {/* <Dashboard> */}
+         {/* <SideBar />  */}
+      <div className="p-8 col-span-3 bg-[#e9effe] min-h-screen flex flex-col items-center justify-center">
         <div className="flex justify-between items-center">
           <h1 className="text-[30px] text-center md:text-left md:text-[40px] text-primary">
             Welcome back
           </h1>
-          <BiBell className="h-6 w-6" />
+          {/* <BiBell className="h-6 w-6" /> */}
         </div>
         {/* <div className="container">
         <button onClick={()=> handleLogout()}>Logout</button>
@@ -57,7 +60,7 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-        <p className="text-[16px] text-justify my-7">
+        <p className="text-[18px] text-justify my-7">
           Auth-wiki provides you with the library ao authentication codes which
           specializes in Python, Javascript and PHP languages. Continue to
           browse through our libraries of authentication codes to aid your work.
@@ -70,7 +73,9 @@ const Home = () => {
             <Code code={python} language="javascript" />
           </div>
         </div> */}
-      </div>
+        </div>
+        
+      {/* </Dashboard> */}
     </>
   );
 };

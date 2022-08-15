@@ -6,9 +6,25 @@ import { RiDownload2Line } from "react-icons/ri";
 import Code from "../Code";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Link } from "react-router-dom";
 import Post from "./Post";
 import Editor from "./Editor";
+import { motion } from 'framer-motion'
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      delay: 0.5
+    }
+  }
+}
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
 
 // import Context from '@ckeditor/ckeditor5-core/src/context';
@@ -38,7 +54,9 @@ const python = `className AuthInterface:
 const JavaScript_Board = () => {
   return (
     <>
-      <div className="md:grid grid-cols-4 min-h-screen">
+      <motion.div className="md:grid grid-cols-4 min-h-screen max-w-screen overflow-hidden"  variants={containerVariants}
+        initial='hidden'
+        animate='visible'>
         <SideBar />
         <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
@@ -71,22 +89,23 @@ const JavaScript_Board = () => {
               </span>
               <span className="flex ml-8">
                 <RiDownload2Line className="h-6 w-6 mr-3 stroke-1 hover:stroke-3 stroke-primary" />
-                <span>Download</span>
+                 {/* <Link to="libraries/javascript.zip"  target="_blank" download>Download</Link> */}
+                 <a href="libraries/javascript.zip"  target="_blank" download>Download</a>
               </span>
             </div>
           </div>
 
           <>
-            <Editor />
+            <Editor language_id={2} />
           </>
           <div className="w-[832px] mx-auto">
             <select name="comment" id="comment">
               <option value="sort">Sort by date</option>
             </select>
-            {<Post lang_id={3} />}
+            {<Post lang_id={2} />}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

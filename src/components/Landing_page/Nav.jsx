@@ -3,7 +3,7 @@ import logo from '../../img/logo/logo2.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/auth';
 import { GrMenu, } from 'react-icons/gr';
-// import 
+import {motion} from 'framer-motion'
 const Nav = () => {
   const auth = useAuth()
   const [menu, setMenu] = useState(false)
@@ -24,10 +24,15 @@ const Nav = () => {
       }
   return (
       <>
-      <nav
-  className="py-3 md:px-8 bg-[#E9EFFF] max-h-[94px] w-full mb-1 md:flex md:items-center md:justify-between text-2xl"
+      <motion.nav
+        className="py-3 md:px-8 bg-[#E9EFFF] max-h-[94px] w-full mb-1 md:flex md:items-center md:justify-between text-2xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{delay: 0.4, type: 'spring', stiffness: 120}}
 >
-  <div className="flex justify-between items-center">
+        <motion.div className="flex justify-between items-center" initial={{ y: 250 }} animate={{ y: 0 }}
+          transition={{delay: 0.6, type:'spring'}}
+        >
  
     <img
       src={logo}
@@ -37,9 +42,9 @@ const Nav = () => {
     <span className="text-3xl cursor-pointer mx-3 md:hidden block">
         <GrMenu onClick={handleMenu} />
     </span>
-  </div>
+  </motion.div>
         {/* <div className={`${menu ? 'top-[80px] opacity-100 bg-gray-200' : 'hidden'} nav-menu md:flex md:justify-between`} > */}
-        <ul className={`${menu ? 'top-[80px] opacity-100 pb-6' : 'hidden'} md:justify-between md:flex md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}>
+        <ul className={`${menu ? 'top-[80px] opacity-100 pb-6 z-10' : 'hidden'} md:justify-between md:flex md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}>
       <li className="md:mx-6 my-3 md:my-0">
         <a href="#" className="text-xl hover:text-text_primary duration-500">Doc</a>
       </li>
@@ -84,7 +89,7 @@ const Nav = () => {
         </ul>
     {/* </div> */}
   {/* </div> */}
-</nav>
+</motion.nav>
 
       
             

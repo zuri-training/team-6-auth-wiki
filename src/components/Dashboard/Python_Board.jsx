@@ -7,6 +7,7 @@ import { RiDownload2Line } from "react-icons/ri";
 import Code from "../Code";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Link } from "react-router-dom";
 import user from "../../img/user.png";
 import Editor from "./Editor";
 import Post from "./Post";
@@ -20,7 +21,22 @@ import Post from "./Post";
 // import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 // import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 // import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+import { motion } from 'framer-motion'
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      delay: 0.5
+    }
+  }
+}
 const python = `className AuthInterface:
     def isLoggedIn(self) -> bool:
         """Check if user is logged in"""
@@ -61,7 +77,9 @@ const Python_Board = () => {
   // console.log(getNumberOfDays(date, postDate));
   return (
     <>
-      <div className="md:grid grid-cols-4 min-h-screen">
+      <motion.div className="md:grid grid-cols-4 min-h-screen max-w-screen overflow-hidden" variants={containerVariants}
+        initial='hidden'
+        animate='visible'>
         <SideBar />
         <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
@@ -378,45 +396,23 @@ log.setLevel(logging.DEBUG)`}
               </span>
               <span className="flex ml-8">
                 <RiDownload2Line className="h-6 w-6 mr-3 stroke-1 hover:stroke-3 stroke-primary" />
-                <span>Download</span>
+                 <a href="libraries/python.zip"  target="_blank" download>Download</a>
+
               </span>
             </div>
           </div>
 
           <>
-            <Editor language_id={2} />
+            <Editor language_id={3} />
           </>
-          <div className="w-[832px] mx-auto">
+          <div className="w-[832px] mx-auto my-3">
             <select name="comment" id="comment">
               <option value="sort">Sort by date</option>
             </select>
-            {<Post lang_id={2} />}
-            {}
-            {/* <div className="message h-[124px] md:w-[660px] flex mb-4">
-              <div className="w-[32px] h-[124px] border-l-4 border[#5E5656] ml-8"></div>
-              <div className="w-[32px] h-[124px] border-l-3 border-r-8 border[#5E5656] mr-5"></div>
-              <p className="text-[20px] my-7">
-                the unique values explicitly tests in input parameters and loops
-                are properly initialised.. THUMBS UP{" "}
-              </p>
-            </div>
-            <div className="flex font-bold ml-5 text-[16px]">
-              <div className="flex mr-4 items-center text-primary">
-                <A className="font-bold text-primary"iOutlineLike />
-                <span className="ml-3 ">70k</span>
-              </div>
-              <div className="flex mr-4 items-center text-primary">
-                <A className="font-bold text-primary"iOutlineDislike />
-                <span className="ml-3 ">0</span>
-              </div>
-              <div className="flex mr-4 items-center text-primary">
-                <VscComment />
-                <span className="ml-3 ">Reply</span>
-              </div>
-            </div> */}
+            {<Post lang_id={3} />}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

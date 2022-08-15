@@ -8,16 +8,11 @@ const Editor = ({ language_id }) => {
   function handleSubmit(e) {
     e.preventDefault();
     const posts = { language_id, content };
-
+    console.log(content, auth.token)
     let createPost = async () => {
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${auth.token}`);
-      // myHeaders.append(
-      //     "Authorization",
-      //     "Bearer your-token-here"
-      // );
-
       let response = await fetch(
         "https://team6authwikiapi.zurifordummies.com/posts/create",
         {
@@ -31,6 +26,7 @@ const Editor = ({ language_id }) => {
       );
       let data = await response.json();
       console.log(data);
+      setContent('')
     };
     createPost();
 

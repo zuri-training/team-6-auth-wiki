@@ -6,6 +6,8 @@ import { RiDownload2Line } from "react-icons/ri";
 import Code from "../Code";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Link } from "react-router-dom";
+
 import Post from "./Post";
 import Editor from "./Editor";
 // import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
@@ -16,7 +18,22 @@ import Editor from "./Editor";
 // import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 // import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 // import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+import { motion } from 'framer-motion'
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      delay: 0.5
+    }
+  }
+}
 const installation = `-- Create statement for SQLite databases
 CREATE TABLE "users" (
 	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -65,7 +82,9 @@ $id = Auth::register(
 const PHP_Board = () => {
   return (
     <>
-      <div className="md:grid grid-cols-4 min-h-screen">
+      <motion.div className="md:grid grid-cols-4 min-h-screen max-w-screen overflow-hidden" variants={containerVariants}
+        initial='hidden'
+        animate='visible'>
         <SideBar />
         <div className="p-8 col-span-3 bg-[#e9effe] text-justify">
           <div className="flex justify-between items-center">
@@ -111,7 +130,8 @@ const PHP_Board = () => {
               </span>
               <span className="flex items-center ml-8">
                 <RiDownload2Line className="h-3 w-3 mr-2 md:mr-3 stroke-1 hover:stroke-3 stroke-primary" />
-                <span>Download</span>
+                 <a href="libraries/php.zip"  target="_blank" download>Download</a>
+                
               </span>
             </div>
           </div>
@@ -119,14 +139,14 @@ const PHP_Board = () => {
           <>
             <Editor language_id={1} />
           </>
-          <div className="w-[832px] mx-auto">
+          <div className="w-[832px] mx-auto my-3">
             <select name="comment" id="comment">
               <option value="sort">Sort by date</option>
             </select>
             {<Post lang_id={1} />}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

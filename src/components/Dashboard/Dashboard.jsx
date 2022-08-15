@@ -1,13 +1,34 @@
 import React from 'react'
 import Home from './Home'
 import SideBar from './SideBar'
-const Dashboard = () => {
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      delay: 0.5
+    }
+  }
+}
+const Dashboard = ({children}) => {
   return (
       <>
-          <div className="md:grid grid-cols-4 min-h-screen">
+      <motion.div className="md:grid grid-cols-4 min-h-screen max-w-screen"
+        variants={containerVariants}
+        initial='hidden'
+        animate='visible'
+      >
+        
               <SideBar /> 
             <Home />    
-          </div>
+          </motion.div>
     </>
   )
 }

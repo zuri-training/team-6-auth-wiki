@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer w-full md:h-[425px] bg-[#505050] p-8">
         <div className="md:grid grid-cols-8 gap-4 mx-auto text-center text-white text-xl">
           <div className="col-start-2 col-span-2 my-8 md:my-5">
-            <h3 className="text-3xl  md:mb-0">Docs</h3>
+            <h3 className="text-xl md:text-3xl   md:mb-0">Docs</h3>
             <ul>
               <li className="my-3">PHP</li>
               <li className="my-3">JavaScript</li>
@@ -14,14 +14,14 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-span-2 my-8 md:my-5">
-            <h3 className="text-3xl">Community</h3>
+            <h3 className="text-xl md:text-3xl ">Community</h3>
             <ul>
               <li className="my-3">Community Resources</li>
               <li className="my-3">codes of Conduct</li>
             </ul>
           </div>
           <div className="col-span-2 col-end-8 my-5">
-            <h3 className="text-3xl">More</h3>
+            <h3 className="text-xl md:text-3xl ">More</h3>
             <ul>
               <li className="my-3">About</li>
               <li className="my-3">Blog</li>
@@ -29,8 +29,8 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="md:flex w-80 md:justify-between md:items-center md:w-[800px] mx-auto ">
-          <div className="w-40 mx-auto mt-9 md:mt-0 md:ml-16">
+        <div className="block md:flex w-80 md:justify-between md:items-center md:w-[800px] mx-auto ">
+          <div className="mx-auto mt-9 md:mt-0 md:ml-16 w-2/3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

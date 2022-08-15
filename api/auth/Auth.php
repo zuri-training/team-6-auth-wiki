@@ -224,6 +224,7 @@ class Auth implements AuthInterface
             ]
         );
         if ($smt) {
+            throw new \Exception($smt->errorInfo(), 1);
             return $db->id();
         }
         throw new \Exception($smt->errorInfo(), 1);

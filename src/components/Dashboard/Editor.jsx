@@ -26,9 +26,9 @@ const Editor = ({ language_id }) => {
       );
       let data = await response.json();
       console.log(data);
-      setContent('')
     };
     createPost();
+    setContent('')
 
     //   e.preventDefault();
     //   fetch("https://team6authwikiapi.zurifordummies.com/posts/create", {

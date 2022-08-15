@@ -90,7 +90,7 @@ class Auth extends RestController
         if ($user_id) {
             return $this->respond(["error" => false], 200);
         } else {
-            return $this->respond(["error" => "Registration failed"], 500);
+            return $this->respond(["error" => "Registration failed", "id" => $user_id], 500);
         }
     }
 

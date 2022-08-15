@@ -48,7 +48,7 @@ class Auth extends RestController
             return $this->respond(
                 [
                     "error" => false,
-                    "token" => $token,
+                    "token" => urlencode($token),
                     "user" => $user
                 ],
                 200

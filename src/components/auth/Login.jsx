@@ -154,11 +154,10 @@ const Login = () => {
         </p>
       )}
       <div className="block md:flex ">
-        <div
-          // className="w-screen object-cover md:w-[600px] md:basis-1/3 h-[428px] md:h-screen"
-          className="object-contain  md:basis-2/5 h-[428px] md:h-screen"
-          style={{ backgroundImage: `url(${img})` }}
-        ></div>
+        {/* <div className="object-contain  md:basis-2/5 h-[428px] md:h-screen" */}
+          {/* style={{ backgroundImage: `url(${img})` }} */}
+        {/* ></div> */}
+        <img src={img} alt="" className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" />
         <div className="mx-auto md:basis-3/5 bg-white h-screen flex items-center">
           <div className="w-5/6 md:w-[600px] mx-auto">
             <p className="text-2xl md:text-[40px] text-center">
@@ -174,7 +173,7 @@ const Login = () => {
                   value={name}
                   className={`${
                     errMessage && "border-red-500"
-                  } w-full p-3 rounded border-2 my-2`}
+                  } w-full p-3 rounded border-2 my-2 shadow-[#B0ADAD] shadow-sm border-none`}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -186,13 +185,13 @@ const Login = () => {
                   value={password}
                   className={`${
                     errMessage && "border-red-500"
-                  } w-full p-3 rounded border-2 my-2`}
+                  } w-full p-3 rounded border-2 my-2 shadow-[#B0ADAD] shadow-sm border-none`}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex justify-end">
-                <a href="#" className="text-left">
-                  Forget Password
+                <a href="#" className="text-left text-primary decoration-none">
+                  Forget Password?
                 </a>
               </div>
               <button
@@ -225,14 +224,14 @@ const Login = () => {
                 ) : (
                   <>
                     <a
-                      className="login-link flex items-center justify-center p-3 rounded border-2 border-black-400 w-full"
+                      className="login-link flex items-center justify-center p-3 rounded shadow-[#B0ADAD] shadow-sm border-none w-full"
                       href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
                       onClick={() => {
                         setData({ ...data, errorMessage: "" });
                       }}
                     >
                       <AiOutlineGithub className="mr-3" />
-                      <span className="text-primary">
+                      <span className="text-[#B0ADAD]">
                         Login with <span className="font-bold">GitHub</span>
                       </span>
                     </a>

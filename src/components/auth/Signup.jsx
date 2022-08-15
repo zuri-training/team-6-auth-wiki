@@ -192,17 +192,18 @@ const Signup = () => {
       )}
 
       <div className="block md:flex ">
-        <div
-          className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen"
-          style={{ backgroundImage: `url(${img})` }}
-        ></div>
+         {/* <div */}
+          {/* className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" */}
+          {/* style={{ backgroundImage: `url(${img})` }} */}
+        {/* ></div>  */}
+        <img src={img} alt="" className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" />
         <div className="mx-auto md:basis-2/3 bg-white h-screen flex items-center">
           <div className="w-5/6 md:w-[600px] mx-auto">
             <p className="text-2xl md:text-[40px] text-center">
               <span className="text-primary">Create</span> your free account
             </p>
             <form onSubmit={handleSubmit}>
-              <div className="w-full my-5">
+              <div className="w-full mt-5">
                 <input
                   type="text"
                   placeholder="Full Name"
@@ -217,12 +218,12 @@ const Signup = () => {
                   onFocus={() => setUserFocus(true)}
                   onBlur={() => setUserFocus(false)}
                   className={`${
-                    validName ? "border-green-500" : "border-red-500"
-                  } w-full p-3 rounded border-2 my-2`}
+                    !errMsg ? "border-gray-300" : "border-red-500"
+                  } w-full p-3 rounded border-2 my-2 shadow-[#B0ADAD] shadow-sm border-none`}
                 />
               </div>
               {/*<div className="w-full my-5" ></div>*/}
-              <div className= "bg-white flex item-center justify-center text-primary p-3 rounded border-2 border-black-600 w-full">
+              <div className= "w-full my-3">
                 <input
                   type="email"
                   placeholder="Email Address"
@@ -236,8 +237,8 @@ const Signup = () => {
                   onFocus={() => setEmailFocus(true)}
                   onBlur={() => setEmailFocus(false)}
                   className={`${
-                    validEmail ? "border-green-500" : "border-red-500"
-                  } w-full p-3 rounded border-2 my-2`}
+                    !errMsg ? "border-gray-300" : "border-red-500"
+                  } w-full p-3 rounded border-2 my-2 shadow-[#B0ADAD] shadow-sm border-none`}
                 />
               </div>
               <div className="mb-1">
@@ -253,8 +254,8 @@ const Signup = () => {
                   onBlur={() => setPwdFocus(false)}
                   placeholder="Password"
                   className={`${
-                    validPwd ? "border-green-500" : "border-red-500"
-                  } w-full p-3 rounded border-2 my-2`}
+                    !errMsg ? "border-gray-300" : "border-red-500"
+                  } w-full p-3 rounded border-2 my-2 shadow-[#B0ADAD] shadow-sm border-none`}
                 />
                 <p
                   id="pwdnote"
@@ -332,7 +333,7 @@ const Signup = () => {
                       // Link to request GitHub access
                     }
                     <a
-                      className="login-link flex items-center justify-center p-3 rounded border-2 border-black-400 w-full"
+                      className="login-link flex items-center justify-center p-3 rounded shadow-[#B0ADAD] shadow-sm border-none w-full"
                       href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
                       onClick={() => {
                         setData({ ...data, errorMessage: "" });
@@ -340,7 +341,7 @@ const Signup = () => {
                     >
                       <AiOutlineGithub className="mr-3" />
                       <span className="text-primary" class="SignupwithGithub">
-                        Sign up with <span className="font-bold">GitHub</span>
+                        Sign up with <span className="font-bold"> GitHub</span>
                       </span>
                     </a>
                   </>

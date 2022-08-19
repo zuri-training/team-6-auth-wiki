@@ -10,7 +10,7 @@ const Post = ({ lang_id }) => {
   const auth = useAuth();
   const fetchData = async () => {
     const response = await fetch(
-      `https://team6authwikiapi.zurifordummies.com/languages/${lang_id}/posts`
+      `https://authwikiapi.russelljapheth.name.ng/languages/${lang_id}/posts`
     );
     const data = await response.json();
     setPosts(data.posts);

@@ -34,7 +34,7 @@ const Login = () => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
       let response = await fetch(
-        "https://team6authwikiapi.zurifordummies.com/login",
+        "https://authwikiapi.russelljapheth.name.ng/login",
         {
           method: "post",
           headers: myHeaders,

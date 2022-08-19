@@ -83,7 +83,7 @@ const Signup = () => {
       // );
 
       let response = await fetch(
-        "https://team6authwikiapi.zurifordummies.com/register",
+        "https://authwikiapi.russelljapheth.name.ng/register",
         {
           method: "post",
           headers: myHeaders,

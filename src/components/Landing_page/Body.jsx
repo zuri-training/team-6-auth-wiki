@@ -116,9 +116,9 @@ const Body = () => {
           </div> */}
         <Card image={code} title='Making web development as easy as possible' content='Ceams with flexible support for ever-growing teams'/>
           
-          <Card image={second} title='A one-stop shop for your codes.' content='WIth our library of authentication codes.' trans={{delay: 1.2, type: 'spring', stiffness: 120}} anima={animation} />
+          <Card image={second} title='A one-stop shop for your codes.' content='WIth our library of authentication codes.' trans={{delay: 1.2, type: 'spring', stiffness: 120}} />
         
-          <Card image={internet} title='Optimum user experience' content='HR teams with flexible support for ever-growing teams' trans={{delay: 1.6, type: 'spring', stiffness: 120}} anima={animation} />
+          <Card image={internet} title='Optimum user experience' content='HR teams with flexible support for ever-growing teams' trans={{delay: 1.6, type: 'spring', stiffness: 120}} />
         </div>
         <div className="my-3 text-center md:text-justify flex flex-col items-center justify-center md:block">
 

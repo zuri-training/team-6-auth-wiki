@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/team-6-auth-wiki/static/css/main.18cf159b.css",
-    "main.js": "/team-6-auth-wiki/static/js/main.f6de7a52.js",
+    "main.css": "/team-6-auth-wiki/static/css/main.b38f79e0.css",
+    "main.js": "/team-6-auth-wiki/static/js/main.6a61bce3.js",
     "static/media/login-img.png": "/team-6-auth-wiki/static/media/login-img.58d6a3c60075a86d855e.png",
     "static/media/login.png": "/team-6-auth-wiki/static/media/login.c2410b2383777d9ca4ad.png",
+    "static/media/about-bg.png": "/team-6-auth-wiki/static/media/about-bg.06b718052e093490f549.png",
+    "static/media/open.png": "/team-6-auth-wiki/static/media/open.7d00351a67b9aed0987b.png",
+    "static/media/flexible.png": "/team-6-auth-wiki/static/media/flexible.58fa7b5f869690e3b845.png",
+    "static/media/easy.png": "/team-6-auth-wiki/static/media/easy.88094c0ca8cf689b71e7.png",
+    "static/media/secure.png": "/team-6-auth-wiki/static/media/secure.e83a5310860f823e224f.png",
     "static/media/water.png": "/team-6-auth-wiki/static/media/water.390c068338016aa88bc1.png",
     "index.html": "/team-6-auth-wiki/index.html",
-    "main.18cf159b.css.map": "/team-6-auth-wiki/static/css/main.18cf159b.css.map",
-    "main.f6de7a52.js.map": "/team-6-auth-wiki/static/js/main.f6de7a52.js.map"
+    "main.b38f79e0.css.map": "/team-6-auth-wiki/static/css/main.b38f79e0.css.map",
+    "main.6a61bce3.js.map": "/team-6-auth-wiki/static/js/main.6a61bce3.js.map"
   },
   "entrypoints": [
-    "static/css/main.18cf159b.css",
-    "static/js/main.f6de7a52.js"
+    "static/css/main.b38f79e0.css",
+    "static/js/main.6a61bce3.js"
   ]
 }

@@ -14,7 +14,7 @@ const Editor = ({ language_id }) => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${auth.token}`);
       let response = await fetch(
-        "https://team6authwikiapi.zurifordummies.com/posts/create",
+        "https://authwikiapi.russelljapheth.name.ng/posts/create",
         {
           method: "post",
           headers: myHeaders,
@@ -31,7 +31,7 @@ const Editor = ({ language_id }) => {
     createPost();
 
     //   e.preventDefault();
-    //   fetch("https://team6authwikiapi.zurifordummies.com/posts/create", {
+    //   fetch("https://authwikiapi.russelljapheth.name.ng/posts/create", {
     //     method: "POST",
     //     headers: {
     //       "Content-Type": "application/json",

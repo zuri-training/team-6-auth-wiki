@@ -46,16 +46,15 @@ const Nav = () => {
         {/* <div className={`${menu ? 'top-[80px] opacity-100 bg-gray-200' : 'hidden'} nav-menu md:flex md:justify-between`} > */}
         <ul className={`${menu ? 'top-[80px] opacity-100 pb-6 z-10' : 'hidden'} md:justify-between md:flex md:items-center md:static absolute md:bg-transparent bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:mr-20`}>
       <li className="md:mx-6 my-3 md:my-0">
-        <a href="#" className="text-xl hover:text-text_primary duration-500">Doc</a>
-      </li>
+      <Link className="text-xl hover:text-text_primary duration-500" to="/">Doc</Link>
+        
+          </li>
       <li className="md:mx-6 my-3 md:my-0">
-              <Link className="text-xl hover:text-text_primary duration-500" to="dashboard">Wiki</Link>
+              <Link className="text-xl hover:text-text_primary duration-500" to="/dashboard">Wiki</Link>
     
       </li>
       <li className="md:mx-6 my-3 md:my-0">
-        <a href="#" className="text-xl hover:text-text_primary duration-500"
-          >About Us</a
-        >
+              <Link className="text-xl hover:text-text_primary duration-500" to="/about">About Us</Link>
       </li>
     {/* <li className="block md:flex md:items-center md:static absolute md:ml-4 "> */}
       {/* <span

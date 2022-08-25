@@ -4,24 +4,24 @@ const Footer = () => {
   return (
     <>
       <footer className="footer w-full md:h-[425px] bg-[#505050] p-8">
-        <div className="md:grid grid-cols-8 gap-4 mx-auto text-center text-white text-xl">
-          <div className="col-start-2 col-span-2 my-8 md:my-5">
-            <h3 className="text-xl md:text-3xl   md:mb-0">Docs</h3>
+        <div className="grid grid-cols-8 gap-4 mx-auto text-center text-white text-xl">
+          <div className="col-start-2 md:col-span-2 col-span-3 my-8 md:my-5">
+            <h3 className="text-[24px] font-semibold md:text-3xl   md:mb-0">Docs</h3>
             <ul>
               <li className="my-3">PHP</li>
               <li className="my-3">JavaScript</li>
               <li className="my-3">Python</li>
             </ul>
           </div>
-          <div className="col-span-2 my-8 md:my-5">
-            <h3 className="text-xl md:text-3xl ">Community</h3>
+          <div className="col-span-3 md:col-span-2 my-8 md:my-5">
+            <h3 className="text-[24px] font-semibold md:text-3xl ">Community</h3>
             <ul>
               <li className="my-3">Community Resources</li>
               <li className="my-3">codes of Conduct</li>
             </ul>
           </div>
-          <div className="col-span-2 col-end-8 my-5">
-            <h3 className="text-xl md:text-3xl ">More</h3>
+          <div className="col-span-3 col-start-2 md:col-span-2 md:col-end-8 my-5">
+            <h3 className="text-[24px] font-semibold md:text-3xl ">More</h3>
             <ul>
               <li className="my-3">About</li>
               <li className="my-3">Blog</li>

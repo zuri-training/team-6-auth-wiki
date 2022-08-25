@@ -91,7 +91,7 @@ const Editor = ({ language_id }) => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="bg-primary md:w-[180px] w-[100px] h-[60px] md:h-[62px] mt-5 text-white "
+            className="bg-primary md:w-[180px] w-[100px] h-[60px] md:h-[62px] text-white "
           >
             Comment
           </button>

@@ -10,7 +10,8 @@ const Post = ({ lang_id }) => {
   const auth = useAuth();
   const fetchData = async () => {
     const response = await fetch(
-      `https://myapi.dataxis.ng//languages/${lang_id}/posts`
+      // `https://myapi.dataxis.ng/languages/${lang_id}/posts`
+      `https://team6authwikiapi.zurifordummies.com/languages/${lang_id}/posts`
     );
     const data = await response.json();
     setPosts(data.posts);
@@ -19,7 +20,13 @@ const Post = ({ lang_id }) => {
 
   useEffect(() => {
     fetchData();
+     return () => {
+       fetchData()
+    }
   }, [posts]);
+
+   
+  
 
   // calculate time in ago format
   var periods = {
@@ -58,18 +65,19 @@ const Post = ({ lang_id }) => {
           {posts.map((post) => {
             console.log(post.content);
             const timeago = moment(post.user_id.created_at).fromNow();
+            const id = new Date().getMilliseconds().toString()
             return (
               <>
-                <div className="flex my-5">
+                <div className="flex my-5" key={post.user_id.username}>
                   <img src={user} className="ml-3" alt="img" />
                   <p className="mx-2 md:mx-6 text-[#5E5656] font-bold text-[12px] md:text-[16px]">
                     {post.user_id.username}
                   </p>
                   <p>{formatTime(post.created_at.date)}</p>
                 </div>
-                <div className="message h-[124px] md:w-[660px] flex mb-4">
-                  <div className="w-[32px] min-h-[124px] border-l-4 border[#5E5656] ml-1 md:ml-8"></div>
-                  <div className="w-[32px] min-h-[124px] border-l-3 border-r-8 border[#5E5656] mr-2 md:mr-5 hidden md:inline-block "></div>
+                <div className="message py-3 md:w-[660px] flex mb-4">
+                  <div className="w-[32px] min-h-[60px] border-l-4 border[#5E5656] ml-1 md:ml-8"></div>
+                  <div className="w-[32px] min-h-[60px] border-l-3 border-r-8 border[#5E5656] mr-2 md:mr-5 hidden md:inline-block "></div>
                   <p>{post.content}</p>
                 </div>
                 <div className="flex font-bold ml-1 md:ml-5 text-[10px] md:text-[16px]">

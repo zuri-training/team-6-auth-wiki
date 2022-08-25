@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import zuri from "../../img/logo/zuri.png";
 import watermark from "../../img/logo/water.png";
 import Prism from "prismjs";
@@ -13,7 +13,9 @@ import time from "../../img/icons/time.png";
 import { Link } from "react-router-dom";
 import Highlighter from "../Dashboard/Highlighter";
 import Card from './Card'
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const python = `class AuthInterface:
     def isLoggedIn(self) -> bool:
         """Check if user is logged in"""
@@ -33,14 +35,34 @@ const python = `class AuthInterface:
 
 const coding = "(num) => num + 1";
 const Body = () => {
+  const { ref, inView } = useInView({threshold:0.2})
+
+  // USE TO START AND STOP ANIMATION
+  const animation = useAnimation()
+
+  // USE THIS TO MONITOR WHEN ITEM COMES IN VIEW
+  
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        x: 0,
+        transition: {
+          type: "spring", duration: 1, bounce: 0.3
+        }
+      })
+    }
+    if (!inView) {
+      animation.start({x: '-100vw'})
+    }
+  },[inView])
   return (
-    <>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{x: window.innerWidth, transition: { duration: 0.3}}}>
       <section className="max-w-screen bg-[#E9EFFF] py-10  md:max-h-screen ">
         <motion.div
           className="container md:flex justify-evenly mx-auto mt-12"
-          initial={{x: '-100vw'}}
-          animate={{ x: 0 }}
-          transition={{delay: 0.8}}
         >
           <div className="col-start-1 w-full">
             <div className="md:w-[600px] flex flex-col justify-center items-center md:block mx-auto px-5 text-text_primary">
@@ -82,7 +104,7 @@ const Body = () => {
             improving “TECH” space.
           </p>
         </div>
-        <div className="col-span-1">
+        <div className="col-span-1" >
           {/* <div className="my-6 flex flex-col items-center justify-center md:block">
             <img src={code} alt="code icon" />
             <h3 className="text-[20px] my-3 font-semibold text-center md:text-justify">
@@ -92,19 +114,19 @@ const Body = () => {
               Teams with flexible support for ever-growing teams
             </p>
           </div> */}
-        <Card image={code} title='Making web development as easy as possible' content='Ceams with flexible support for ever-growing teams'  trans={{delay: 0.8, type: 'spring', stiffness: 120}} />
+        <Card image={code} title='Making web development as easy as possible' content='Ceams with flexible support for ever-growing teams'/>
           
-          <Card image={second} title='A one-stop shop for your codes.' content='WIth our library of authentication codes.' trans={{delay: 1, type: 'spring', stiffness: 120}} />
+          <Card image={second} title='A one-stop shop for your codes.' content='WIth our library of authentication codes.' trans={{delay: 1.2, type: 'spring', stiffness: 120}} anima={animation} />
         
-          <Card image={internet} title='Optimum user experience' content='HR teams with flexible support for ever-growing teams' trans={{delay: 1.2, type: 'spring', stiffness: 120}} />
+          <Card image={internet} title='Optimum user experience' content='HR teams with flexible support for ever-growing teams' trans={{delay: 1.6, type: 'spring', stiffness: 120}} anima={animation} />
         </div>
         <div className="my-3 text-center md:text-justify flex flex-col items-center justify-center md:block">
 
-            <Card image={time} title='Get codes in minutes!' content='Teams with flexible support for ever-growing teams' trans={{delay: 1.5, type: 'spring', stiffness: 120}} />
-          <Card image={auth} title='Authentication Libraries.' content='Browse through our library of authentication codes.' trans={{delay: 1.7, type: 'spring', stiffness: 120}} />
+            <Card image={time} title='Get codes in minutes!' content='Teams with flexible support for ever-growing teams' trans={{delay: 1.9, type: 'spring', stiffness: 120}} />
+          <Card image={auth} title='Authentication Libraries.' content='Browse through our library of authentication codes.' trans={{delay: 2.3, type: 'spring', stiffness: 120}} />
         
           <Card image={start} title='Start using for free' content='Our website is free and easy to use.'
-          trans={{delay: 2, type: 'spring', stiffness: 120}} />
+          trans={{delay: 2.6, type: 'spring', stiffness: 120}} />
         </div>
       </section>
       <section className="bg-[#E9EFFF] py-10 min-h-screen">
@@ -137,7 +159,7 @@ const Body = () => {
           />
         </div>
       </section>
-    </>
+    </motion.div>
   );
 };
 

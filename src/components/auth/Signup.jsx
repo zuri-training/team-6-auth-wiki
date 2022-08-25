@@ -9,13 +9,15 @@ import img from "../../img/logo/login-img.png";
 import { AuthProvider, useAuth } from "./auth";
 // import axios from "../api/axios";
 import { FaInfoCircle } from "react-icons/fa";
-
+import {motion} from 'framer-motion'
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const NUMBER_REGEX =
   /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REGISTER_URL = "/register";
+  // const url = "https://team6authwikiapi.zurifordummies.com/register"
+
 const Signup = () => {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -83,7 +85,7 @@ const Signup = () => {
       // );
 
       let response = await fetch(
-        "https://team6authwikiapi.zurifordummies.com/register",
+        "https://authwikiapi.russelljapheth.name.ng/register",
         {
           method: "post",
           headers: myHeaders,
@@ -179,7 +181,10 @@ const Signup = () => {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{x: window.innerWidth, transition: { duration: 0.3}}}>
       {errMsg && (
         <p className="bg-red-600 text-white text-center p-5 text-2xl uppercase font-bold">
           {errMsg}
@@ -371,7 +376,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

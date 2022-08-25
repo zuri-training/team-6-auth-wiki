@@ -11,7 +11,7 @@ import { AuthProvider, useAuth } from "./auth";
 // import qs from "qs";
 // import axios from "../api/axios";
 // import axios from "axios";
-
+import {motion} from 'framer-motion'
 // const baseURL = "http://myapi.dataxis.ng/login";
 const LOGIN_URL = "/login";
 const Login = () => {
@@ -34,7 +34,7 @@ const Login = () => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
       let response = await fetch(
-        "https://team6authwikiapi.zurifordummies.com/login",
+        "https://authwikiapi.russelljapheth.name.ng/login",
         {
           method: "post",
           headers: myHeaders,
@@ -142,7 +142,10 @@ const Login = () => {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{x: window.innerWidth, transition: { duration: 0.3}}}>
       {errMessage && (
         <p className="bg-red-600 text-white text-center p-5 text-2xl uppercase font-bold">
           {errMessage}
@@ -253,7 +256,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { AiOutlineGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
 // import { AuthContext } from "../../App";
 import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
@@ -201,7 +200,9 @@ const Signup = () => {
           {/* className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" */}
           {/* style={{ backgroundImage: `url(${img})` }} */}
         {/* ></div>  */}
+        <Link className="text-xl hover:text-text_primary duration-500" to="/">
         <img src={img} alt="" className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" />
+      </Link>
         <div className="mx-auto md:basis-2/3 bg-white h-screen flex items-center">
           <div className="w-5/6 md:w-[600px] mx-auto">
             <p className="text-2xl md:text-[40px] text-center">

@@ -33,12 +33,13 @@ const Nav = () => {
         <motion.div className="flex justify-between items-center" initial={{ y: 250 }} animate={{ y: 0 }}
           transition={{delay: 0.6, type:'spring'}}
         >
- 
+          <Link className="text-xl hover:text-text_primary duration-500" to="/">
     <img
       src={logo}
       className="ml-3 h-[44.16px]"
       alt="auth wiki logo"
-    />
+      />
+      </Link>
     <span className="text-3xl cursor-pointer mx-3 md:hidden block">
         <GrMenu onClick={handleMenu} />
     </span>

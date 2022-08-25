@@ -160,7 +160,9 @@ const Login = () => {
         {/* <div className="object-contain  md:basis-2/5 h-[428px] md:h-screen" */}
           {/* style={{ backgroundImage: `url(${img})` }} */}
         {/* ></div> */}
+        <Link className="text-xl hover:text-text_primary duration-500" to="/">
         <img src={img} alt="" className="w-screen md:w-[600px] md:basis-1/3 h-[428px] md:h-screen" />
+      </Link>
         <div className="mx-auto md:basis-3/5 bg-white h-screen flex items-center">
           <div className="w-5/6 md:w-[600px] mx-auto">
             <p className="text-2xl md:text-[40px] text-center">

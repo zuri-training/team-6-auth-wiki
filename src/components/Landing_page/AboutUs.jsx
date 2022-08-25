@@ -45,10 +45,10 @@ const AboutUs = () => {
       <img src={nav_bg} alt="" className='w-full h-full' />
     </section>
 
-    <motion.section className="bg-[#E9EFFF] w-screen h-[287px] md:h-[462px]" animate={animation}>
-      <div className="flex flex-col pt:5 md:pt-14 pb-4 ml-[120px] mr-[85px]">
-        <p className="pb-[9.5px] font-semibold text-[40px]">About us</p>
-        <p className="md:pt-[9.5px] text-[14px] md:text-[24px]">We are a team of Designers and developers building open-source products that simplify development. we are on a mission to make development easier for everyone, and our products are used by millions of people all over the world. We strive to make our products easy to use and easy to learn, and we take pride in our commitment to customer support. Our products are used by some of the largest companies in the world, and we are constantly working to make them even better.</p>
+    <motion.section className="bg-[#E9EFFF] w-screen pb-3 min-h-[287px] md:h-[462px]" animate={animation}>
+      <div className="flex flex-col pt:5 md:pt-14 pb-4 px-3 md:px-0 md:ml-[120px] md:mr-[85px]">
+        <p className="pb-[9.5px] font-semibold text-[40px] text-center md:text-left">About us</p>
+        <p className="md:pt-[9.5px] text-[14px] md:text-[24px] text-justify">We are a team of Designers and developers building open-source products that simplify development. we are on a mission to make development easier for everyone, and our products are used by millions of people all over the world. We strive to make our products easy to use and easy to learn, and we take pride in our commitment to customer support. Our products are used by some of the largest companies in the world, and we are constantly working to make them even better.</p>
       </div>
       </motion.section>
       <motion.section className='flex flex-col md:flex-row md:justify-around items-stretch h-[699px] md:h-[429px] justify-around py-6' animate={animation}>
@@ -70,7 +70,7 @@ const AboutUs = () => {
           <img src={open} alt="open source image" className='w-[343px] md:w-[488px] md:h-[430] h-[204px]' />
           <div className="">
             <h3 className='text-[24px] md:text-[40px] my-3 font-bold'>Why open-source ?</h3>
-            <p className='text-[15px] md:text-[24px]'>Open-source software is important for a number of reasons. First, it allows for collaboration and input from various people. This makes for better software overall, as more eyes on the code means more potential for finding and fixing bugs. Additionally, open-source software is usually free to use and distribute, making it more accessible to everyone. Finally, open-source projects tend to be more secure than closed-source software, as anyone can audit the code for security issues.
+            <p className='text-[15px] md:text-[24px] text-justify'>Open-source software is important for a number of reasons. First, it allows for collaboration and input from various people. This makes for better software overall, as more eyes on the code means more potential for finding and fixing bugs. Additionally, open-source software is usually free to use and distribute, making it more accessible to everyone. Finally, open-source projects tend to be more secure than closed-source software, as anyone can audit the code for security issues.
 In short, open source software is important because it is better for everyone. It is more collaborative, more accessibleand more secure. and that is why we should all support open-source projects.</p>
           </div>
         </div>

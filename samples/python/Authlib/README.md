@@ -1,10 +1,9 @@
 # Python Authentication Library &mdash; Authlib (Django)
 
+## Get Started
 The ultimate Python library in building OAuth and OpenID Connect servers. It is designed from low level specifications implementations to high level frameworks integrations, to meet the needs of everyone.
 
 Authlib is compatible with Python3.6+.
-
-## Get Started
 
 ### Introduction
 Authlib is the ultimate Python library in building OAuth and OpenID Connect clients and servers. It offers generic implementations of RFCs, including OAuth 1.0, OAuth 2.0, JWT and many more. It becomes a Monolithic project that powers from low-level specification implementation to high-level framework integrations.
